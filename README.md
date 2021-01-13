@@ -1,1 +1,2 @@
-# series-schedule
+# Series Schedule
+
