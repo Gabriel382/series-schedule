@@ -116,10 +116,26 @@ img{
 	font-size: 1.375rem;
 }
 
+.title > label{
+	font-family: "Franklin Gothic Bold";
+}
+
 .centered{
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.space-between{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.end{
+	display: flex;
+	align-items: center;
+	justify-content: end;
 }
 
 .fa-grip-lines-vertical, .fa-caret-square-left, .fa-caret-square-right{
@@ -132,7 +148,7 @@ img{
 	height: 25px;
 	border-radius: 0.4em;
 	margin: 1em;
-	background-image:  url(ui_sprites/magglass.png);
+	background-image:  url(../img/magglass.png);
 	background-repeat: no-repeat;
 	background-size: 12%;
 	background-position-y: center;
@@ -169,28 +185,85 @@ a{
 	border-radius: 50%;
 }
 
-.container-filmes{
-	background-color: red;
+#divUserLists{
+	overflow-y: auto;
+	overflow-x: hidden;
+    height: 530px;
+    background-color: #ECF0F1;
+    width: 83.33%;
 }
 
-#mylists{
-	overflow: auto;
-    height: 508px;
+#divUserLists div{
+	padding: 1%;
 }
 
 .poster{
 	padding: 10px;
 	width: 140px;
-	height: 190px;
+	border-style: solid;
+	border-color: #ECF0F1;	
+	background-color: #005D2D;
 }
 
 .poster img{
-	height: inherit;
-	width: inherit;
+	width: 100%;
+	height: 190px;
+}
+
+.poster div{
+	display: flex;
+	justify-content: space-between;
+	color: #FFFFFF;
+	font-family: "Franklin Gothic Regular";
 }
 
 .list{
 	margin-top: 5px;
-	overflow: auto;
-	height: 220px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 290px;
+	width: 90%;
 }
+
+@font-face {
+  	font-family: 'Franklin Gothic Regular';
+  	src: url('../fonts/Franklin Gothic Regular.ttf')  format('truetype'); 
+}
+
+@font-face{
+	font-family: 'Franklin Gothic Bold';
+  	src: url('../fonts/Franklin Gothic Bold.ttf')  format('truetype');
+}
+
+label {
+	font-family: "Franklin Gothic Regular";
+}
+
+a{
+	font-family: "Franklin Gothic Bold";
+}
+
+footer{
+	background-color: #BDC3C7;
+	margin-top: 22px;
+}
+
+footer img{
+	height: 20px;
+	width: 20px;
+	padding-left: : 1%;
+	padding-right: 1%;
+}
+
+#divUser{
+	background-color: #858585;
+}
+
+hr{
+	height: 5px;
+	background-color: #26ae60;
+}
+
+
+
+

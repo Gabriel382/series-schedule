@@ -1,196 +1,363 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link href="estilos.css" rel="stylesheet" type="text/css">
+		<link href="../assets/css/estilos.css" rel="stylesheet" type="text/css">
 		<script src="code.jquery.com/jquery-1.10.2.js"></script>
 	</head>
 	<body>
 		
 		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>		
 		<div class="container">
-			<div id="nav-placeholder">
-
-
-					<div class="navbar">
-						
-							<div class="col-4 centered">
-								<img src="ui_sprites/name_with_logo.png" class="logo-image">
-							</div>							
-							<div class="col-8 right">
-								<a href="">Sign up/Log in</a> 
-								<input class="search-input">	
-							</div>
-						
+			<nav id="nav-placeholder">
+				<div class="navbar">						
+					<div class="col-4 centered">
+						<img src="../assets/img/name_with_logo.png" class="logo-image">
 					</div>
-
-			</div>
-
+					<div class="col-3 space-between">
+						<a href="">Página Inicial</a>
+						<a href="">Buscar</a>
+					</div>						
+					<div class="col-5 right">
+						<a href="">Sair</a> 
+						<input class="search-input">	
+					</div>						
+				</div>
+			</nav>
 			<div class="body">
-				<div class="col-2" style="background-color: #858585;">
+				<div class="col-2" id="divUser">
 					<div class="centered">
-						<img class="user-image" src="Imagens/user.png">
+						<img class="user-image" src="../assets/img/user.png">
+					</div>
+					<br>
+					<div class="row">
+						<label>Nome:</label>
+						&nbsp;
+						<label id="lblName">Violeta</label>
 					</div>
 					<div class="row">
-						<label>Nome: </label>
+						<label>Idade:</label>
+						&nbsp;
+						<label id="lblAge">24</label>
 					</div>
 					<div class="row">
-						<label>Idade: </label>
+						<label>Total de Séries:</label>
+						&nbsp;
+						<label id="lblTotalSeries">77</label>
 					</div>
 					<div class="row">
-						<label>Total de Séries: </label>
-					</div>
-					<div class="row">
-						<label>Último Acesso: </label>
+						<label>Último Acesso:</label>
+						&nbsp;
+						<label id="lblLastAcess">31/01/21 08:00</label>
 					</div>
 					<div>
 						<a href="">Editar Perfil</a>
 					</div>
 				</div>
-				<div id="mylists" class="col-10" style="background-color: #ECF0F1;">
-					<div class="title">
-						<i class="fas fa-grip-lines-vertical"></i>
-						<label>Últimos Adicionados</label>
-					</div>
-					<div class="row">
-						<div class="col-1 centered">
-							<i class="fas fa-caret-square-left fa-3x"></i>
-						</div>						
-						<div class="col-2">
-							<img src="Imagens/serie1.jpg" />
-						</div>
-						<div class="col-2">
-							<img src="Imagens/serie1.jpg" />
-						</div>
-						<div class="col-2">
-							<img src="Imagens/serie1.jpg" />
-						</div>
-						<div class="col-2">
-							<img src="Imagens/serie1.jpg" />
-						</div>
-						<div class="col-1 centered">
-							<i class="fas fa-caret-square-right fa-3x"></i>
-						</div>
-					</div>
-					<br>
-					<br>
-					<div class="title">
-						<i class="fas fa-grip-lines-vertical"></i>
-						<label class="title">Assistindo</label>
-					</div>
-					<div class="list">
-						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
+				<div id="divUserLists">
+					<div>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label>Últimos Adicionados</label>
 						</div>
 						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="col-1 centered">
+								<i class="fas fa-caret-square-left fa-3x"></i>
+							</div>						
+							<div class="col-2">
+								<img src="../assets/img/posters/serie1.jpg" />
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="col-2">
+								<img src="../assets/img/posters/serie2.jpg" />
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="col-2">
+								<img src="../assets/img/posters/serie3.jpg" />
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="col-2">
+								<img src="../assets/img/posters/serie4.jpg" />
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="col-1 centered">
+								<i class="fas fa-caret-square-right fa-3x"></i>
 							</div>
 						</div>
-						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+						<hr>
+						<br>						
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Assistindo</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+										<lable>Ep.3</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark 2ª Temporada</lable>
+										<lable>Ep.1</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+										<lable>Ep.3</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark 2ª Temporada</lable>
+										<lable>Ep.1</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+										<lable>Ep.3</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark 2ª Temporada</lable>
+										<lable>Ep.1</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>
+										<lable>Ep.5</lable>
+									</div>
+								</div>
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+						</div>
+						<br>
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Próximos Lançamentos</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>										
+										<lable>Ep.6</lable>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Ep.6</lable>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Ep.4</lable>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Ep.2-2</lable>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Ep.6</lable>
+										<label>05/02/21</label>
+									</div>
+								</div>
+							</div>							
+						</div>
+						<br>
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Completos</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>
+									</div>
+								</div>
 							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="poster">
+									<img src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<lable>Gumball</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<lable>Stranger Things</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<lable>Sherlock Holmes</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<lable>Dark</lable>
+									</div>
+								</div>
+								<div class="poster">
+									<img src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<lable>Wanda Vision</lable>										
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
-					<br>
-					<br>
-					<div class="title">
-						<i class="fas fa-grip-lines-vertical"></i>
-						<label class="title">Completos</label>
-					</div>
-					<div class="list">						
-						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
+					<footer>
+						<div class="centered">
+							<img src="../assets/img/insta_logo.png">
+							<img src="../assets/img/twitter_logo.png">
+							<img src="../assets/img/logo_facebook.png">
 						</div>
-						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-						</div>
-						<div class="row">
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-							<div class="poster">
-								<img src="Imagens/serie1.jpg" />
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+					</footer>
+				</div>				
+			</div>			
+		</div>		
 	</body>
 </html>
