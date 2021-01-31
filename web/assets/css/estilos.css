@@ -1,0 +1,196 @@
+.body{
+	background-image:  url(Imagens/fundo6.jpg);
+}
+
+.navbar{
+	background-color: #26AE60;
+	width: 100%;
+	font-size: 1.15rem;
+	height: 73px;
+	display: flex;
+}
+
+.navbar a{
+	color: #FFFFFF;
+}
+
+.container{
+	width: 100%;
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+}	    
+
+.body{
+	float: none;
+	width: 100%;
+	display: flex;
+}
+
+.row{
+	float: none;
+	width: 100%;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.col-12{
+	padding: 1%;
+	float: left;
+	width: 100%;
+}
+
+.col-11{
+	padding: 1%;
+	float: left;
+	width: 91.67%;
+}
+
+.col-10{
+	padding: 1%;
+	float: left;
+	width: 83.33%;
+}
+
+.col-9{
+	padding: 1%;
+	float: left;
+	width: 75%;
+}
+
+.col-8{
+	padding: 1%;
+	float: left;
+	width: 66.67%;
+}
+
+.col-7{
+	padding: 1%;
+	float: left;
+	width: 58.33%;
+}
+
+.col-6{
+	padding: 1%;
+	float: left;
+	width: 50%;
+}
+
+.col-5{
+	padding: 1%;
+	float: left;
+	width: 41.66%;
+}
+
+.col-4{
+	padding: 1%;
+	float: left;
+	width: 33.33%;
+}
+
+.col-3{
+	padding: 1%;
+	float: left;
+	width: 25%;
+}
+
+.col-2{
+	padding: 1%;
+	float: left;
+	width: 16.67%;
+}
+
+.col-1{
+	padding: 1%;
+	float: left;
+	width: 8.33%;
+}
+
+img{
+	height: auto;
+	max-width: 100%;
+}
+
+.title{
+	font-size: 1.375rem;
+}
+
+.centered{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.fa-grip-lines-vertical, .fa-caret-square-left, .fa-caret-square-right{
+	color: #26AE60;
+}
+
+.search-input{
+	border-color: #C0392B;
+	border-width: 0.25em;
+	height: 25px;
+	border-radius: 0.4em;
+	margin: 1em;
+	background-image:  url(ui_sprites/magglass.png);
+	background-repeat: no-repeat;
+	background-size: 12%;
+	background-position-y: center;
+	background-position-x: 95%;
+}
+
+.search-button{
+	height: 25px;
+	border-radius: 0.6em;
+	border-color: #C0392B;
+}
+
+.fa-search{
+	color: #C0392B;
+}
+
+.right{
+	align-items: center;
+	justify-content: right;
+	display: flex;
+}	
+
+.logo-image {
+	width: 80%;
+}
+
+a{
+	text-decoration: none;
+}
+
+.user-image{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+.container-filmes{
+	background-color: red;
+}
+
+#mylists{
+	overflow: auto;
+    height: 508px;
+}
+
+.poster{
+	padding: 10px;
+	width: 140px;
+	height: 190px;
+}
+
+.poster img{
+	height: inherit;
+	width: inherit;
+}
+
+.list{
+	margin-top: 5px;
+	overflow: auto;
+	height: 220px;
+}
