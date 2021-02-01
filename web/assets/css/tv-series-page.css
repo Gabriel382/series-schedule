@@ -1,0 +1,253 @@
+#divContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+}
+
+#divHeader {
+    height: 10vh;
+    background-color:#27ae60;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divBanner{
+    background-image: url("../img/friends-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+#divBanner #txtTitle{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 243px;
+}
+
+#divBanner #txtTitle #txtSeriesTitle {
+    font-family: 'Gothic A1';
+    font-weight: bold;
+    color: seashell;
+    font-size: 35px;
+    text-shadow: 4px 4px px black;
+}
+
+#divBanner #txtTitle #txtSeriesYear {
+    font-family: 'Gothic A1';
+    color: #FFF;
+    font-size: 30px;
+    margin-left: 10px;
+    text-shadow: 4px 4px 5px black;
+}
+
+#divBanner #divSeriesHeader{
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 10vh;
+    width: 100vw;
+}
+
+#divBanner #divSeriesHeader #txtNumbers{
+    font-family: 'Gothic A1';
+    color: seashell;
+    font-size: 20px;
+    margin-left: 243px;
+}
+
+#divContent {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+#divContent #divLeftSideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 310px;
+    width: 167px;
+    border-radius: 10px;
+    margin-top: -200px;
+    margin-left: 40px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 30px;
+    box-sizing: border-box;
+}
+
+#divContent #divLeftSideBar #imgPoster{
+    height: 250px;
+    width: 167px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+#divContent #divLeftSideBar #btnAddSeries {
+    background-color: #27ae60;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+#divContent #divLeftSideBar #btnAddSeries #txtAddSeries{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+}
+
+#divInformations{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#divInformations #divGenres{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#divInformations #divGenres .btn-genre-button{
+    background-color: #27ae60; /* Green */
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5px;
+    font-family: Gothic A1;
+    font-weight: bold;
+}
+
+#divInformations #divSpecificInformations{
+    display: flex;
+    flex-direction: row;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+#divInformations #divSpecificInformations .div-row{
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+}
+
+#divSpecificInformations .div-row .txt-label{
+    font-family: Gothic A1;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#divSpecificInformations .div-row .txt-info{
+    font-family: Gothic A1;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+#divInformations p{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 15x;
+    width: 85%;
+    text-align: justify;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.div-seasons .div-season {
+    background-color: #FFF;
+    color: #444;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 25px;
+    width: 85%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.div-seasons .div-season .div-right-side {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.div-season .div-right-side .div-rating{
+    display: flex;
+    flex-direction: row;
+}
+
+.div-seasons .div-season .txt-season-name{
+    font-family: Gothic A1;
+    font-weight: 900;
+    color: #27ae60;
+    font-size: 50px;
+}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.div-seasons .active, .div-season:hover {
+background-color: #ccc;
+}
+
+/* Style the accordion panel. Note: hidden by default */
+.div-seasons .div-season-content {
+    display: none;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.div-season-content .div-episode {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #FFF;
+}
+
+.div-season-content .div-episode .img-episode-banner{
+    width: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.div-season-content .div-episode .div-episode-info{
+    padding: 0 10px 0 10px;
+}
+
+.episode-item{
+    background-color: #FFF;
+    width: 200px;
+    height: 100px;
+    box-shadow: 
+        0px 3px 1px -2px rgba(0,0,0,0.2), 
+        0px 2px 2px 0px rgba(0,0,0,0.14), 
+        0px 1px 5px 0px rgba(0,0,0,0.12);
+
+}
