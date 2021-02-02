@@ -25,7 +25,8 @@
 }
 
 .sitesection{
-	font-family: "Franklin Gothic Bold";
+	font-family: "Gothic A1";
+	font-weight: bold;
 }
 
 .sitesection img{
@@ -89,6 +90,36 @@
 	background-position-x: 95%;
 }
 
+.accessibility{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;	
+}
+
+.accessibility button{
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	height: 10px;
+	width: 25px;
+	text-align:center;
+	margin-bottom: 5px; 
+	font-family: "Gothic A1";
+	font-weight: bold;
+	font-size:10px;
+	color: #FFFFFF;
+}
+
+.modebutton button{
+	background-image:  url(../img/night_mode.png);
+	background-size: 90%;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	height: 25px;
+	width: 25px;
+}
+
 .data-input{
 	border-color: #C0392B;
 	border-width: 0.25em;
@@ -103,6 +134,8 @@
 }
 
 .navbar a{
+	font-family: "Gothic A1";
+	font-weight: bold;
 	color: #FFFFFF;
 }
 
@@ -199,22 +232,22 @@ a{
   }
   
 @font-face {
-  	font-family: 'Franklin Gothic Regular';
-  	src: url('../fonts/Franklin Gothic Regular.ttf')  format('truetype'); 
+  	font-family: 'Gothic A1';
 }
 
 @font-face{
-	font-family: 'Franklin Gothic Bold';
-  	src: url('../fonts/Franklin Gothic Bold.ttf')  format('truetype');
+	font-family: 'Gothic A1';
+	font-weight: bold;
 }
 
 label {
 	align-self:left;
-	font-family: "Franklin Gothic Regular";
+	font-family: "Gothic A1";
 }
 
 a{
-	font-family: "Franklin Gothic Bold";
+	font-family: "Gothic A1";
+	font-weight: bold;
 }
 
 footer{
