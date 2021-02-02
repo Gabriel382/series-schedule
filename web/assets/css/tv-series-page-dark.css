@@ -111,7 +111,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color:#313131;
     height: 310px;
     width: 167px;
     border-radius: 10px;
@@ -126,16 +126,15 @@
 #divContent #divLeftSideBar #imgPoster{
     height: 250px;
     width: 167px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 #divContent #divLeftSideBar #btnAddSeries {
     background-color: #27ae60;
     margin-top: 10px;
     border-radius: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: 45px;
+    padding-right: 45px;
     padding-top: 0px;
     padding-bottom: 0px;
 }
