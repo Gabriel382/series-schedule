@@ -1,0 +1,244 @@
+.navbar{
+	background-color: #26AE60;
+	width: 100%;
+	font-size: 1.15rem;
+	height: 73px;
+	display: flex;
+}
+
+.col-4{
+	padding: 1%;
+	float: left;
+	width: 33.33%;
+}
+
+.col-3{
+	padding: 1%;
+	float: left;
+	width: 25%;
+}
+
+.col-5{
+	padding: 1%;
+	float: left;
+	width: 41.66%;
+}
+
+.sitesection{
+	font-family: "Franklin Gothic Bold";
+}
+
+.sitesection img{
+	float: left;
+	padding-right: 15px;
+	height="30px"
+}
+
+.inputsquare{
+	height: 350px;
+	background-color: #FFFFFF;
+	border-style: double;
+	border-color: #26AE60;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+.div-centralized{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+}
+
+.inputsquare button{
+	background-color: #27ae60; /* Green */
+	  color: white;
+	  padding: 15px 22px;
+	  font-size: 16px;
+}
+
+.space-between{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.centered{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.right{
+	align-items: center;
+	justify-content: right;
+	display: flex;
+}	
+
+.search-input{
+	border-color: #C0392B;
+	border-width: 0.25em;
+	height: 25px;
+	border-radius: 0.4em;
+	margin: 1em;
+	background-image:  url(../img/magglass.png);
+	background-repeat: no-repeat;
+	background-size: 12%;
+	background-position-y: center;
+	background-position-x: 95%;
+}
+
+.data-input{
+	border-color: #C0392B;
+	border-width: 0.25em;
+	height: 25px;
+	width: 200px;
+	border-radius: 0.4em;
+	margin: 1em;
+	background-repeat: no-repeat;
+	background-size: 12%;
+	background-position-y: center;
+	background-position-x: 95%;
+}
+
+.navbar a{
+	color: #FFFFFF;
+}
+
+.search-button{
+	height: 25px;
+	border-radius: 0.6em;
+	border-color: #C0392B;
+}
+
+.fa-search{
+	color: #C0392B;
+}
+
+.fa-grip-lines-vertical, .fa-caret-square-left, .fa-caret-square-right{
+	color: #26AE60;
+	
+}
+
+.logo-image {
+	width: 80%;
+}
+
+a{
+	text-decoration: none;
+}
+
+#site{
+  width: 100%;
+  height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	background-color:#ecf0f1;
+}
+
+#header{
+  /*Novamente definimos a largura da div*/
+  width:100%;
+  /* altura da div */
+  height:10%;
+  position: fixed;
+  /* Imagem de fundo da div */
+  background-color: #27ae60;
+  }
+#content{
+  /*Novamente definimos a largura da div*/
+  width:100%;
+  /* altura da div */
+  height:85%;
+  /* Cor de fundo da div */
+  background-color: #ecf0f1;
+  display: flex;
+  /*flex-direction: row;*/
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  object-fit: fill;
+}
+
+
+
+#content-left{
+  /*Novamente definimos a largura da div*/
+  width:500px;
+  height:80%;
+  /* altura da div */
+  /* O atributo Float é utilizado para fazermos o nosso bloco(div)
+  literalmente flutue e se posicione onde queremos na página,
+  quando escolhemos left, dizemos que esse bloco irá se posicionar na
+  parte esquerda da página */
+  float:left;
+  object-fit: cover;
+  /* Cor de fundo da div*/
+  
+}
+  
+#content-right{
+  /*Novamente definimos a largura da div*/
+  width:500px;
+  /* altura da div */
+  height:80%;
+  object-fit: cover;
+  /* Pode parecer meio estranho usarmos o mesmo atributo left para o bloco
+  em que queremos posicionar na direita, mas como sabemos, o CSS é um estilo
+  em cascata, nossa div conteúdo definimos a largura de 1000px e na
+  conteudo-left 500px, automaticamente ao definirmos o conteudo-right
+  com 500px e à esquerda também, ele ficou à direita do conteudo-left,
+  pois o máximo que a div filha poderá ter é 1000px, sendo 500+500=1000px */
+  float:right;
+  /* Cor de fundo da div */
+  display: flex;
+  flex-direction: column;  
+  }
+  
+@font-face {
+  	font-family: 'Franklin Gothic Regular';
+  	src: url('../fonts/Franklin Gothic Regular.ttf')  format('truetype'); 
+}
+
+@font-face{
+	font-family: 'Franklin Gothic Bold';
+  	src: url('../fonts/Franklin Gothic Bold.ttf')  format('truetype');
+}
+
+label {
+	align-self:left;
+	font-family: "Franklin Gothic Regular";
+}
+
+a{
+	font-family: "Franklin Gothic Bold";
+}
+
+footer{
+	background-color: #bdc3c7;
+	margin-bottom: 0px;
+	height: 15%;
+	float: none;
+	width: 100%;
+	position:fixed;
+}
+
+footer img{
+	height: 20px;
+	width: 20px;
+	padding-left: : 1%;
+	padding-right: 1%;
+	margin-top: 0.6%;
+}
+
+#divUser{
+	background-color: #858585;
+}
+
+hr{
+	height: 5px;
+	background-color: #26ae60;
+}
