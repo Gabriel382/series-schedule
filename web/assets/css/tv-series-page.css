@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ecf0f1;
+    padding-bottom: 50px;
 }
 
 #divHeader {
@@ -51,16 +52,53 @@
 }
 
 #divBanner #divSeriesHeader{
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
     height: 10vh;
     width: 100vw;
+    display: flex;
 }
 
-#divBanner #divSeriesHeader #txtNumbers{
-    font-family: 'Gothic A1';
-    color: seashell;
-    font-size: 20px;
+#divSeriesHeader #divNumbers {
+    display: flex;
+    flex-direction: row;
     margin-left: 243px;
+}
+
+#divSeriesHeader #divNumbers .div-number{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-text{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    font-size: 20px;
+    margin:0;
+    padding:0;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 200;
+    color: #FFF;
+    font-size: 12px;
+    margin:0;
+    padding:0;
+}
+
+.icon {
+    font-size: 40px;
+    color: #27ae60;
 }
 
 #divContent {
@@ -209,12 +247,10 @@
     font-size: 50px;
 }
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
 .div-seasons .active, .div-season:hover {
-background-color: #ccc;
+    background-color: #ccc;
 }
 
-/* Style the accordion panel. Note: hidden by default */
 .div-seasons .div-season-content {
     display: none;
     overflow: hidden;
@@ -222,32 +258,75 @@ background-color: #ccc;
     margin-bottom: 15px;
 }
 
-.div-season-content .div-episode {
+.div-season-content .div-episodes-grid{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.div-season-content .div-episodes-grid .div-episode {
     display: flex;
     flex-direction: column;
     width: 250px;
     height: 300px;
     border-radius: 10px;
     background-color: #FFF;
+    margin-left: 10px;
+    margin-right: 12px;
 }
 
-.div-season-content .div-episode .img-episode-banner{
+.div-season-content .div-episodes-grid .div-episode .img-episode-banner{
     width: 250px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
-.div-season-content .div-episode .div-episode-info{
+.div-season-content .div-episodes-grid .div-episode .div-episode-info{
     padding: 0 10px 0 10px;
 }
 
-.episode-item{
-    background-color: #FFF;
-    width: 200px;
-    height: 100px;
-    box-shadow: 
-        0px 3px 1px -2px rgba(0,0,0,0.2), 
-        0px 2px 2px 0px rgba(0,0,0,0.14), 
-        0px 1px 5px 0px rgba(0,0,0,0.12);
+.div-season-content .div-episodes-grid .div-episode .div-episode-info .txt-episode-title{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000;
+}
 
+.div-season-content .div-episodes-grid .div-episode .div-episode-info .div-episode-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: flex-end;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.div-episode .div-episode-info .div-episode-footer .div-episode-rating{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin:0;
+    padding: 0;
+}
+
+.div-episode .div-episode-info .div-episode-footer .div-episode-rating .txt-episode-rating{ 
+    font-family: 'Gothic A1', sans-serif;
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 7px;
+}
+
+.div-episode .div-episode-info .div-episode-footer .txt-exhibiton-date{ 
+    font-family: 'Gothic A1', sans-serif;
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.episode-item-icon {
+    font-size: 20px;
+    color: #27ae60;
+    z-index: 1;
 }
