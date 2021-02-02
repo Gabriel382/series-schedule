@@ -36,15 +36,15 @@
 }
 
 #divBanner #txtTitle #txtSeriesTitle {
-    font-family: 'Gothic A1';
+    font-family: 'Gothic A1', sans-serif;
     font-weight: bold;
-    color: seashell;
+    color:#FFF;
     font-size: 35px;
     text-shadow: 4px 4px px black;
 }
 
 #divBanner #txtTitle #txtSeriesYear {
-    font-family: 'Gothic A1';
+    font-family: 'Gothic A1', sans-serif;
     color: #FFF;
     font-size: 30px;
     margin-left: 10px;
@@ -83,8 +83,8 @@
     font-weight: 700;
     color: #FFF;
     font-size: 20px;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 #divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-label{
@@ -92,8 +92,8 @@
     font-weight: 200;
     color: #FFF;
     font-size: 12px;
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
 }
 
 .icon {
@@ -111,7 +111,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
     height: 310px;
     width: 167px;
     border-radius: 10px;
@@ -126,24 +125,31 @@
 #divContent #divLeftSideBar #imgPoster{
     height: 250px;
     width: 167px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 #divContent #divLeftSideBar #btnAddSeries {
     background-color: #27ae60;
     margin-top: 10px;
     border-radius: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-left: 37.5px;
+    padding-right: 37.5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #divContent #divLeftSideBar #btnAddSeries #txtAddSeries{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
     color: #FFF;
+    line-height: 16px;
+    text-align: end;
+    margin-left: 10px;
 }
 
 #divInformations{
@@ -162,7 +168,7 @@
 }
 
 #divInformations #divGenres .btn-genre-button{
-    background-color: #27ae60; /* Green */
+    background-color: #27ae60;
     border: none;
     border-radius: 10px;
     color: white;
@@ -172,7 +178,7 @@
     display: inline-block;
     font-size: 16px;
     margin-right: 5px;
-    font-family: Gothic A1;
+    font-family: 'Gothic A1', sans-serif;
     font-weight: bold;
 }
 
@@ -190,16 +196,18 @@
 }
 
 #divSpecificInformations .div-row .txt-label{
-    font-family: Gothic A1;
+    font-family: 'Gothic A1', sans-serif;
     font-size: 15px;
     font-weight: bold;
+    color: #000;
 }
 
 #divSpecificInformations .div-row .txt-info{
-    font-family: Gothic A1;
+    font-family: 'Gothic A1', sans-serif;
     font-size: 15px;
     font-weight: normal;
     margin-left: 5px;
+    color: #000;
 }
 
 #divInformations p{
@@ -207,9 +215,9 @@
     font-size: 15x;
     width: 85%;
     text-align: justify;
+    color: #000;
 }
 
-/* Style the buttons that are used to open and close the accordion panel */
 .div-seasons .div-season {
     background-color: #FFF;
     color: #444;
@@ -238,13 +246,23 @@
 .div-season .div-right-side .div-rating{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.div-season .div-right-side .div-rating .txt-season-rating{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 15px;
+    color: #000;
+    margin-left: 5px;
+    margin-right: 10px;
 }
 
 .div-seasons .div-season .txt-season-name{
-    font-family: Gothic A1;
+    font-family: 'Gothic A1', sans-serif;
     font-weight: 900;
     color: #27ae60;
-    font-size: 50px;
+    font-size: 55px;
 }
 
 .div-seasons .active, .div-season:hover {
@@ -325,10 +343,27 @@
     font-weight: 600;
 }
 
+.add-icon{
+    font-size: 15px;
+    color: #FFF;
+}
+
 .episode-item-icon {
     font-size: 20px;
     color: #27ae60;
     z-index: 1;
+}
+
+.s-icon{
+    font-size: 25px;
+    color:#27ae60;
+}
+
+.progress-bar{
+    background-color:#27ae60;
+    color: #FFF;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
 }
 
 a{

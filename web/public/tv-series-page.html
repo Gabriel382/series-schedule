@@ -4,11 +4,14 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Friends - Maratomator</title>
+        <link rel="icon" href="../assets/img/logo-icon.png">
+        
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/tv-series-page.css" />
         <link rel="stylesheet" href="../assets/css/tv-series-page-dark.css" />
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
@@ -28,28 +31,28 @@
                         <div class="div-number">
                             <i class="material-icons icon">access_time_filled</i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">7d 20h 30m</h4>
+                                <h4 class="txt-number-info-text">4d 2h 20m</h4>
                                 <h5 class="txt-number-info-label">Maratona</h4>
-                            </div>
-                        </div>
-                        <div class="div-number">
-                            <i class="material-icons icon">stars</i>
-                            <div class="div-number-info">
-                                <h4 class="txt-number-info-text">9.25</h4>
-                                <h5 class="txt-number-info-label">Minha Média</h4>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="material-icons icon">star_rate</i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h4 class="txt-number-info-text">8.87</h4>
+                                <h5 class="txt-number-info-label">Minha Média</h4>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">stars</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">9.23</h4>
                                 <h5 class="txt-number-info-label">Média Geral</h4>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="fab fa-imdb icon"></i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h4 class="txt-number-info-text">8.8</h4>
                                 <h5 class="txt-number-info-label">Nota iMDB</h4>
                             </div>
                         </div>
@@ -61,15 +64,15 @@
                 <section id="divLeftSideBar">
                     <img id="imgPoster" src="../assets/img/friends-poster.jpg" />
                     <div id="btnAddSeries">
-                        <h3 id="txtAddSeries">+ Adicionar</h3>
+                        <h3 id="txtAddSeries">Adicionar</h3>
                     </div>
                 </section>
                 <div id="divInformations">
                     <div id="divGenres">
                         <button class="btn-genre-button">Comédia</button>
                         <button class="btn-genre-button">Romance</button>
-                        <button class="btn-genre-button">Comédia</button>
-                        <button class="btn-genre-button">Comédia</button>
+                        <button class="btn-genre-button">Risada de Fundo</button>
+                        <button class="btn-genre-button">Sitcom</button>
                     </div>
                     <div id="divSpecificInformations">
                         <div class="div-row">
@@ -97,8 +100,14 @@
                         <button class="div-season">
                             <h5 class="txt-season-name">3</h5>
                             <div class="div-right-side">
-                                <div class="w3-light-grey">
-                                    <div class="w3-container w3-green" style="width:5%">5%</div>
+                                <div class="w3-light-grey w3-round">
+                                    <div class="w3-container w3-round progress-bar" style="width: 10%">10%</div>
+                                </div>
+                                <div class="div-rating">
+                                    <i class="material-icons s-icon">star_rate</i>
+                                    <h6 class="txt-season-rating">9.24</h6>
+                                    <i class="material-icons s-icon">stars</i>
+                                    <h6 class="txt-season-rating">9.26</h6>
                                 </div>
                             </div>
                         </button>
@@ -111,10 +120,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/3x01.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>3x01</b>
-                                            The One With The Princess Leia Fantasy
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>3x01</b>
+                                                The One With The Princess Leia Fantasy
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -149,10 +160,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/3x03.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>3x03</b>
-                                            The One With The Jam
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>3x03</b>
+                                                The One With The Jam
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -163,6 +176,8 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                <i class="fas fa-caret-square-right fa-3x icon"></i>
                             </div>
                         </div>
 
@@ -171,8 +186,14 @@
                         <button class="div-season">
                             <h5 class="txt-season-name">2</h5>
                             <div class="div-right-side">
-                                <div class="w3-light-grey">
-                                    <div class="w3-container w3-green" style="width:100%">100%</div>
+                                <div class="w3-light-grey w3-round">
+                                    <div class="w3-container w3-round progress-bar" style="width: 100%">100%</div>
+                                </div>
+                                <div class="div-rating">
+                                    <i class="material-icons s-icon">star_rate</i>
+                                    <h6 class="txt-season-rating">9.29</h6>
+                                    <i class="material-icons s-icon">stars</i>
+                                    <h6 class="txt-season-rating">9.26</h6>
                                 </div>
                             </div>
                         </button>
@@ -185,10 +206,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/2x01.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>2x01</b>
-                                            The One With Ross's New Girlfriend
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>2x01</b>
+                                                The One With Ross's New Girlfriend
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -203,10 +226,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/2x02.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>2x02</b>
-                                            The One With The Breast Milk
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>2x02</b>
+                                                The One With The Breast Milk
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -221,10 +246,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/2x03.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>2x03</b>
-                                            The One Where Heckles Dies
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>2x03</b>
+                                                The One Where Heckles Dies
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -244,8 +271,14 @@
                         <button class="div-season">
                             <h5 class="txt-season-name">1</h5>
                             <div class="div-right-side">
-                                <div class="w3-light-grey">
-                                    <div class="w3-container w3-green" style="width:100%">100%</div>
+                                <div class="w3-light-grey w3-round">
+                                    <div class="w3-container w3-round progress-bar" style="width: 100%">100%</div>
+                                </div>
+                                <div class="div-rating">
+                                    <i class="material-icons s-icon">star_rate</i>
+                                    <h6 class="txt-season-rating">9.15</h6>
+                                    <i class="material-icons s-icon">stars</i>
+                                    <h6 class="txt-season-rating">9.22</h6>
                                 </div>
                             </div>
                         </button>
@@ -257,10 +290,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/1x01.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>1x01</b>
-                                            The One Where Monica Gets a Roommate
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>1x01</b>
+                                                The One Where Monica Gets a Roommate
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -275,10 +310,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/1x02.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>1x02</b>
-                                            The One with the Sonogram at the End
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>1x02</b>
+                                                The One with the Sonogram at the End
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>
@@ -293,10 +330,12 @@
                                 <div class="div-episode">
                                     <img class="img-episode-banner" src="../assets/img/1x03.jpg" />
                                     <div class="div-episode-info">
-                                        <h6 class="txt-episode-title">
-                                            <b>1x03</b>
-                                            The One With The Thumb
-                                        </h6>
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>1x03</b>
+                                                The One With The Thumb
+                                            </h6>
+                                        </a>
                                         <div class="div-episode-footer">
                                             <div class="div-episode-rating">
                                                 <i class="material-icons episode-item-icon">star_rate</i>

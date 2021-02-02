@@ -124,7 +124,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
     height: 310px;
     width: 167px;
     border-radius: 10px;
@@ -139,24 +138,31 @@
 #divContent #divLeftSideBar #imgPoster{
     height: 250px;
     width: 167px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-radius: 10px;
 }
 
 #divContent #divLeftSideBar #btnAddSeries {
     background-color: #27ae60;
     margin-top: 10px;
     border-radius: 10px;
-    padding-left: 40px;
-    padding-right: 40px;
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding-left: 37.5px;
+    padding-right: 37.5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #divContent #divLeftSideBar #btnAddSeries #txtAddSeries{
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 15px;
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 17.5px;
     color: #FFF;
+    line-height: 16px;
+    text-align: end;
+    margin-left: 10px;
 }
 
 #divInformations{
