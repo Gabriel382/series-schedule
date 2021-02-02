@@ -16,7 +16,7 @@
 }
 
 #divBanner{
-    background-image: url("../img/friends-banner.jpg");
+    background-image: url("../img/3x02-banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
@@ -27,21 +27,34 @@
     justify-content: flex-end;
 }
 
+/* APENAS NO EPISÓDIO */
+
 #divBanner #txtTitle{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-end;
     margin-left: 243px;
 }
 
-#divBanner #txtTitle #txtSeriesTitle {
+#divBanner #txtTitle #txtSeriesTitle{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+#divBanner #txtTitle #txtEpisodeTitle {
     font-family: 'Gothic A1';
     font-weight: bold;
     color: seashell;
     font-size: 35px;
     text-shadow: 4px 4px px black;
 }
+
+/* -------------------*/
 
 #divBanner #txtTitle #txtSeriesYear {
     font-family: 'Gothic A1';
@@ -162,7 +175,7 @@
 }
 
 #divInformations #divGenres .btn-genre-button{
-    background-color: #27ae60; /* Green */
+    background-color: #27ae60;
     border: none;
     border-radius: 10px;
     color: white;
@@ -179,7 +192,7 @@
 #divInformations #divSpecificInformations{
     display: flex;
     flex-direction: row;
-    margin-top: -10px;
+    margin-top: 10px;
     margin-bottom: -10px;
 }
 

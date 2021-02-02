@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Friends - Maratomator</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/episode-page.css" />
+
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="divContainer">
+            <div id="divHeader">
+            </div>
+
+            <div id="divBanner">
+                <div id="txtTitle">
+                    <a href="./tv-series-page.html"><h2 id="txtSeriesTitle">Friends: Temporada 3</h2></a>
+                    <h1 id="txtEpisodeTitle"><b>3x02</b> The One Where No One's Ready</h1>
+                </div>
+                <div id="divSeriesHeader">
+                    <div id="divNumbers">
+                        <div class="div-number">
+                            <i class="material-icons icon">check_circle_outline</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">Marcar</h4>
+                                <h5 class="txt-number-info-label">como visto</h4>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">stars</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">9.25</h4>
+                                <h5 class="txt-number-info-label">Minha Nota</h4>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">star_rate</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h5 class="txt-number-info-label">Média Geral</h4>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="fab fa-imdb icon"></i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h5 class="txt-number-info-label">Nota iMDB</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divContent">
+                <section id="divLeftSideBar">
+                    <img id="imgPoster" src="../assets/img/friends-poster.jpg" />
+                    <div id="btnAddSeries">
+                        <h3 id="txtAddSeries">+ Adicionar</h3>
+                    </div>
+                </section>
+                <div id="divInformations">
+                    <div id="divSpecificInformations">
+                        <div class="div-row">
+                            <h5 class="txt-label">Exibido em: </h5>
+                            <h5 class="txt-info">26 Set 1996</h5>
+                        </div>
+                        <div class="div-row">
+                            <h5 class="txt-label">Marcado em:</h5>
+                            <h5 class="txt-info">10 Jan 2021</h5>
+                        </div>
+                    </div>
+                    <p>Ross está ansioso com um jantar no museu e todos demoram a se arrumar. Chandler e Joey discutem por causa de uma poltrona.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("div-season");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                  panel.style.display = "none";
+                } else {
+                  panel.style.display = "block";
+                }
+              });
+            }
+        </script>
+    </body>
+
+</html>
