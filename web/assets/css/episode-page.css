@@ -29,6 +29,17 @@
 
 /* APENAS NO EPISÓDIO */
 
+#divBanner #divNextEpisode{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+}
+
 #divBanner #txtTitle{
     display: flex;
     flex-direction: column;
