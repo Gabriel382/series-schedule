@@ -1,5 +1,9 @@
-.body{
-	background-image:  url(Imagens/fundo6.jpg);
+html, body{
+	height: 100%;
+}
+
+body{
+	margin: 0;
 }
 
 .navbar{
@@ -16,9 +20,8 @@
 
 .container{
 	width: 100%;
-  	position: fixed;
-  	top: 0;
-  	left: 0;
+	min-height: 100%;
+	background-color: #ECF0F1;
 }	    
 
 .body{
@@ -33,78 +36,92 @@
 	display: flex;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 .col-12{
-	padding: 1%;
 	float: left;
-	width: 100%;
+	max-width: 100%;
+	flex: 100%;
+	min-width: min-content;
 }
 
 .col-11{
-	padding: 1%;
 	float: left;
-	width: 91.67%;
+	max-width: 91.67%;
+	flex: 91.67%;
+	min-width: min-content;
 }
 
 .col-10{
-	padding: 1%;
 	float: left;
-	width: 83.33%;
+	max-width: 83.33%;
+	flex: 83.33%;
+	min-width: min-content;
 }
 
 .col-9{
-	padding: 1%;
 	float: left;
-	width: 75%;
+	max-width: 75%;
+	flex: 75%;
+	min-width: min-content;
 }
 
 .col-8{
-	padding: 1%;
 	float: left;
-	width: 66.67%;
+	max-width: 66.67%;
+	flex: 66.67%;
+	min-width: min-content;
 }
 
 .col-7{
-	padding: 1%;
 	float: left;
-	width: 58.33%;
+	max-width: 58.33%;
+	flex: 58.33%;
+	min-width: min-content;
 }
 
 .col-6{
-	padding: 1%;
 	float: left;
-	width: 50%;
+	max-width: 50%;
+	flex: 50%;
+	min-width: min-content;
 }
 
 .col-5{
-	padding: 1%;
 	float: left;
-	width: 41.66%;
+	max-width: 41.66%;
+	flex: 41.66%;
+	min-width: min-content;
 }
 
 .col-4{
-	padding: 1%;
 	float: left;
-	width: 33.33%;
+	max-width: 33.33%;
+	flex: 33.33%;
+	min-width: min-content;
 }
 
 .col-3{
-	padding: 1%;
 	float: left;
-	width: 25%;
+	max-width: 25%;
+	flex: 25%;
+	min-width: min-content;
 }
 
 .col-2{
-	padding: 1%;
 	float: left;
-	width: 16.67%;
+	max-width: 16.67%;
+	flex: 16.67%;
+	min-width: min-content;
 }
 
 .col-1{
-	padding: 1%;
 	float: left;
-	width: 8.33%;
+	max-width: 8.33%;
+	flex: 8.33%;
+	min-width: min-content;
 }
 
 img{
@@ -116,8 +133,13 @@ img{
 	font-size: 1.375rem;
 }
 
-.title > label{
-	font-family: "Franklin Gothic Bold";
+.title > label, legend{
+	font-family: "Franklin Gothic Regular";
+}
+
+fieldset{
+	border: 3px solid #26ae60;
+	border-radius: 14px;
 }
 
 .centered{
@@ -142,6 +164,14 @@ img{
 	color: #26AE60;
 }
 
+.fa-search-plus, .fa-search-minus{
+	color: #FFFFFF;
+}
+
+.fa-sun, .fa-moon{
+	color: #fffc21;
+}
+
 .search-input{
 	border-color: #C0392B;
 	border-width: 0.25em;
@@ -153,6 +183,7 @@ img{
 	background-size: 12%;
 	background-position-y: center;
 	background-position-x: 95%;
+	min-width: 150px;
 }
 
 .search-button{
@@ -169,6 +200,7 @@ img{
 	align-items: center;
 	justify-content: right;
 	display: flex;
+	padding-right: 10px;
 }	
 
 .logo-image {
@@ -188,7 +220,7 @@ a{
 #divUserLists{
 	overflow-y: auto;
 	overflow-x: hidden;
-    height: 530px;
+	height: 
     background-color: #ECF0F1;
     width: 83.33%;
 }
@@ -199,13 +231,16 @@ a{
 
 .poster{
 	padding: 10px;
-	width: 140px;
 	border-style: solid;
 	border-color: #ECF0F1;	
-	background-color: #005D2D;
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 10px;
+	height: 238px;
+	width: 145px;
+	margin-bottom: 	20px;
 }
 
-.poster img{
+.poster img, .search-poster img{
 	width: 100%;
 	height: 190px;
 }
@@ -214,7 +249,7 @@ a{
 	display: flex;
 	justify-content: space-between;
 	color: #FFFFFF;
-	font-family: "Franklin Gothic Regular";
+	font-family: "Gothic A1";
 }
 
 .list{
@@ -225,27 +260,29 @@ a{
 	width: 90%;
 }
 
-@font-face {
+.font-face {
   	font-family: 'Franklin Gothic Regular';
   	src: url('../fonts/Franklin Gothic Regular.ttf')  format('truetype'); 
 }
 
-@font-face{
+.font-face{
 	font-family: 'Franklin Gothic Bold';
   	src: url('../fonts/Franklin Gothic Bold.ttf')  format('truetype');
 }
 
-label {
-	font-family: "Franklin Gothic Regular";
+label, option {
+	font-family: "Gothic A1";
 }
 
 a{
-	font-family: "Franklin Gothic Bold";
+	font-family: "Gothic A1";
+	font-weight: bold;
 }
 
 footer{
 	background-color: #BDC3C7;
 	margin-top: 22px;
+	height: 42px;
 }
 
 footer img{
@@ -264,6 +301,111 @@ hr{
 	background-color: #26ae60;
 }
 
+#divSearchFilters{
+	width: 100%;
+}
 
+input, select{
+	border-color: #4C4C4C;
+	border-width: 0.25em;
+	border-radius: 0.4em;
+	margin: 1em;
+	min-width: -moz-available;
+}
 
+select{
+	height: 31px;
+	-moz-appearance: none;
+	font-family: "Gothic A1";
+}
 
+input{
+	height: 25px;
+	max-width: inherit;
+}
+
+.txt-label{
+	font-family: "Gothic A1";
+	font-weight: bold;
+}
+
+#divUser{
+	padding: 10px;
+	padding-top: 20px;
+}
+
+#btnEditPerfil{
+	min-width: -moz-available;
+	height: 30px;
+	border-radius: 14px;
+	color: #fff;
+	background-color: #26ae60;
+	border: none;
+}
+
+button{
+	font-family: 'Franklin Gothic Bold';
+}
+
+#btnUserMenu{
+	 height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+input:focus, select:focus, button:focus{
+    outline: none;
+}
+
+#btnSearch{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    background-color: #27ae60;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 35px;
+}
+
+.divContent{
+	background-color: #ECF0F1; 
+	padding: 4%
+}
+
+#divResults{
+	padding-top: 20px;
+}
+
+.divInfo{
+	margin-left: 20px;
+	max-width: 80%;
+}
+
+.search-poster{
+	padding: 10px;
+	height: 238px;
+	width: 145px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.search-poster div{
+	display: flex;
+	justify-content: center;
+
+	color: #FFFFFF;
+	font-family: "Gothic A1";
+}
+
+#divResults .row{
+	background-color: #FFFFFF;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin-bottom: 30px;
+}

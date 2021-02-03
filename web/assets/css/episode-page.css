@@ -1,0 +1,452 @@
+#divContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: #ecf0f1;
+    padding-bottom: 50px;
+}
+
+#divFaixa{
+    width: 100vw;
+    background-color:rgba(0, 0, 0, 0.5);
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#divFaixa #divAccessibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFaixa #divAccessibility .div-font-size{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    align-self: center;
+}
+
+#divFaixa #divAccessibility label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.navbar{
+	background-color: #26AE60;
+	width: 100%;
+	font-size: 1.15rem;
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.navbar .div-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .div-menu a{
+	text-decoration: none;
+}
+
+.navbar .div-menu .txt-menu-item{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-right: 30px;
+}
+
+.logo-image {
+    width: 272px;
+    height: 40x;
+}
+
+.search-input{
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 500px;
+	border-radius: 0.4em;
+    margin: 1em;
+    background-image:  url(../img/magglass.png);
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position-y: center;
+    background-position-x: 95%;
+}
+
+.search-icon{
+    color: #FFF;
+    font-size: 30px;
+}
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px;
+}
+
+#divBanner{
+    background-image: url("../img/3x02-banner.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+/* APENAS NO EPISÓDIO */
+
+#divBanner #divNextEpisode{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+}
+
+#divBanner #txtTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-left: 243px;
+}
+
+#divBanner #txtTitle #txtSeriesTitle{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+#divBanner #txtTitle #txtEpisodeTitle {
+    font-family: 'Gothic A1';
+    font-weight: bold;
+    color: seashell;
+    font-size: 35px;
+    text-shadow: 4px 4px px black;
+}
+
+/* -------------------*/
+
+#divBanner #txtTitle #txtSeriesYear {
+    font-family: 'Gothic A1';
+    color: #FFF;
+    font-size: 30px;
+    margin-left: 10px;
+    text-shadow: 4px 4px 5px black;
+}
+
+#divBanner #divSeriesHeader{
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 10vh;
+    width: 100vw;
+    display: flex;
+}
+
+#divSeriesHeader #divNumbers {
+    display: flex;
+    flex-direction: row;
+    margin-left: 243px;
+}
+
+#divSeriesHeader #divNumbers .div-number{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 20px;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-text{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    color: #FFF;
+    font-size: 20px;
+    margin:0;
+    padding:0;
+}
+
+#divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 200;
+    color: #FFF;
+    font-size: 12px;
+    margin:0;
+    padding:0;
+}
+
+.icon {
+    font-size: 40px;
+    color: #27ae60;
+}
+
+#divContent {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+}
+
+#divContent #divLeftSideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 310px;
+    width: 167px;
+    border-radius: 10px;
+    margin-top: -200px;
+    margin-left: 40px;
+    position: sticky;
+    position: -webkit-sticky;
+    top: 30px;
+    box-sizing: border-box;
+}
+
+#divContent #divLeftSideBar #imgPoster{
+    height: 250px;
+    width: 167px;
+    border-radius: 10px;
+}
+
+#divContent #divLeftSideBar #btnAddSeries {
+    background-color: #27ae60;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 37.5px;
+    padding-right: 37.5px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#divContent #divLeftSideBar #btnAddSeries #txtAddSeries{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 17.5px;
+    color: #FFF;
+    line-height: 16px;
+    text-align: end;
+    margin-left: 10px;
+}
+
+#divInformations{
+    display: flex;
+    flex-direction: column;
+    align-self: flex-start;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+#divInformations #divGenres{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#divInformations #divGenres .btn-genre-button{
+    background-color: #27ae60;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 5px;
+    font-family: Gothic A1;
+    font-weight: bold;
+}
+
+#divInformations #divSpecificInformations{
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: -10px;
+}
+
+#divInformations #divSpecificInformations .div-row{
+    display: flex;
+    flex-direction: row;
+    margin-right: 15px;
+}
+
+#divSpecificInformations .div-row .txt-label{
+    font-family: Gothic A1;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#divSpecificInformations .div-row .txt-info{
+    font-family: Gothic A1;
+    font-size: 15px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+#divInformations p{
+    font-family: 'Gothic A1', sans-serif;
+    font-size: 15x;
+    width: 85%;
+    text-align: justify;
+}
+
+/* Style the buttons that are used to open and close the accordion panel */
+.div-seasons .div-season {
+    background-color: #FFF;
+    color: #444;
+    cursor: pointer;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 25px;
+    width: 85%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.div-seasons .div-season .div-right-side {
+    margin-left: 20px;
+    width: 100%;
+}
+
+.div-season .div-right-side .div-rating{
+    display: flex;
+    flex-direction: row;
+}
+
+.div-seasons .div-season .txt-season-name{
+    font-family: Gothic A1;
+    font-weight: 900;
+    color: #27ae60;
+    font-size: 50px;
+}
+
+.div-seasons .active, .div-season:hover {
+    background-color: #ccc;
+}
+
+.div-seasons .div-season-content {
+    display: none;
+    overflow: hidden;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.div-season-content .div-episodes-grid{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.div-season-content .div-episodes-grid .div-episode {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 300px;
+    border-radius: 10px;
+    background-color: #FFF;
+    margin-left: 10px;
+    margin-right: 12px;
+}
+
+.div-season-content .div-episodes-grid .div-episode .img-episode-banner{
+    width: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.div-season-content .div-episodes-grid .div-episode .div-episode-info{
+    padding: 0 10px 0 10px;
+}
+
+.div-season-content .div-episodes-grid .div-episode .div-episode-info .txt-episode-title{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000;
+}
+
+.div-season-content .div-episodes-grid .div-episode .div-episode-info .div-episode-footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-self: flex-end;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+.div-episode .div-episode-info .div-episode-footer .div-episode-rating{ 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin:0;
+    padding: 0;
+}
+
+.div-episode .div-episode-info .div-episode-footer .div-episode-rating .txt-episode-rating{ 
+    font-family: 'Gothic A1', sans-serif;
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: 7px;
+}
+
+.div-episode .div-episode-info .div-episode-footer .txt-exhibiton-date{ 
+    font-family: 'Gothic A1', sans-serif;
+    color:rgba(0, 0, 0, 0.5);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.episode-item-icon {
+    font-size: 20px;
+    color: #27ae60;
+    z-index: 1;
+}
+
+a{
+    text-decoration: none;
+}

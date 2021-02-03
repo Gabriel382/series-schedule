@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Friends - Maratomator</title>
+        <link rel="icon" href="../assets/img/logo-icon.png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/episode-page.css" />
+        <link rel="stylesheet" href="../assets/css/episode-page-dark.css" />
+
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="divContainer">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><label>A+</label></div>
+                    <div class="div-font-size"><label>A</label></div>
+                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size"><i class="material-icons mode-icon">nightlight_round</i></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">						
+					<img src="../assets/img/name_with_logo.png" class="logo-image" alt="logo">
+					<div class="div-menu">
+						<a href=""><h2 class="txt-menu-item">Home</h2></a>
+						<a href=""><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>			
+				</div>
+            </nav>
+
+            <div id="divBanner">
+                <div id="divNextEpisode">
+                    <a href="episode-page.html"><i class="material-icons icon">keyboard_arrow_left</i></a>
+                    <a href="episode-page2.html"><i class="material-icons icon">keyboard_arrow_right</i></a>
+                </div>
+                <div id="txtTitle">
+                    <a href="./tv-series-page.html"><h2 id="txtSeriesTitle">Friends: Temporada 3</h2></a>
+                    <h1 id="txtEpisodeTitle"><b>3x03</b> The One With The Jam</h1>
+                </div>
+                <div id="divSeriesHeader">
+                    <div id="divNumbers">
+                        <div class="div-number">
+                            <i class="material-icons icon">check_circle_outline</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">Marcar</h4>
+                                <h5 class="txt-number-info-label">como visto</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">star_rate</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">9.25</h4>
+                                <h5 class="txt-number-info-label">Minha Nota</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">stars</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h5 class="txt-number-info-label">Média Geral</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="fab fa-imdb icon"></i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h5 class="txt-number-info-label">Nota iMDB</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divContent">
+                <section id="divLeftSideBar">
+                    <img id="imgPoster" src="../assets/img/friends-poster.jpg" alt="poster"/>
+                    <div id="btnAddSeries">
+                        <h3 id="txtAddSeries">Adicionar</h3>
+                    </div>
+                </section>
+                <div id="divInformations">
+                    <div id="divSpecificInformations">
+                        <div class="div-row">
+                            <h5 class="txt-label">Exibido em: </h5>
+                            <h5 class="txt-info">03 Out 1996</h5>
+                        </div>
+                        <div class="div-row">
+                            <h5 class="txt-label">Marcado em:</h5>
+                            <h5 class="txt-info">15 Jan 2021</h5>
+                        </div>
+                    </div>
+                    <p>Monica descobre um jeito de esquecer um relacionamento fazendo geleia. Um cara estranho persegue Phoebe.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var acc = document.getElementsByClassName("div-season");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                  panel.style.display = "none";
+                } else {
+                  panel.style.display = "block";
+                }
+              });
+            }
+        </script>
+    </body>
+
+</html>

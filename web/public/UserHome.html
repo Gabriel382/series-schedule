@@ -3,6 +3,7 @@
 	<head>
 		<link href="../assets/css/estilos.css" rel="stylesheet" type="text/css">
 		<script src="code.jquery.com/jquery-1.10.2.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 	</head>
 	<body>
 		
@@ -14,72 +15,78 @@
 						<img src="../assets/img/name_with_logo.png" class="logo-image">
 					</div>
 					<div class="col-3 space-between">
-						<a href="">Página Inicial</a>
-						<a href="">Buscar</a>
+						
 					</div>						
 					<div class="col-5 right">
-						<a href="">Sair</a> 
-						<input class="search-input">	
+						<img id="btnUserMenu" src="../assets/img/user.png">
+						<input class="search-input">
+						<div>
+							<i class="fas fa-search-plus"></i>
+							<br />
+							<i class="fas fa-sun"></i>
+							<br />
+							<i class="fas fa-search-minus"></i>
+						</div>	
 					</div>						
 				</div>
 			</nav>
 			<div class="body">
-				<div class="col-2" id="divUser">
+				<section class="col-2" id="divUser">
 					<div class="centered">
 						<img class="user-image" src="../assets/img/user.png">
 					</div>
 					<br>
 					<div class="row">
-						<label>Nome:</label>
+						<label class="txt-label">Nome:</label>
 						&nbsp;
 						<label id="lblName">Violeta</label>
 					</div>
 					<div class="row">
-						<label>Idade:</label>
+						<label class="txt-label">Idade:</label>
 						&nbsp;
 						<label id="lblAge">24</label>
 					</div>
 					<div class="row">
-						<label>Total de Séries:</label>
+						<label class="txt-label">Total de Séries:</label>
 						&nbsp;
 						<label id="lblTotalSeries">77</label>
 					</div>
 					<div class="row">
-						<label>Último Acesso:</label>
+						<label class="txt-label">Último Acesso:</label>
 						&nbsp;
 						<label id="lblLastAcess">31/01/21 08:00</label>
 					</div>
+					<br />
+					<br />
 					<div>
-						<a href="">Editar Perfil</a>
+						<button id="btnEditPerfil" class="centered" >Editar Perfil</button>
 					</div>
-				</div>
+				</section>
 				<div id="divUserLists">
 					<div>
-						<div class="title">
-							<i class="fas fa-grip-lines-vertical"></i>
-							<label>Últimos Adicionados</label>
-						</div>
-						<div class="row">
-							<div class="col-1 centered">
-								<i class="fas fa-caret-square-left fa-3x"></i>
-							</div>						
-							<div class="col-2">
-								<img src="../assets/img/posters/serie1.jpg" />
+						<fieldset>
+							<legend class="title">Últimos Adicionados</legend>
+							<div class="row">
+								<div class="col-1 centered">
+									<i class="fas fa-caret-square-left fa-3x"></i>
+								</div>						
+								<div class="col-2">
+									<img src="../assets/img/posters/serie1.jpg" />
+								</div>
+								<div class="col-2">
+									<img src="../assets/img/posters/serie2.jpg" />
+								</div>
+								<div class="col-2">
+									<img src="../assets/img/posters/serie3.jpg" />
+								</div>
+								<div class="col-2">
+									<img src="../assets/img/posters/serie4.jpg" />
+								</div>
+								<div class="col-1 centered">
+									<i class="fas fa-caret-square-right fa-3x"></i>
+								</div>
 							</div>
-							<div class="col-2">
-								<img src="../assets/img/posters/serie2.jpg" />
-							</div>
-							<div class="col-2">
-								<img src="../assets/img/posters/serie3.jpg" />
-							</div>
-							<div class="col-2">
-								<img src="../assets/img/posters/serie4.jpg" />
-							</div>
-							<div class="col-1 centered">
-								<i class="fas fa-caret-square-right fa-3x"></i>
-							</div>
-						</div>
-						<hr>
+						</fieldset>
 						<br>						
 						<br>
 						<div class="title">
@@ -123,8 +130,6 @@
 										<lable>Ep.5</lable>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="poster">
 									<img src="../assets/img/posters/serie1.jpg" />
 									<div>
@@ -160,8 +165,6 @@
 										<lable>Ep.5</lable>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="poster">
 									<img src="../assets/img/posters/serie1.jpg" />
 									<div>
@@ -282,8 +285,6 @@
 										<lable>Wanda Vision</lable>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="poster">
 									<img src="../assets/img/posters/serie1.jpg" />
 									<div>
@@ -314,8 +315,6 @@
 										<lable>Wanda Vision</lable>
 									</div>
 								</div>
-							</div>
-							<div class="row">
 								<div class="poster">
 									<img src="../assets/img/posters/serie1.jpg" />
 									<div>
