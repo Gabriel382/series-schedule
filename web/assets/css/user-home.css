@@ -146,7 +146,8 @@ img{
 }
 
 .title > label, legend{
-	font-family: "Franklin Gothic Regular";
+	font-family: 'Gothic A1', sans-serif;
+	font-weight: bold;
 }
 
 fieldset{
