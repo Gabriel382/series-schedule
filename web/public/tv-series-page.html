@@ -12,14 +12,35 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="../assets/css/main.css" />
         <link rel="stylesheet" href="../assets/css/tv-series-page.css" />
-        <link rel="stylesheet" href="../assets/css/tv-series-page-dark.css" />
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="divContainer">
-            <div id="divHeader">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><label>A+</label></div>
+                    <div class="div-font-size"><label>A</label></div>
+                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size"><i class="material-icons mode-icon">nightlight_round</i></div>
+                </div>
             </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">						
+					<img src="../assets/img/name_with_logo.png" class="logo-image" alt="logo">
+					<div class="div-menu">
+						<a href=""><h2 class="txt-menu-item">Home</h2></a>
+						<a href=""><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>			
+				</div>
+            </nav>
 
             <div id="divBanner">
                 <div id="txtTitle">
@@ -32,28 +53,28 @@
                             <i class="material-icons icon">access_time_filled</i>
                             <div class="div-number-info">
                                 <h4 class="txt-number-info-text">4d 2h 20m</h4>
-                                <h5 class="txt-number-info-label">Maratona</h4>
+                                <h5 class="txt-number-info-label">Maratona</h5>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="material-icons icon">star_rate</i>
                             <div class="div-number-info">
                                 <h4 class="txt-number-info-text">8.87</h4>
-                                <h5 class="txt-number-info-label">Minha Média</h4>
+                                <h5 class="txt-number-info-label">Minha Média</h5>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="material-icons icon">stars</i>
                             <div class="div-number-info">
                                 <h4 class="txt-number-info-text">9.23</h4>
-                                <h5 class="txt-number-info-label">Média Geral</h4>
+                                <h5 class="txt-number-info-label">Média Geral</h5>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="fab fa-imdb icon"></i>
                             <div class="div-number-info">
                                 <h4 class="txt-number-info-text">8.8</h4>
-                                <h5 class="txt-number-info-label">Nota iMDB</h4>
+                                <h5 class="txt-number-info-label">Nota iMDB</h5>
                             </div>
                         </div>
                     </div>
@@ -62,7 +83,7 @@
 
             <div id="divContent">
                 <section id="divLeftSideBar">
-                    <img id="imgPoster" src="../assets/img/friends-poster.jpg" />
+                    <img id="imgPoster" src="../assets/img/friends-poster.jpg" alt="" />
                     <div id="btnAddSeries">
                         <h3 id="txtAddSeries">Adicionar</h3>
                     </div>
@@ -97,7 +118,7 @@
 
                         <!--3ª TEMPORADA-->
 
-                        <button class="div-season">
+                        <button class="div-season tab-index">
                             <h5 class="txt-season-name">3</h5>
                             <div class="div-right-side">
                                 <div class="w3-light-grey w3-round">
@@ -118,7 +139,7 @@
                                 <!--LISTA DE EPISÓDIOS-->
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/3x01.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/3x01.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -138,7 +159,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/3x02.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/3x02.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -158,7 +179,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/3x03.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/3x03.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -204,7 +225,7 @@
                                 <!--LISTA DE EPISÓDIOS-->
                                 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/2x01.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/2x01.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -224,7 +245,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/2x02.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/2x02.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -244,7 +265,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/2x03.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/2x03.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -288,7 +309,7 @@
                                 
                                 <!--LISTA DE EPISÓDIOS-->
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/1x01.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/1x01.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -308,7 +329,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/1x02.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/1x02.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
@@ -328,7 +349,7 @@
                                 </div>
 
                                 <div class="div-episode">
-                                    <img class="img-episode-banner" src="../assets/img/1x03.jpg" />
+                                    <img class="img-episode-banner" src="../assets/img/1x03.jpg" alt="" />
                                     <div class="div-episode-info">
                                         <a href="./episode-page.html">
                                             <h6 class="txt-episode-title">
