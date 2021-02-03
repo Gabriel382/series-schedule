@@ -1,44 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 	<head>
-		<link href="../assets/css/estilos.css" rel="stylesheet" type="text/css">
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Buscar - Maratomator</title>
+        <link rel="icon" href="../assets/img/logo-icon.png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="../assets/css/user-home.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	<body>		
-		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>	
-		<script type="text/javascript">
-			$(function() {
-			    $( window ).resize(function() {
-			    	console.log($('#imgLogo').width())
-				 	if($('#imgLogo').width() < 100){ $('#imgLogo').attr('src', '../assets/img/logo.png');}
-				 	else {$('#imgLogo').attr('src', '../assets/img/name_with_logo.png');}
-				});
-			});
-		</script>		
+		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>			
 		<div class="container">
-			<nav id="nav-placeholder">
+			<div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><label>A+</label></div>
+                    <div class="div-font-size"><label>A</label></div>
+                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size"><i class="material-icons mode-icon">nightlight_round</i></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
 				<div class="navbar">						
-					<div class="col-4 centered">
-						<img id="imgLogo" src="../assets/img/name_with_logo.png" class="logo-image">
-					</div>
-					<div class="col-3 space-between">
-						<a href="">Página Inicial</a>
-						<a href="">Buscar</a>
+					<img src="../assets/img/name_with_logo.png" class="logo-image" alt="" >
+					<div class="div-menu">
+						<a href=""><h2 class="txt-menu-item">Home</h2></a>
+						<a href=""><h2 class="txt-menu-item">Buscar</h2></a>
 					</div>						
-					<div class="col-5 right">
-						<a href="">Sair</a> 
-						<input class="search-input">	
-						<div>
-							<i class="fas fa-search-plus"></i>
-							<br />
-							<i class="fas fa-moon"></i>
-							<br />
-							<i class="fas fa-search-minus"></i>
-						</div>
-					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>			
 				</div>
-			</nav>
+            </nav>
 			<div class="divContent">
 				<div id="divSearchFilters">
 					<fieldset>
@@ -49,7 +50,7 @@
 							<div class="col-4">
 								<label class="txt-label">Título: </label>
 								<br>
-								<input type="text" name="txtTitle"></input>
+								<input type="text" name="txtTitle" />
 							</div>
 							<div class="col-2">
 								<label class="txt-label">Gênero: </label>
@@ -70,7 +71,7 @@
 							<div class="col-2">
 								<label class="txt-label">Lançamento: </label>
 								<br>
-								<input type="text" name="txtYear"></input>
+								<input type="text" name="txtYear" />
 							</div>								
 							<div class="col-2">	
 								<label class="txt-label">Classificação: </label>
@@ -106,9 +107,9 @@
 				<div id="divResults">
 					<div class="row">
 						<div class="search-poster">
-							<img src="../assets/img/posters/serie1.jpg" />
+							<img alt="" src="../assets/img/posters/serie1.jpg" />
 							<div>
-								<lable>Gumball</lable>
+								<label>Gumball</label>
 							</div>
 						</div>
 						<div class="divInfo">
@@ -122,9 +123,9 @@
 					</div>
 					<div class="row">
 						<div class="search-poster">
-							<img src="../assets/img/posters/serie2.jpg" />
+							<img alt="" src="../assets/img/posters/serie2.jpg" />
 							<div>
-								<lable>Sherlock Homes</lable>
+								<label>Sherlock Homes</label>
 							</div>
 						</div>
 						<div class="divInfo">
@@ -140,9 +141,9 @@
 			</div>
 			<footer>
 				<div class="centered">
-					<img src="../assets/img/insta_logo.png">
-					<img src="../assets/img/twitter_logo.png">
-					<img src="../assets/img/logo_facebook.png">
+					<img alt="" src="../assets/img/insta_logo.png">
+					<img alt="" src="../assets/img/twitter_logo.png">
+					<img alt="" src="../assets/img/logo_facebook.png">
 				</div>
 			</footer>		
 		</div>		

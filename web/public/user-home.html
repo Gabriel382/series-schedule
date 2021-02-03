@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Minhas Listas - Maratomator</title>
+        <link rel="icon" href="../assets/img/logo-icon.png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="../assets/css/user-home.css" rel="stylesheet" type="text/css">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	</head>
+	<body>
+		
+		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>		
+		<div class="container">
+			<div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><label>A+</label></div>
+                    <div class="div-font-size"><label>A</label></div>
+                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size"><i class="material-icons mode-icon">nightlight_round</i></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">						
+					<img src="../assets/img/name_with_logo.png" class="logo-image" alt="" >
+					<div class="div-menu">
+						<a href=""><h2 class="txt-menu-item">Home</h2></a>
+						<a href=""><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>			
+				</div>
+            </nav>
+			<div class="body">
+				<div class="col-2" id="divUser">
+					<div class="centered">
+						<img alt="" class="user-image" src="../assets/img/user.png">
+					</div>
+					<br>
+					<div class="row">
+						<label class="txt-label">Nome:</label>
+						&nbsp;
+						<label id="lblName">Violeta</label>
+					</div>
+					<div class="row">
+						<label class="txt-label">Idade:</label>
+						&nbsp;
+						<label id="lblAge">24</label>
+					</div>
+					<div class="row">
+						<label class="txt-label">Total de Séries:</label>
+						&nbsp;
+						<label id="lblTotalSeries">77</label>
+					</div>
+					<div class="row">
+						<label class="txt-label">Último Acesso:</label>
+						&nbsp;
+						<label id="lblLastAcess">31/01/21 08:00</label>
+					</div>
+					<br />
+					<br />
+					<div>
+						<button id="btnEditPerfil" class="centered" >Editar Perfil</button>
+					</div>
+				</div>
+				<div id="divUserLists">
+					<div>
+						<fieldset>
+							<legend class="title">Últimos Adicionados</legend>
+							<div class="row centered">
+								<div class="col-1 centered">
+									<i class="fas fa-caret-square-left fa-3x"></i>
+								</div>						
+								<div class="col-2">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+								</div>
+								<div class="col-2">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+								</div>
+								<div class="col-2">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+								</div>
+								<div class="col-2">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+								</div>
+								<div class="col-1 centered">
+									<i class="fas fa-caret-square-right fa-3x"></i>
+								</div>
+							</div>
+						</fieldset>
+						<br>						
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Assistindo</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+										<label>Ep.3</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark 2ª Temporada</label>
+										<label>Ep.1</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+										<label>Ep.3</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark 2ª Temporada</label>
+										<label>Ep.1</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+										<label>Ep.3</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark 2ª Temporada</label>
+										<label>Ep.1</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>
+										<label>Ep.5</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br>
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Próximos Lançamentos</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>										
+										<label>Ep.6</label>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Ep.6</label>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Ep.4</label>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Ep.2-2</label>
+										<label>05/02/21</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Ep.6</label>
+										<label>05/02/21</label>
+									</div>
+								</div>
+							</div>							
+						</div>
+						<br>
+						<br>
+						<div class="title">
+							<i class="fas fa-grip-lines-vertical"></i>
+							<label class="title">Completos</label>
+						</div>
+						<div class="list">
+							<div class="row">
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie1.jpg" />
+									<div>
+										<label>Gumball</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie5.jpg" />
+									<div>
+										<label>Stranger Things</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie2.jpg" />
+									<div>
+										<label>Sherlock Holmes</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie3.jpg" />
+									<div>
+										<label>Dark</label>
+									</div>
+								</div>
+								<div class="poster">
+									<img alt="" src="../assets/img/posters/serie4.jpg" />
+									<div>
+										<label>Wanda Vision</label>										
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<footer>
+						<div class="centered">
+							<img alt="" src="../assets/img/insta_logo.png">
+							<img alt="" src="../assets/img/twitter_logo.png">
+							<img alt="" src="../assets/img/logo_facebook.png">
+						</div>
+					</footer>
+				</div>				
+			</div>			
+		</div>		
+	</body>
+</html>

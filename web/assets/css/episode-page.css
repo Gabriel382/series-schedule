@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ecf0f1;
-    padding-bottom: 50px;
+    min-height: 100%;
 }
 
 #divFaixa{
@@ -75,7 +75,7 @@
 
 .logo-image {
     width: 272px;
-    height: 40x;
+    height: 40px;
 }
 
 .search-input{
@@ -148,7 +148,7 @@
     font-weight: bold;
     color: seashell;
     font-size: 35px;
-    text-shadow: 4px 4px px black;
+    text-shadow: 4px 4px 4px black;
 }
 
 /* -------------------*/
@@ -320,7 +320,7 @@
 
 #divInformations p{
     font-family: 'Gothic A1', sans-serif;
-    font-size: 15x;
+    font-size: 15px;
     width: 85%;
     text-align: justify;
 }
@@ -449,4 +449,32 @@
 
 a{
     text-decoration: none;
+}
+
+footer{
+    background-color: #BDC3C7;
+    margin-top: 22px;
+    height: 42px;
+}
+
+footer img{
+    height: 20px;
+    width: 52px;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+footer div{
+    height: inherit;
+    padding: 0;
+}
+
+.centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+html, body{
+    height: 100%;
 }

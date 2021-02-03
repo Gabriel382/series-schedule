@@ -6,18 +6,6 @@ body{
 	margin: 0;
 }
 
-.navbar{
-	background-color: #26AE60;
-	width: 100%;
-	font-size: 1.15rem;
-	height: 73px;
-	display: flex;
-}
-
-.navbar a{
-	color: #FFFFFF;
-}
-
 .container{
 	width: 100%;
 	min-height: 100%;
@@ -45,6 +33,8 @@ body{
 	max-width: 100%;
 	flex: 100%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-11{
@@ -52,6 +42,8 @@ body{
 	max-width: 91.67%;
 	flex: 91.67%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-10{
@@ -59,6 +51,8 @@ body{
 	max-width: 83.33%;
 	flex: 83.33%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-9{
@@ -66,6 +60,8 @@ body{
 	max-width: 75%;
 	flex: 75%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-8{
@@ -73,6 +69,8 @@ body{
 	max-width: 66.67%;
 	flex: 66.67%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-7{
@@ -80,6 +78,8 @@ body{
 	max-width: 58.33%;
 	flex: 58.33%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-6{
@@ -87,6 +87,8 @@ body{
 	max-width: 50%;
 	flex: 50%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-5{
@@ -94,6 +96,8 @@ body{
 	max-width: 41.66%;
 	flex: 41.66%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-4{
@@ -101,6 +105,8 @@ body{
 	max-width: 33.33%;
 	flex: 33.33%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-3{
@@ -108,6 +114,8 @@ body{
 	max-width: 25%;
 	flex: 25%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-2{
@@ -115,6 +123,8 @@ body{
 	max-width: 16.67%;
 	flex: 16.67%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 .col-1{
@@ -122,6 +132,8 @@ body{
 	max-width: 8.33%;
 	flex: 8.33%;
 	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 img{
@@ -173,17 +185,16 @@ fieldset{
 }
 
 .search-input{
-	border-color: #C0392B;
-	border-width: 0.25em;
-	height: 25px;
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 500px;
 	border-radius: 0.4em;
-	margin: 1em;
-	background-image:  url(../img/magglass.png);
+    margin: 1em;
+    background-image:  url(../img/magglass.png);
 	background-repeat: no-repeat;
-	background-size: 12%;
+	background-size: 20px;
 	background-position-y: center;
-	background-position-x: 95%;
-	min-width: 150px;
+    background-position-x: 95%;
 }
 
 .search-button{
@@ -204,7 +215,8 @@ fieldset{
 }	
 
 .logo-image {
-	width: 80%;
+    width: 272px;
+    height: 40px;
 }
 
 a{
@@ -220,7 +232,6 @@ a{
 #divUserLists{
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 
     background-color: #ECF0F1;
     width: 83.33%;
 }
@@ -235,8 +246,8 @@ a{
 	border-color: #ECF0F1;	
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
-	height: 238px;
-	width: 145px;
+	height: 255px;
+	width: 163px;
 	margin-bottom: 	20px;
 }
 
@@ -256,18 +267,8 @@ a{
 	margin-top: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 290px;
+	height: 285px;
 	width: 90%;
-}
-
-.font-face {
-  	font-family: 'Franklin Gothic Regular';
-  	src: url('../fonts/Franklin Gothic Regular.ttf')  format('truetype'); 
-}
-
-.font-face{
-	font-family: 'Franklin Gothic Bold';
-  	src: url('../fonts/Franklin Gothic Bold.ttf')  format('truetype');
 }
 
 label, option {
@@ -287,9 +288,14 @@ footer{
 
 footer img{
 	height: 20px;
-	width: 20px;
-	padding-left: : 1%;
+	width: 52px;
+	padding-left: 1%;
 	padding-right: 1%;
+}
+
+footer div{
+	height: inherit;
+	padding: 0;
 }
 
 #divUser{
@@ -307,7 +313,6 @@ hr{
 
 input, select{
 	border-color: #4C4C4C;
-	border-width: 0.25em;
 	border-radius: 0.4em;
 	margin: 1em;
 	min-width: -moz-available;
@@ -320,7 +325,6 @@ select{
 }
 
 input{
-	height: 25px;
 	max-width: inherit;
 }
 
@@ -409,3 +413,75 @@ input:focus, select:focus, button:focus{
 	border-bottom-right-radius: 10px;
 	margin-bottom: 30px;
 }
+
+#divFaixa{
+    background-color:rgba(0, 0, 0, 0.5);
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#divFaixa #divAccessibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFaixa #divAccessibility .div-font-size{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    align-self: center;
+}
+
+#divFaixa #divAccessibility label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.navbar{
+	background-color: #26AE60;
+	font-size: 1.15rem;
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.navbar .div-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .div-menu a{
+	text-decoration: none;
+}
+
+.navbar .div-menu .txt-menu-item{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-right: 30px;
+}
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px !important;
+}
+
+
