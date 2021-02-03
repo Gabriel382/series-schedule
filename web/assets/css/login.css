@@ -1,11 +1,3 @@
-.navbar{
-	background-color: #26AE60;
-	width: 100%;
-	font-size: 1.15rem;
-	height: 73px;
-	display: flex;
-}
-
 .col-4{
 	padding: 1%;
 	float: left;
@@ -29,11 +21,15 @@
 	font-weight: bold;
 }
 
+
 .sitesection img{
-	float: left;
-	padding-right: 15px;
-	height="30px"
+	height: 35px;
+	width: 10px;
+	margin-top:7px;
+	margin-right: 10px;
 }
+
+
 
 .inputsquare{
 	height: 350px;
@@ -44,6 +40,11 @@
 	flex-direction:column;
 	align-items:center;
 	justify-content:center;
+}
+
+.inputsquare button{
+	font-family: "Gothic A1";
+	font-weight: bold;
 }
 
 .div-centralized{
@@ -77,18 +78,20 @@
 	display: flex;
 }	
 
+
 .search-input{
-	border-color: #C0392B;
-	border-width: 0.25em;
-	height: 25px;
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 500px;
 	border-radius: 0.4em;
-	margin: 1em;
-	background-image:  url(../img/magglass.png);
+    margin: 1em;
+    background-image:  url(../img/magglass.png);
 	background-repeat: no-repeat;
-	background-size: 12%;
+	background-size: 20px;
 	background-position-y: center;
-	background-position-x: 95%;
+    background-position-x: 95%;
 }
+
 
 .accessibility{
 	display:flex;
@@ -113,11 +116,12 @@
 
 .modebutton button{
 	background-image:  url(../img/night_mode.png);
-	background-size: 90%;
+	background-size: 100%;
 	background-color: Transparent;
 	background-repeat: no-repeat;
-	height: 25px;
-	width: 25px;
+	border: none;
+	height: 15px;
+	width: 15px;
 }
 
 .data-input{
@@ -131,12 +135,6 @@
 	background-size: 12%;
 	background-position-y: center;
 	background-position-x: 95%;
-}
-
-.navbar a{
-	font-family: "Gothic A1";
-	font-weight: bold;
-	color: #FFFFFF;
 }
 
 .search-button{
@@ -155,7 +153,77 @@
 }
 
 .logo-image {
-	width: 80%;
+    width: 272px;
+    height: 40px;
+}
+
+/* Baseado no do Alan */
+#divFaixa{
+    width: 100%;
+    background-color:#000000;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#divFaixa #divAccessibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFaixa #divAccessibility .div-font-size{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    align-self: center;
+	color: #FFFFFF;
+}
+
+#divFaixa #divAccessibility label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.navbar{
+	background-color: #26AE60;
+	width: 100%;
+	font-size: 1.15rem;
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.navbar .div-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .div-menu a{
+	text-decoration: none;
+}
+
+.navbar .div-menu .txt-menu-item{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-left: 30px;
 }
 
 a{
@@ -163,8 +231,8 @@ a{
 }
 
 #site{
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -185,7 +253,7 @@ a{
   /*Novamente definimos a largura da div*/
   width:100%;
   /* altura da div */
-  height:85%;
+  height:80%;
   /* Cor de fundo da div */
   background-color: #ecf0f1;
   display: flex;
@@ -240,11 +308,6 @@ a{
 	font-weight: bold;
 }
 
-label {
-	align-self:left;
-	font-family: "Gothic A1";
-}
-
 a{
 	font-family: "Gothic A1";
 	font-weight: bold;
@@ -261,11 +324,12 @@ footer{
 
 footer img{
 	height: 20px;
-	width: 20px;
-	padding-left: : 1%;
-	padding-right: 1%;
+	width: 30px;
+	padding-left:5px;
+	padding-right: 5px;
 	margin-top: 0.6%;
 }
+
 
 #divUser{
 	background-color: #858585;

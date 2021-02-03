@@ -6,43 +6,49 @@
 		<meta charset="utf-8">
 		<link href="../assets/css/login.css" rel="stylesheet" type="text/css">
 		<!-- descomente a linha abaixo para ativar o modo night-->
-		<!-- <link href="../assets/css/night_login.css" rel="stylesheet" type="text/css"> -->
-		<link rel="icon" type="image/png" href="../assets/img/logo.png">
+		<!--<link href="../assets/css/night_login.css" rel="stylesheet" type="text/css">-->
+		<link rel="icon" href="../assets/img/logo-icon.png">
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
 	
 	<body>		
 		<div id="site">
-			
-			<nav id="nav-placeholder">
-					<div class="navbar">						
-						<div class="col-4 centered">
-							<img src="../assets/img/name_with_logo.png" class="logo-image">
+
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><label>A+</label></div>
+                    <div class="div-font-size"><label>A</label></div>
+                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size">
+						<div class="modebutton">
+							<button type="button"  class="centered "></button>
 						</div>
-						<div class="col-3 space-between">
-							<a href="UserHome.html">Página Inicial</a>
-						</div>						
-						<div class="col-5 right">
-							<input class="search-input">
-							<div class="accessibility">
-								<div class="modebutton">
-									<button type="button"  class="centered "></button>
-								</div>
-								<button type="button"  class="centered "><label>A+</label></button>
-								<button type="button"  class="centered "><label>A</label></button>
-								<button type="button"  class="centered "><label>A-</label></button>
-							</div>
-						</div>						
 					</div>
-			</nav>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">						
+					<img src="../assets/img/name_with_logo.png" class="logo-image" alt="Logo Maratomator">
+					<div class="div-menu">
+                        <a href="index.html"><h2 class="txt-menu-item">Home</h2></a>
+						<a href="Search.html"><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>		
+				</div>
+            </nav>
 				
 			<div id="content"><!-- abrimos a div conteudo -->
 				
 			
 				<div id="content-left">
 					<div class="centered sitesection themecolor">
-						<img src="../assets/img/section_mark.png" height="30px" width="10px">    
+						<img src="../assets/img/section_mark.png" alt="section mark">						
 						<h1>Entrar</h1>
 					</div>
 					<div class="inputsquare themecolor">
@@ -50,14 +56,14 @@
 							<label>Username:</label> <input class="data-input">	<br>
 							<label>Password:</label> <input class="data-input">	<br>
 						</div>
-						<button type="button"  class="centered "><label>Entrar</label></button> 
+						<button type="button"  class="centered ">Entrar</button> 
 					</div>
 					
 				</div>
 					
 				<div id="content-right">
 					<div class="centered sitesection">
-						<img src="../assets/img/section_mark.png" height="30px"  width="10px">    
+						<img src="../assets/img/section_mark.png" alt="section mark">    
 						<h1>Cadastre-se</h1>
 					</div>
 					<div class="inputsquare themecolor">
@@ -66,7 +72,7 @@
 						<label>Password:</label> <input class="data-input">	<br>
 						<label>Email:</label> <input class="data-input">	<br>
 						 </div>
-						<button type="button" class="centered "><label>Cadastrar</label></button>
+						<button type="button" class="centered ">Cadastrar</button>
 					</div>
 				</div>
 
