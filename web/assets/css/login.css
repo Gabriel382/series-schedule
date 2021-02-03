@@ -32,14 +32,17 @@
 
 
 .inputsquare{
-	height: 350px;
+	height: 400px;
 	background-color: #FFFFFF;
-	border-style: double;
+	border-style: solid;
 	border-color: #26AE60;
 	display:flex;
 	flex-direction:column;
 	align-items:center;
-	justify-content:center;
+    justify-content:center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
 }
 
 .inputsquare button{

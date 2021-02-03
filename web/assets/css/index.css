@@ -203,6 +203,10 @@
     margin-right: 30px;
 }
 
+.div-series-grid .div-series a{
+    text-decoration: none;
+}
+
 .div-series-grid .div-series .div-top{
     display: flex;
     flex-direction: row;
