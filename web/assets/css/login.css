@@ -10,6 +10,17 @@
 	width: 25%;
 }
 
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+}
+
 .col-5{
 	padding: 1%;
 	float: left;

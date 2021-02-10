@@ -8,7 +8,7 @@
 
 #divFaixa{
     width: 100vw;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:#000000;
     height: 35px;
     display: flex;
     align-items: center;
@@ -99,6 +99,11 @@
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
 }
 
 #divBanner{

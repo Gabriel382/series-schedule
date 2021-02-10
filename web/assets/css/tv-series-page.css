@@ -7,7 +7,7 @@
 
 #divFaixa{
     width: 100vw;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:#000;
     height: 35px;
     display: flex;
     align-items: center;
