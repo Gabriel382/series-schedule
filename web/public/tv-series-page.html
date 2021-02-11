@@ -12,7 +12,6 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="../assets/css/main.css" />
         <link rel="stylesheet" href="../assets/css/tv-series-page.css" />
-        <link rel="stylesheet" href="../assets/css/tv-series-page-dark.css" />
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
     </head>
@@ -20,9 +19,9 @@
         <div id="divContainer">
             <div id="divFaixa">
                 <div id="divAccessibility">
-                    <div class="div-font-size"><label>A+</label></div>
-                    <div class="div-font-size"><label>A</label></div>
-                    <div class="div-font-size"><label>A-</label></div>
+                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
                     <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
                 </div>
             </div>
@@ -116,7 +115,7 @@
                             <h5 class="txt-info">30 minutos</h5>
                         </div>
                     </div>
-                    <p>Seis jovens são unidos por laços familiares, românticos e, principalmente, de amizade, enquanto tentam vingar em Nova York. Rachel é a garota mimada que deixa o noivo no altar para viver com a amiga dos tempos de escola, Monica, sistemática e apaixonada pela culinária é irmã de Ross, um paleontólogo que é abandonado pela esposa, que descobriu ser lésbica. Do outro lado do corredor do apartamento de Monica e Rachel, moram Joey, um ator frustrado, e Chandler, de profissão misteriosa. A turma é completa pela exótica Phoebe.</p>
+                    <p id="txtBannerSubtitle">Seis jovens são unidos por laços familiares, românticos e, principalmente, de amizade, enquanto tentam vingar em Nova York. Rachel é a garota mimada que deixa o noivo no altar para viver com a amiga dos tempos de escola, Monica, sistemática e apaixonada pela culinária é irmã de Ross, um paleontólogo que é abandonado pela esposa, que descobriu ser lésbica. Do outro lado do corredor do apartamento de Monica e Rachel, moram Joey, um ator frustrado, e Chandler, de profissão misteriosa. A turma é completa pela exótica Phoebe.</p>
                     <div class="div-seasons">
 
                         <!--3ª TEMPORADA-->
@@ -402,6 +401,8 @@
               });
             }
         </script>
+        <!--Custom js-->
+        <script src="node_modules/layout-management/index.js"></script>
     </body>
 
 </html>

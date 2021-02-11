@@ -12,6 +12,20 @@ body{
 	background-color: #ECF0F1;
 }	    
 
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
@@ -20,6 +34,8 @@ body{
     margin:0;
     padding:0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .body{
@@ -403,7 +419,7 @@ input:focus, select:focus, button:focus{
 
 .search-poster{
 	padding: 10px;
-	height: 238px;
+	height: 260px;
 	width: 145px;
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;

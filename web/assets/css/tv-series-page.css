@@ -95,14 +95,35 @@
     font-size: 30px;
 }
 
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 #divFaixa{
     width: 100vw;
-    background-color:rgba(0, 0, 0, 0.5);
+    background-color:#000;
     height: 35px;
     display: flex;
     align-items: center;
@@ -544,6 +565,7 @@
     color: #FFF;
     font-family: 'Gothic A1', sans-serif;
     font-weight: 600;
+    font-size: 15px;
 }
 
 a{

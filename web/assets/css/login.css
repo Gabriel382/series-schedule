@@ -11,6 +11,20 @@
 }
 
 
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
@@ -19,8 +33,9 @@
     margin:0;
     padding:0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
-
 .col-5{
 	padding: 1%;
 	float: left;
@@ -29,17 +44,19 @@
 
 .sitesection{
 	font-family: "Gothic A1";
-	font-weight: bold;
+    font-size: 35px
 }
 
 
 .sitesection img{
 	height: 35px;
 	width: 10px;
-	margin-top:7px;
 	margin-right: 10px;
 }
 
+.buttonText{
+    font-size: 18px;
+}
 
 
 .inputsquare{

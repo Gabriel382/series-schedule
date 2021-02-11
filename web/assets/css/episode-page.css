@@ -96,10 +96,33 @@
     font-size: 30px;
 }
 
+
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
 }
+
 
 #divBanner{
     background-image: url("../img/3x02-banner.jpg");
@@ -424,6 +447,12 @@
     justify-content: flex-start;
     margin:0;
     padding: 0;
+}
+
+#txtBannerSubtitle{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 .div-episode .div-episode-info .div-episode-footer .div-episode-rating .txt-episode-rating{ 

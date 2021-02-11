@@ -12,6 +12,20 @@ body{
 	background-color: #ECF0F1;
 }	    
 
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .mode-icon{
     color:  #FFF;
     font-size: 18px;
@@ -20,6 +34,8 @@ body{
     margin:0;
     padding:0;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .body{
@@ -257,7 +273,7 @@ a{
 	border-color: #ECF0F1;	
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
-	height: 255px;
+	height: 265px;
 	width: 163px;
 	margin-bottom: 	20px;
 }
@@ -278,7 +294,7 @@ a{
 	margin-top: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
-	height: 285px;
+	height: 300px;
 	width: 90%;
 }
 
