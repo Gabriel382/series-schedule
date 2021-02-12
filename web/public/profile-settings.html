@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home - Maratomator</title>
+        <link rel="icon" href="../assets/img/logo-icon.png">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../assets/css/main.css" />
+        <link rel="stylesheet" href="../assets/css/profile-settings.css"/>
+
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="divContainer">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">						
+					<a href="index.html"><img src="../assets/img/name_with_logo.png" class="logo-image" alt="Logo Maratomator"></a>
+					<div class="div-menu">
+                        <a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+						<a href=""><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>
+                    <div class="div-menu">
+                    </div>			
+				</div>
+            </nav>
+
+            <div class="div-section-title">
+                <div class="div-bar-icon"></div>
+                <div><h1 class="txt-section-title">Informações de Apresentação</h1></div>
+            </div>
+            <div class="div-centered-info-grid">
+                <div class="centered">
+                    <img alt="" class="user-image row" src="../assets/img/user.jpg">
+                </div>
+                <br>
+                <div class="centered row"><h2 class="txt-menu-item">Nick:</h2> <input class="centered row data-input">	</div>
+            </div>
+
+            <div class="div-section-title">
+                <div class="div-bar-icon"></div>
+                <div><h1 class="txt-section-title">Informações de Contato</h1></div>
+            </div>
+            <div class="div-info-grid">
+
+                <div class="div-info">
+                    <div class="row"><h2 class="txt-menu-item">Nome:</h2> <input class="centered row data-input">	</div>
+                </div>
+                <div class="div-info">
+                    <div class="centered row"><h2 class="txt-menu-item">Cidade:</h2> <input class="centered row data-input">	</div>
+                </div>
+                <div class="div-info">
+                    <div class="centered row"><h2 class="txt-menu-item">Estado:</h2> <input class="centered row data-input">	</div>
+                </div>
+                <div class="div-info">
+                    <div class="centered row"><h2 class="txt-menu-item">Sexo:</h2> <input class="centered row data-input">	</div>
+                </div>
+                <div class="div-info">
+                    <div class="centered row"><h2 class="txt-menu-item">Celular:</h2> <input class="centered row data-input" type="tel" id="phone" name="phone"
+                        pattern="+[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                        required>	</div>
+                </div>
+            </div>
+            <div class="div-centered-info-grid">
+                <button type="button"  class="centered buttonText">Salvar</button>
+            </div>
+        </div>
+        <!--Custom js-->
+        <script src="node_modules/layout-management/index.js"></script>
+    </body>
+</html>
