@@ -215,11 +215,10 @@
     line-height: 28px;
 }
 
-.div-info-grid{
+.div-info-input{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-left: 40px;
+    flex-direction: column;
+    align-items: left;
 }
 
 .row{
@@ -257,8 +256,9 @@
 
 .div-info-grid{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
+    padding-left: 40px;
     height: 310px;
     width: 80%;
     margin-right: 10%;
@@ -304,8 +304,8 @@
 
 .div-info{
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: left;
     justify-content: flex-start;
 }
 
