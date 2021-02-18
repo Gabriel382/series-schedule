@@ -226,14 +226,23 @@
     flex-direction: row;
 }
 
+.grid-container {
+    display: grid;
+    justify-items: start;
+    align-items: center;
+    grid-template-columns: .2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-row-gap: 15px;
+    grid-column-gap: 15px;
+    margin-top: 18px;
+}
+
 .data-input{
 	border-color: #C0392B;
 	border-width: 0.25em;
 	height: 25px;
 	width: 400px;
 	border-radius: 0.4em;
-	margin: 1em;
-    margin-top: 18px;
 	background-repeat: no-repeat;
 	background-size: 12%;
 	background-position-y: center;
