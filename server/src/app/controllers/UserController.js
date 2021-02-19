@@ -5,7 +5,7 @@ class UserController {
   // Cadastro de Usuários
   async store(req, res) {
 
-    return res.json({response: 'Rota de Cadastro de Usuário.'});
+    return res.json({response: 'Rota de Cadastro de Usuários.'});
   }
 }
 
