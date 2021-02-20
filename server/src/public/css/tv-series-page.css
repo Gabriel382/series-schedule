@@ -471,7 +471,7 @@
 
 .div-seasons .div-season-content {
     display: none;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -480,6 +480,16 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    /* position: relative; */
+    width: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    transition: all 0.2s;
+    transform: scale(0.98);
+    will-change: transform;
+    user-select: none;
+    cursor: pointer;
 }
 
 .div-season-content .div-episodes-grid .div-episode {

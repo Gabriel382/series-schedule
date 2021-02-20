@@ -6,6 +6,7 @@ class SeriesController{
   async index(req, res){
 
     const id = req.params.id;
+    let seasons = [];
 
     try {
       const seriesResponse = await axios.get(
@@ -17,10 +18,8 @@ class SeriesController{
         var seriesId = seriesResponse.data.id; 
         var seasonsData = seriesResponse.data.seasons;
 
-        var seasons = [];
-
         if(seasonsData){
-          const promise = seasonsData.map(async season => {
+          const promises = seasonsData.map(season => {
 
             const getEpisodesUrl = `${tmdb.baseUrl}/tv/${seriesId}/season/${season.season_number}?api_key=${tmdb.apiKey}&language=pt-BR`;
             
@@ -29,15 +28,20 @@ class SeriesController{
             // console.log('EPISÓDIOS: ', episodesResponse.data.episodes);
           })
 
-          Promise.all(promise).then(
-            season => {
-                seasons.push({
-                episode_count: season.episode_count,
-                id: season.id,
-                poster: season.poster_path,
-                season_number: season.season_number,
-                episodes: episodesResponse.data.episodes,
-              });
+          await Promise.all(promises).then(
+            responses => {
+              // console.log('Response: ', response);
+
+                responses.forEach((response) => {
+                  // console.log(response.data);
+                  seasons.push({
+                    // episode_count: response.data.episode_count,
+                    id: response.data.id,
+                    poster: response.data.poster_path,
+                    season_number: response.data.season_number,
+                    episodes: response.data.episodes,
+                  });
+                })
             }
           );
 
@@ -46,6 +50,7 @@ class SeriesController{
       }
 
       const data = {
+        id: seriesResponse.data.id,
         title: seriesResponse.data.name,
         seasons: seasons,
         banner: `${tmdb.imagesPath}` + seriesResponse.data.backdrop_path,
@@ -56,7 +61,7 @@ class SeriesController{
         episode_run_time: seriesResponse.data.episode_run_time,
       }
   
-      console.log('DATA FINAL:', data);
+      // console.log('DATA FINAL:', data);
   
       res.render('tv-series-page', data);
 

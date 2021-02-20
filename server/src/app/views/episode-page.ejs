@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Friends - Maratomator</title>
+        <title><%= seriesTitle %> <%= season_number %>x<%= episode_number %> - Maratomator</title>
         <link rel="icon" href="/img/logo-icon.png">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -47,15 +47,19 @@
 
             <div id="divBanner" style="background-image: url(<%= banner %>);">
                 <div id="divNextEpisode">
-                    <% previous_episode = episode_number - 1 %>
-                    <% next_episode = episode_number + 1 %>
-                    <a href="/episodes/<%= previous_episode %>"><i class="material-icons icon">keyboard_arrow_left</i></a>
-                    <a href="/episodes/<%= next_episode %>"><i class="material-icons icon">keyboard_arrow_right</i></a>
+                    <% var previous_episode = episode_number - 1 %>
+                    <% var next_episode = episode_number + 1 %>
+                    <a href="/series/<%= seriesId %>/season/<%= season_number %>/episode/<%= previous_episode %>">
+                        <i class="material-icons icon">keyboard_arrow_left</i>
+                    </a>
+                    <a href="/series/<%= seriesId %>/season/<%= season_number %>/episode/<%= next_episode %>">
+                        <i class="material-icons icon">keyboard_arrow_right</i>
+                    </a>
                 </div>
                 <div id="txtTitle">
-                    <a href="./tv-series-page.html"><h2 id="txtSeriesTitle">Friends: Temporada 3</h2></a>
+                    <a href="/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= season_number %></h2></a>
                     <h1 id="txtEpisodeTitle">
-                        <b><%= season_number%>x<%= episode_number %></b>
+                        <b><%= season_number %>x<%= episode_number %></b>
                         <%= name %>
                     </h1>
                 </div>
@@ -95,23 +99,20 @@
 
             <div id="divContent">
                 <section id="divLeftSideBar">
-                    <img id="imgPoster" src="/img/friends-poster.jpg" alt=""/>
-                    <div id="btnAddSeries">
-                        <h3 id="txtAddSeries">Adicionar</h3>
-                    </div>
+                    <img id="imgPoster" src="<%= seriesPoster %>" alt=""/>
                 </section>
                 <div id="divInformations">
                     <div id="divSpecificInformations">
                         <div class="div-row">
                             <h5 class="txt-label">Exibido em: </h5>
-                            <h5 class="txt-info">26 Set 1996</h5>
+                            <h5 class="txt-info"><%= air_date %></h5>
                         </div>
                         <div class="div-row">
                             <h5 class="txt-label">Marcado em:</h5>
                             <h5 class="txt-info">10 Jan 2021</h5>
                         </div>
                     </div>
-                    <p id="txtBannerSubtitle">Ross está ansioso com um jantar no museu e todos demoram a se arrumar. Chandler e Joey discutem por causa de uma poltrona.</p>
+                    <p id="txtBannerSubtitle"><%= sinopsis %></p>
                 </div>
             </div>   
             <footer>

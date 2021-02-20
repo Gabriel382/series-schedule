@@ -128,6 +128,7 @@
     background-image: url("../img/3x02-banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-y: center;
     width: 100%;
     height: 70vh;
     display: flex;

@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Friends - Maratomator</title>
+        <title><%= title %> - Maratomator</title>
         <link rel="icon" href="/img/logo-icon.png">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -44,7 +44,8 @@
 				</div>
             </nav>
 
-            <div id="divBanner" style="background-image: url(<%= banner %>);">
+            <div id="divBanner" style="background-image: url(
+                <%= banner ? banner : '/img/background-placeholder.jpg' %>)">
                 <div id="txtTitle">
                     <h1 id="txtSeriesTitle"><%= title %></h1>
                     <h2 id="txtSeriesYear">1994</h2>
@@ -111,7 +112,7 @@
                         </div>
                         <div class="div-row">
                             <h5 class="txt-label">Duração Episódio: </h5>
-                            <h5 class="txt-info"><%= episode_run_time[0] %>minutos</h5>
+                            <h5 class="txt-info"><%= episode_run_time[0] %> minutos</h5>
                         </div>
                     </div>
                     <p id="txtBannerSubtitle">
@@ -144,68 +145,35 @@
                                 <!--LISTA DE EPISÓDIOS-->
 
                                 <% season.episodes.forEach((episode) => { %>
-
-                                <div class="div-episode">
-                                    <img class="img-episode-banner" src="/img/3x01.jpg" alt="" />
-                                    <div class="div-episode-info">
-                                        <a href="/series/1415">
-                                            <h6 class="txt-episode-title">
-                                                <b>3x01</b>
-                                                <%= episode.name %>
-                                            </h6>
-                                        </a>
-                                        <div class="div-episode-footer">
-                                            <div class="div-episode-rating">
-                                                <i class="material-icons episode-item-icon">star_rate</i>
-                                                <h6 class="txt-episode-rating">9.26</h6>
+                                
+                                    <a href="/series/<%= id %>/season/<%= season.season_number %>/episode/<%= episode.episode_number %>">
+                                        <div class="div-episode">
+                                            <img class="img-episode-banner" src="<%= 
+                                                episode.still_path 
+                                                ? 'https://image.tmdb.org/t/p/original' + episode.still_path 
+                                                : '/img/background-placeholder.jpg'
+                                            %>" alt="" />
+                                            <div class="div-episode-info">
+                                                <h4><%# episode_route = '/series/' + id '/season/' + season.season_number + '/episode/' + episode.episode_number %></h4>
+                                                
+                                                    <h6 class="txt-episode-title">
+                                                        <b><%= season.season_number %>x<%= episode.episode_number%></b>
+                                                        <%= episode.name %>
+                                                    </h6>
+                                                
+                                                <div class="div-episode-footer">
+                                                    <div class="div-episode-rating">
+                                                        <i class="material-icons episode-item-icon">star_rate</i>
+                                                        <h6 class="txt-episode-rating">9.26</h6>
+                                                    </div>
+                                                    <h6 class="txt-exhibiton-date"><%= episode.air_date %></h6>
+                                                    <i class="material-icons episode-item-icon">check_circle</i>
+                                                </div>
                                             </div>
-                                            <h6 class="txt-exhibiton-date">16 Set 1996</h6>
-                                            <i class="material-icons episode-item-icon">check_circle</i>
                                         </div>
-                                    </div>
-                                </div>
+                                    </a>
 
                                 <% }) %>
-
-                                <div class="div-episode">
-                                    <img class="img-episode-banner" src="/img/3x02.jpg" alt="" />
-                                    <div class="div-episode-info">
-                                        <a href="./episode-page.html">
-                                            <h6 class="txt-episode-title">
-                                                <b>3x02</b>
-                                                The One Where No One's Ready
-                                            </h6>
-                                        </a>
-                                        <div class="div-episode-footer">
-                                            <div class="div-episode-rating">
-                                                <i class="material-icons episode-item-icon">star_rate</i>
-                                                <h6 class="txt-episode-rating">9.28</h6>
-                                            </div>
-                                            <h6 class="txt-exhibiton-date">26 Set 1996</h6>
-                                            <i class="material-icons episode-item-icon">check_circle_outline</i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="div-episode">
-                                    <img class="img-episode-banner" src="/img/3x03.jpg" alt="" />
-                                    <div class="div-episode-info">
-                                        <a href="./episode-page.html">
-                                            <h6 class="txt-episode-title">
-                                                <b>3x03</b>
-                                                The One With The Jam
-                                            </h6>
-                                        </a>
-                                        <div class="div-episode-footer">
-                                            <div class="div-episode-rating">
-                                                <i class="material-icons episode-item-icon">star_rate</i>
-                                                <h6 class="txt-episode-rating">9.22</h6>
-                                            </div>
-                                            <h6 class="txt-exhibiton-date">03 Out 1996</h6>
-                                            <i class="material-icons episode-item-icon">check_circle_outline</i>
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <i class="fas fa-caret-square-right fa-3x icon"></i>
                             </div>
@@ -238,6 +206,35 @@
                 }
               });
             }
+        </script>
+        <script>
+            const slider = document.querySelector('.div-episodes-grid');
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+            isDown = true;
+            slider.classList.add('active');
+            startX = e.pageX - slider.offsetLeft;
+            scrollLeft = slider.scrollLeft;
+            });
+            slider.addEventListener('mouseleave', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            });
+            slider.addEventListener('mouseup', () => {
+            isDown = false;
+            slider.classList.remove('active');
+            });
+            slider.addEventListener('mousemove', (e) => {
+            if(!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - slider.offsetLeft;
+            const walk = (x - startX) * 3; //scroll-fast
+            slider.scrollLeft = scrollLeft - walk;
+            console.log(walk);
+            });
         </script>
         <!--Custom js-->
         <script src="node_modules/layout-management/index.js"></script>
