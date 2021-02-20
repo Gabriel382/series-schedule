@@ -27,18 +27,18 @@ class SeriesController{
             return axios.get(getEpisodesUrl);
 
             // console.log('EPISÓDIOS: ', episodesResponse.data.episodes);
-
-            seasons.push({
-              episode_count: season.episode_count,
-              id: season.id,
-              poster: season.poster_path,
-              season_number: season.season_number,
-              episodes: episodesResponse.data.episodes,
-            });
           })
 
           Promise.all(promise).then(
-            results => console.log(results.data)
+            season => {
+                seasons.push({
+                episode_count: season.episode_count,
+                id: season.id,
+                poster: season.poster_path,
+                season_number: season.season_number,
+                episodes: episodesResponse.data.episodes,
+              });
+            }
           );
 
         } 
