@@ -1,0 +1,24 @@
+.sitesection{
+	color: #FFFFFF !important;
+}
+
+.inputsquare{
+	background-color: #000000 !important;
+}
+
+
+#site{
+	background-color:#313131 !important;
+}
+
+#content{
+  background-color: #313131 !important;
+}
+
+label {
+	color: #FFFFFF !important;
+}
+
+.modebutton button{
+	background-image:  url(../img/light_mode.png) !important;
+}

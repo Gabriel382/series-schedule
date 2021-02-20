@@ -4,15 +4,15 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Friends - Maratomator</title>
-        <link rel="icon" href="../assets/img/logo-icon.png">
+        <link rel="icon" href="/img/logo-icon.png">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <link rel="stylesheet" href="../assets/css/main.css" />
-        <link rel="stylesheet" href="../assets/css/episode-page.css" />
-        <!--<link rel="stylesheet" href="../assets/css/episode-page-dark.css" />-->
+        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="/css/episode-page.css" />
+        <!--<link rel="stylesheet" href="/css/episode-page-dark.css" />-->
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
     </head>
@@ -30,7 +30,7 @@
             <nav id="nav-placeholder">
 				<div class="navbar">						
                     <a href="index.html">
-                        <img src="../assets/img/name_with_logo.png" class="logo-image" alt="" >
+                        <img src="/img/name_with_logo.png" class="logo-image" alt="" >
                     </a>
 					<div class="div-menu">
 						<a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
@@ -45,14 +45,19 @@
 				</div>
             </nav>
 
-            <div id="divBanner">
+            <div id="divBanner" style="background-image: url(<%= banner %>);">
                 <div id="divNextEpisode">
-                    <a href="episode-page.html"><i class="material-icons icon">keyboard_arrow_left</i></a>
-                    <a href="episode-page2.html"><i class="material-icons icon">keyboard_arrow_right</i></a>
+                    <% previous_episode = episode_number - 1 %>
+                    <% next_episode = episode_number + 1 %>
+                    <a href="/episodes/<%= previous_episode %>"><i class="material-icons icon">keyboard_arrow_left</i></a>
+                    <a href="/episodes/<%= next_episode %>"><i class="material-icons icon">keyboard_arrow_right</i></a>
                 </div>
                 <div id="txtTitle">
                     <a href="./tv-series-page.html"><h2 id="txtSeriesTitle">Friends: Temporada 3</h2></a>
-                    <h1 id="txtEpisodeTitle"><b>3x02</b> The One Where No One's Ready</h1>
+                    <h1 id="txtEpisodeTitle">
+                        <b><%= season_number%>x<%= episode_number %></b>
+                        <%= name %>
+                    </h1>
                 </div>
                 <div id="divSeriesHeader">
                     <div id="divNumbers">
@@ -90,7 +95,7 @@
 
             <div id="divContent">
                 <section id="divLeftSideBar">
-                    <img id="imgPoster" src="../assets/img/friends-poster.jpg" alt=""/>
+                    <img id="imgPoster" src="/img/friends-poster.jpg" alt=""/>
                     <div id="btnAddSeries">
                         <h3 id="txtAddSeries">Adicionar</h3>
                     </div>
@@ -111,9 +116,9 @@
             </div>   
             <footer>
                 <div class="centered">
-                    <img alt="" src="../assets/img/insta_logo.png">
-                    <img alt="" src="../assets/img/twitter_logo.png">
-                    <img alt="" src="../assets/img/logo_facebook.png">
+                    <img alt="" src="/img/insta_logo.png">
+                    <img alt="" src="/img/twitter_logo.png">
+                    <img alt="" src="/img/logo_facebook.png">
                 </div>
             </footer>                          
         </div>

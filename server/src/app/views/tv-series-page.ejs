@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Friends - Maratomator</title>
+        <link rel="icon" href="/img/logo-icon.png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="/css/main.css" />
+        <link rel="stylesheet" href="../css/tv-series-page.css" />
+
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div id="divContainer">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+				<div class="navbar">	
+                    <a href="index.html">
+                        <img src="/img/name_with_logo.png" class="logo-image" alt="logo">
+                    </a>
+					<div class="div-menu">
+						<a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+						<a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>			
+				</div>
+            </nav>
+
+            <div id="divBanner" style="background-image: url(<%= banner %>);">
+                <div id="txtTitle">
+                    <h1 id="txtSeriesTitle"><%= title %></h1>
+                    <h2 id="txtSeriesYear">1994</h2>
+                </div>
+                <div id="divSeriesHeader">
+                    <div id="divNumbers">
+                        <div class="div-number">
+                            <i class="material-icons icon">access_time_filled</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">4d 2h 20m</h4>
+                                <h5 class="txt-number-info-label">Maratona</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">star_rate</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.87</h4>
+                                <h5 class="txt-number-info-label">Minha Média</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="material-icons icon">stars</i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">9.23</h4>
+                                <h5 class="txt-number-info-label">Média Geral</h5>
+                            </div>
+                        </div>
+                        <div class="div-number">
+                            <i class="fab fa-imdb icon"></i>
+                            <div class="div-number-info">
+                                <h4 class="txt-number-info-text">8.8</h4>
+                                <h5 class="txt-number-info-label">Nota iMDB</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="divContent">
+                <section id="divLeftSideBar">
+                    <img id="imgPoster" src=<%= poster %> alt="" />
+                    <div id="btnAddSeries">
+                        <h3 id="txtAddSeries">Adicionar</h3>
+                    </div>
+                </section>
+                <div id="divInformations">
+                    <div id="divGenres">
+                        <% genres.forEach(genre => { %>
+                            <button class="btn-genre-button"><%= genre.name %></button>
+                        <% }); %>                        
+                    </div>
+                    <div id="divSpecificInformations">
+                        <div class="div-row">
+                            <h5 class="txt-label">Canal: </h5>
+                            <h5 class="txt-info"><%= networks[0].name %></h5>
+                        </div>
+                        <div class="div-row">
+                            <h5 class="txt-label">Início: </h5>
+                            <h5 class="txt-info">Setembro 1994</h5>
+                        </div>
+                        <div class="div-row">
+                            <h5 class="txt-label">Fim: </h5>
+                            <h5 class="txt-info">Maio 2004</h5>
+                        </div>
+                        <div class="div-row">
+                            <h5 class="txt-label">Duração Episódio: </h5>
+                            <h5 class="txt-info"><%= episode_run_time[0] %>minutos</h5>
+                        </div>
+                    </div>
+                    <p id="txtBannerSubtitle">
+                        <%= sinopsis %>
+                    </p>
+                    <div class="div-seasons">
+
+                        <!--LISTA DE TEMPORADAS-->
+
+                        <% seasons.slice().reverse().forEach((season) => { %>
+
+                        <div class="div-season tab-index">
+                            <h5 class="txt-season-name"><%= season.season_number %></h5>
+                            <div class="div-right-side">
+                                <div class="w3-light-grey w3-round">
+                                    <div class="w3-container w3-round progress-bar" style="width: 10%">10%</div>
+                                </div>
+                                <div class="div-rating">
+                                    <i class="material-icons s-icon">star_rate</i>
+                                    <h6 class="txt-season-rating">9.24</h6>
+                                    <i class="material-icons s-icon">stars</i>
+                                    <h6 class="txt-season-rating">9.26</h6>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="div-season-content">
+                            <div class="div-episodes-grid">
+                                <i class="fas fa-caret-square-left fa-3x icon"></i>
+
+                                <!--LISTA DE EPISÓDIOS-->
+
+                                <% season.episodes.forEach((episode) => { %>
+
+                                <div class="div-episode">
+                                    <img class="img-episode-banner" src="/img/3x01.jpg" alt="" />
+                                    <div class="div-episode-info">
+                                        <a href="/series/1415">
+                                            <h6 class="txt-episode-title">
+                                                <b>3x01</b>
+                                                <%= episode.name %>
+                                            </h6>
+                                        </a>
+                                        <div class="div-episode-footer">
+                                            <div class="div-episode-rating">
+                                                <i class="material-icons episode-item-icon">star_rate</i>
+                                                <h6 class="txt-episode-rating">9.26</h6>
+                                            </div>
+                                            <h6 class="txt-exhibiton-date">16 Set 1996</h6>
+                                            <i class="material-icons episode-item-icon">check_circle</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <% }) %>
+
+                                <div class="div-episode">
+                                    <img class="img-episode-banner" src="/img/3x02.jpg" alt="" />
+                                    <div class="div-episode-info">
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>3x02</b>
+                                                The One Where No One's Ready
+                                            </h6>
+                                        </a>
+                                        <div class="div-episode-footer">
+                                            <div class="div-episode-rating">
+                                                <i class="material-icons episode-item-icon">star_rate</i>
+                                                <h6 class="txt-episode-rating">9.28</h6>
+                                            </div>
+                                            <h6 class="txt-exhibiton-date">26 Set 1996</h6>
+                                            <i class="material-icons episode-item-icon">check_circle_outline</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="div-episode">
+                                    <img class="img-episode-banner" src="/img/3x03.jpg" alt="" />
+                                    <div class="div-episode-info">
+                                        <a href="./episode-page.html">
+                                            <h6 class="txt-episode-title">
+                                                <b>3x03</b>
+                                                The One With The Jam
+                                            </h6>
+                                        </a>
+                                        <div class="div-episode-footer">
+                                            <div class="div-episode-rating">
+                                                <i class="material-icons episode-item-icon">star_rate</i>
+                                                <h6 class="txt-episode-rating">9.22</h6>
+                                            </div>
+                                            <h6 class="txt-exhibiton-date">03 Out 1996</h6>
+                                            <i class="material-icons episode-item-icon">check_circle_outline</i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <i class="fas fa-caret-square-right fa-3x icon"></i>
+                            </div>
+                        </div>
+
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+            <footer>
+                <div class="centered">
+                    <img alt="" src="/img/insta_logo.png">
+                    <img alt="" src="/img/twitter_logo.png">
+                    <img alt="" src="/img/logo_facebook.png">
+                </div>
+            </footer>       
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("div-season");
+            var i;
+            
+            for (i = 0; i < acc.length; i++) {
+              acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                  panel.style.display = "none";
+                } else {
+                  panel.style.display = "block";
+                }
+              });
+            }
+        </script>
+        <!--Custom js-->
+        <script src="node_modules/layout-management/index.js"></script>
+    </body>
+
+</html>

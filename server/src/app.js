@@ -1,12 +1,18 @@
 import express from 'express';
+import bodyParser from 'body-parser'; 
 import routes from './routes';
-
+import path from 'path';
 class App {
   constructor() {
     this.server = express();
 
     this.middlewares();
     this.routes();
+
+    this.server.use(express.static(__dirname + '/public'));
+    this.server.use(bodyParser.urlencoded({ extended: true }));
+    this.server.set('view engine', 'ejs') 
+    this.server.set('views', path.join(__dirname, 'app/views'));
   }
 
   middlewares() {

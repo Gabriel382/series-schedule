@@ -1,0 +1,379 @@
+.col-4{
+	padding: 1%;
+	float: left;
+	width: 33.33%;
+}
+
+.col-3{
+	padding: 1%;
+	float: left;
+	width: 25%;
+}
+
+
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+.col-5{
+	padding: 1%;
+	float: left;
+	width: 41.66%;
+}
+
+.sitesection{
+	font-family: "Gothic A1";
+    font-size: 35px
+}
+
+
+.sitesection img{
+	height: 35px;
+	width: 10px;
+	margin-right: 10px;
+}
+
+.buttonText{
+    font-size: 18px;
+}
+
+
+.inputsquare{
+	height: 400px;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-color: #26AE60;
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+    justify-content:center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-radius: 15px;
+}
+
+.inputsquare button{
+	font-family: "Gothic A1";
+	font-weight: bold;
+}
+
+.div-centralized{
+	display:flex;
+	flex-direction:column;
+	justify-content:flex-start;
+}
+
+.inputsquare button{
+	background-color: #27ae60; /* Green */
+	  color: white;
+	  padding: 15px 22px;
+	  font-size: 16px;
+}
+
+.space-between{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.centered{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.right{
+	align-items: center;
+	justify-content: right;
+	display: flex;
+}	
+
+
+.search-input{
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 500px;
+	border-radius: 0.4em;
+    margin: 1em;
+    background-image:  url(../img/magglass.png);
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position-y: center;
+    background-position-x: 95%;
+}
+
+
+.accessibility{
+	display:flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;	
+}
+
+.accessibility button{
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	height: 10px;
+	width: 25px;
+	text-align:center;
+	margin-bottom: 5px; 
+	font-family: "Gothic A1";
+	font-weight: bold;
+	font-size:10px;
+	color: #FFFFFF;
+}
+
+.modebutton button{
+	background-image:  url(../img/night_mode.png);
+	background-size: 100%;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: none;
+	height: 15px;
+	width: 15px;
+}
+
+.data-input{
+	border-color: #C0392B;
+	border-width: 0.25em;
+	height: 25px;
+	width: 200px;
+	border-radius: 0.4em;
+	margin: 1em;
+	background-repeat: no-repeat;
+	background-size: 12%;
+	background-position-y: center;
+	background-position-x: 95%;
+}
+
+.search-button{
+	height: 25px;
+	border-radius: 0.6em;
+	border-color: #C0392B;
+}
+
+.fa-search{
+	color: #C0392B;
+}
+
+.fa-grip-lines-vertical, .fa-caret-square-left, .fa-caret-square-right{
+	color: #26AE60;
+	
+}
+
+.logo-image {
+    width: 272px;
+    height: 40px;
+}
+
+/* Baseado no do Alan */
+#divFaixa{
+    width: 100%;
+    background-color:#000000;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#divFaixa #divAccessibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFaixa #divAccessibility .div-font-size{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    align-self: center;
+	color: #FFFFFF;
+}
+
+#divFaixa #divAccessibility label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.navbar{
+	background-color: #26AE60;
+	width: 100%;
+	font-size: 1.15rem;
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.navbar .div-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .div-menu a{
+	text-decoration: none;
+}
+
+.navbar .div-menu .txt-menu-item{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-left: 30px;
+}
+
+a{
+	text-decoration: none;
+}
+
+#site{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	background-color:#ecf0f1;
+}
+
+#header{
+  /*Novamente definimos a largura da div*/
+  width:100%;
+  /* altura da div */
+  height:10%;
+  position: fixed;
+  /* Imagem de fundo da div */
+  background-color: #27ae60;
+  }
+#content{
+  /*Novamente definimos a largura da div*/
+  width:100%;
+  /* altura da div */
+  height:80%;
+  /* Cor de fundo da div */
+  background-color: #ecf0f1;
+  display: flex;
+  /*flex-direction: row;*/
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  object-fit: fill;
+}
+
+
+
+#content-left{
+  /*Novamente definimos a largura da div*/
+  width:500px;
+  height:80%;
+  /* altura da div */
+  /* O atributo Float é utilizado para fazermos o nosso bloco(div)
+  literalmente flutue e se posicione onde queremos na página,
+  quando escolhemos left, dizemos que esse bloco irá se posicionar na
+  parte esquerda da página */
+  float:left;
+  object-fit: cover;
+  /* Cor de fundo da div*/
+  
+}
+  
+#content-right{
+  /*Novamente definimos a largura da div*/
+  width:500px;
+  /* altura da div */
+  height:80%;
+  object-fit: cover;
+  /* Pode parecer meio estranho usarmos o mesmo atributo left para o bloco
+  em que queremos posicionar na direita, mas como sabemos, o CSS é um estilo
+  em cascata, nossa div conteúdo definimos a largura de 1000px e na
+  conteudo-left 500px, automaticamente ao definirmos o conteudo-right
+  com 500px e à esquerda também, ele ficou à direita do conteudo-left,
+  pois o máximo que a div filha poderá ter é 1000px, sendo 500+500=1000px */
+  float:right;
+  /* Cor de fundo da div */
+  display: flex;
+  flex-direction: column;  
+  }
+  
+@font-face {
+  	font-family: 'Gothic A1';
+}
+
+@font-face{
+	font-family: 'Gothic A1';
+	font-weight: bold;
+}
+
+a{
+	font-family: "Gothic A1";
+	font-weight: bold;
+}
+
+footer{
+    background-color: #BDC3C7;
+    margin-top: 22px;
+    height: 42px;
+}
+
+footer img{
+    height: 20px;
+    width: 52px;
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+footer div{
+    height: inherit;
+    padding: 0;
+}
+
+.centered{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#divUser{
+	background-color: #858585;
+}
+
+hr{
+	height: 5px;
+	background-color: #26ae60;
+}
