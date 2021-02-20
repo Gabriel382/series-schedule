@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     background-color: #ecf0f1;
+    min-height: 100%;
 }
 
 #divFaixa{
@@ -94,6 +95,7 @@
     color: #FFF;
     font-size: 30px;
 }
+
 
 .accessibility-icon{
     font-family: 'Gothic A1', sans-serif;
@@ -121,130 +123,62 @@
     align-items: center;
 }
 
-#divFaixa{
-    width: 100vw;
-    background-color:#000;
-    height: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 40px;
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
-#divFaixa #divAccessibility{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-#divFaixa #divAccessibility .div-font-size{
-    height: 20px;
-    width: 20px;
-    border-radius: 10px;
-    background-color: #27ae60;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 10px;
-    align-self: center;
-}
-
-#divFaixa #divAccessibility label{
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: bold;
-    font-size: 10px;
-    color: #FFF;
-}
-
-.navbar{
-	background-color: #26AE60;
-	width: 100%;
-	font-size: 1.15rem;
-    height: 73px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 40px;
-}
-
-.navbar .div-menu{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-.navbar .div-menu a{
-	text-decoration: none;
-}
-
-.navbar .div-menu .txt-menu-item{
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #FFF;
-    margin-right: 30px;
-}
-
-.logo-image {
-    width: 272px;
-    height: 40px;
-}
-
-.search-input{
-	border-color:rgba(255, 0, 0, 0.7);
-    height: 30px;
-    width: 500px;
-	border-radius: 0.4em;
-    margin: 1em;
-    background-image:  url(../img/magglass.png);
-	background-repeat: no-repeat;
-	background-size: 20px;
-	background-position-y: center;
-    background-position-x: 95%;
-}
-
-.search-icon{
-    color: #FFF;
-    font-size: 30px;
-}
-
-.mode-icon{
-    color:  #FFF;
-    font-size: 18px;
-}
 
 #divBanner{
+    background-image: url("../img/3x02-banner.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-y: center;
     width: 100%;
-    height: 80vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
 }
 
-#divBanner #txtTitle{
+/* APENAS NO EPISÓDIO */
+
+#divBanner #divNextEpisode{
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+}
+
+#divBanner #txtTitle{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-end;
     margin-left: 243px;
 }
 
-#divBanner #txtTitle #txtSeriesTitle {
+#divBanner #txtTitle #txtSeriesTitle{
     font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 25px;
+    color: #FFF;
+    margin: 0;
+    padding: 0;
+}
+
+#divBanner #txtTitle #txtEpisodeTitle {
+    font-family: 'Gothic A1';
     font-weight: bold;
-    color:#FFF;
+    color: seashell;
     font-size: 35px;
     text-shadow: 4px 4px 4px black;
 }
 
+/* -------------------*/
+
 #divBanner #txtTitle #txtSeriesYear {
-    font-family: 'Gothic A1', sans-serif;
+    font-family: 'Gothic A1';
     color: #FFF;
     font-size: 30px;
     margin-left: 10px;
@@ -283,8 +217,8 @@
     font-weight: 700;
     color: #FFF;
     font-size: 20px;
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
 }
 
 #divSeriesHeader #divNumbers .div-number .div-number-info .txt-number-info-label{
@@ -292,8 +226,8 @@
     font-weight: 200;
     color: #FFF;
     font-size: 12px;
-    margin: 0;
-    padding: 0;
+    margin:0;
+    padding:0;
 }
 
 .icon {
@@ -345,7 +279,7 @@
 #divContent #divLeftSideBar #btnAddSeries #txtAddSeries{
     font-family: 'Gothic A1', sans-serif;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17.5px;
     color: #FFF;
     line-height: 16px;
     text-align: end;
@@ -378,14 +312,14 @@
     display: inline-block;
     font-size: 16px;
     margin-right: 5px;
-    font-family: 'Gothic A1', sans-serif;
+    font-family: Gothic A1;
     font-weight: bold;
 }
 
 #divInformations #divSpecificInformations{
     display: flex;
     flex-direction: row;
-    margin-top: -10px;
+    margin-top: 10px;
     margin-bottom: -10px;
 }
 
@@ -396,18 +330,16 @@
 }
 
 #divSpecificInformations .div-row .txt-label{
-    font-family: 'Gothic A1', sans-serif;
+    font-family: Gothic A1;
     font-size: 15px;
     font-weight: bold;
-    color: #000;
 }
 
 #divSpecificInformations .div-row .txt-info{
-    font-family: 'Gothic A1', sans-serif;
+    font-family: Gothic A1;
     font-size: 15px;
     font-weight: normal;
     margin-left: 5px;
-    color: #000;
 }
 
 #divInformations p{
@@ -415,9 +347,9 @@
     font-size: 15px;
     width: 85%;
     text-align: justify;
-    color: #000;
 }
 
+/* Style the buttons that are used to open and close the accordion panel */
 .div-seasons .div-season {
     background-color: #FFF;
     color: #444;
@@ -446,23 +378,13 @@
 .div-season .div-right-side .div-rating{
     display: flex;
     flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.div-season .div-right-side .div-rating .txt-season-rating{
-    font-family: 'Gothic A1', sans-serif;
-    font-size: 15px;
-    color: #000;
-    margin-left: 5px;
-    margin-right: 10px;
 }
 
 .div-seasons .div-season .txt-season-name{
-    font-family: 'Gothic A1', sans-serif;
+    font-family: Gothic A1;
     font-weight: 900;
     color: #27ae60;
-    font-size: 55px;
+    font-size: 50px;
 }
 
 .div-seasons .active, .div-season:hover {
@@ -471,7 +393,7 @@
 
 .div-seasons .div-season-content {
     display: none;
-    /* overflow: hidden; */
+    overflow: hidden;
     margin-top: 15px;
     margin-bottom: 15px;
 }
@@ -480,16 +402,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* position: relative; */
-    width: 100%;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    transition: all 0.2s;
-    transform: scale(0.98);
-    will-change: transform;
-    user-select: none;
-    cursor: pointer;
 }
 
 .div-season-content .div-episodes-grid .div-episode {
@@ -518,9 +430,6 @@
     font-weight: 600;
     font-size: 17px;
     color: #000;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .div-season-content .div-episodes-grid .div-episode .div-episode-info .div-episode-footer{
@@ -541,6 +450,12 @@
     padding: 0;
 }
 
+#txtBannerSubtitle{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+}
+
 .div-episode .div-episode-info .div-episode-footer .div-episode-rating .txt-episode-rating{ 
     font-family: 'Gothic A1', sans-serif;
     color:rgba(0, 0, 0, 0.5);
@@ -556,28 +471,10 @@
     font-weight: 600;
 }
 
-.add-icon{
-    font-size: 15px;
-    color: #FFF;
-}
-
 .episode-item-icon {
     font-size: 20px;
     color: #27ae60;
     z-index: 1;
-}
-
-.s-icon{
-    font-size: 25px;
-    color:#27ae60;
-}
-
-.progress-bar{
-    background-color:#27ae60;
-    color: #FFF;
-    font-family: 'Gothic A1', sans-serif;
-    font-weight: 600;
-    font-size: 15px;
 }
 
 a{
@@ -606,4 +503,8 @@ footer div{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+html, body{
+    height: 100%;
 }

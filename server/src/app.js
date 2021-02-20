@@ -2,8 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser'; 
 import routes from './routes';
 import path from 'path';
+
+import './database';
+
 class App {
   constructor() {
+
     this.server = express();
 
     this.middlewares();

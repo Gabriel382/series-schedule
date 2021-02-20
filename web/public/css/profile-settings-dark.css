@@ -1,0 +1,16 @@
+#divContainer{
+    background-color: #313131 !important;
+}
+
+.div-section-title .txt-section-title, .txt-menu-item{
+    color: #FFF !important;
+}
+
+.div-info-grid .div-info .txt-series-info .txt-menu-item{
+    color: #FFF !important;
+}
+
+.div-info-grid{
+    background-color: black !important;
+    color: #FFF !important;
+}

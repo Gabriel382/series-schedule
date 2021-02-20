@@ -15,7 +15,7 @@
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
     </head>
-    <body>
+    <body id="episode-page">
         <div id="divContainer">
             <div id="divFaixa">
                 <div id="divAccessibility">
@@ -48,7 +48,7 @@
                 <%= banner ? banner : '/img/background-placeholder.jpg' %>)">
                 <div id="txtTitle">
                     <h1 id="txtSeriesTitle"><%= title %></h1>
-                    <h2 id="txtSeriesYear">1994</h2>
+                    <h2 id="txtSeriesYear"><%= first_air_date.slice(0,4) %></h2>
                 </div>
                 <div id="divSeriesHeader">
                     <div id="divNumbers">
@@ -104,12 +104,14 @@
                         </div>
                         <div class="div-row">
                             <h5 class="txt-label">Início: </h5>
-                            <h5 class="txt-info">Setembro 1994</h5>
+                            <h5 class="txt-info"><%= first_air_date %></h5>
                         </div>
+                        <% if(!in_production) { %> 
                         <div class="div-row">
                             <h5 class="txt-label">Fim: </h5>
-                            <h5 class="txt-info">Maio 2004</h5>
+                            <h5 class="txt-info"><%= last_air_date %></h5>
                         </div>
+                        <% } %>
                         <div class="div-row">
                             <h5 class="txt-label">Duração Episódio: </h5>
                             <h5 class="txt-info"><%= episode_run_time[0] %> minutos</h5>
@@ -237,7 +239,7 @@
             });
         </script>
         <!--Custom js-->
-        <script src="node_modules/layout-management/index.js"></script>
+        <script src="/node_modules/layout-management/index.js"></script>
     </body>
 
 </html>

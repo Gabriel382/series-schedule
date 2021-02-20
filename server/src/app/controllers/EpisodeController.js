@@ -1,6 +1,6 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
-
+import View from '../models/View';
 class EpisodeController{
 
   async index(req, res) {
@@ -42,6 +42,19 @@ class EpisodeController{
     }
 
   }
+
+  // Marcar episódio como visto:
+  // async view(req, res) {
+
+  //   const view = await View.create({
+  //     user_id: 1, 
+  //     episode_id: 1234,
+  //     series_id: 12,
+  //     rating: 8,
+  //   });
+
+  //   return res.json(view);
+  // }
 
 }
 

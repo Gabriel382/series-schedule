@@ -59,6 +59,9 @@ class SeriesController{
         genres: seriesResponse.data.genres,
         networks: seriesResponse.data.networks,
         episode_run_time: seriesResponse.data.episode_run_time,
+        first_air_date: seriesResponse.data.first_air_date,
+        in_production: seriesResponse.data.in_production,
+        last_air_date: seriesResponse.data.last_air_date,
       }
   
       // console.log('DATA FINAL:', data);

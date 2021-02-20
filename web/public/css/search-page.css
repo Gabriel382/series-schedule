@@ -1,0 +1,514 @@
+html, body{
+	height: 100%;
+}
+
+body{
+	margin: 0;
+}
+
+.container{
+	width: 100%;
+	min-height: 100%;
+	background-color: #ECF0F1;
+}	    
+
+.accessibility-icon{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px;
+    background:none;
+    border:none;
+    margin:0;
+    padding:0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.body{
+	float: none;
+	width: 100%;
+	display: flex;
+}
+
+.row{
+	float: none;
+	width: 100%;
+	display: flex;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.col-12{
+	float: left;
+	max-width: 100%;
+	flex: 100%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-11{
+	float: left;
+	max-width: 91.67%;
+	flex: 91.67%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-10{
+	float: left;
+	max-width: 83.33%;
+	flex: 83.33%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-9{
+	float: left;
+	max-width: 75%;
+	flex: 75%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-8{
+	float: left;
+	max-width: 66.67%;
+	flex: 66.67%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-7{
+	float: left;
+	max-width: 58.33%;
+	flex: 58.33%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-6{
+	float: left;
+	max-width: 50%;
+	flex: 50%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-5{
+	float: left;
+	max-width: 41.66%;
+	flex: 41.66%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-4{
+	float: left;
+	max-width: 33.33%;
+	flex: 33.33%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-3{
+	float: left;
+	max-width: 25%;
+	flex: 25%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-2{
+	float: left;
+	max-width: 16.67%;
+	flex: 16.67%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+.col-1{
+	float: left;
+	max-width: 8.33%;
+	flex: 8.33%;
+	min-width: min-content;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+
+img{
+	height: auto;
+	max-width: 100%;
+}
+
+.title{
+	font-size: 1.375rem;
+}
+
+.title > label, legend{
+	font-family: 'Gothic A1', sans-serif;
+	font-weight: bold;
+}
+
+fieldset{
+	border: 3px solid #26ae60;
+	border-radius: 14px;
+}
+
+.centered{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.space-between{
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.end{
+	display: flex;
+	align-items: center;
+	justify-content: end;
+}
+
+.fa-grip-lines-vertical, .fa-caret-square-left, .fa-caret-square-right{
+	color: #26AE60;
+}
+
+.fa-search-plus, .fa-search-minus{
+	color: #FFFFFF;
+}
+
+.fa-sun, .fa-moon{
+	color: #fffc21;
+}
+
+.search-input{
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 500px;
+	border-radius: 0.4em;
+    margin: 1em;
+    background-image:  url(../img/magglass.png);
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position-y: center;
+    background-position-x: 95%;
+}
+
+.search-button{
+	height: 25px;
+	border-radius: 0.6em;
+	border-color: #C0392B;
+}
+
+.fa-search{
+	color: #C0392B;
+}
+
+.right{
+	align-items: center;
+	justify-content: right;
+	display: flex;
+	padding-right: 10px;
+}	
+
+.logo-image {
+    width: 272px;
+    height: 40px;
+}
+
+a{
+	text-decoration: none;
+}
+
+.user-image{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+}
+
+#divUserLists{
+	overflow-y: auto;
+	overflow-x: hidden;
+    background-color: #ECF0F1;
+    width: 83.33%;
+}
+
+#divUserLists div{
+	padding: 1%;
+}
+
+.poster{
+	padding: 10px;
+	border-style: solid;
+	border-color: #ECF0F1;	
+	background-color: rgba(0, 0, 0, 0.7);
+	border-radius: 10px;
+	height: 255px;
+	width: 163px;
+	margin-bottom: 	20px;
+}
+
+.poster img, .search-poster img{
+	width: 100%;
+	height: 190px;
+}
+
+.poster div{
+	display: flex;
+	justify-content: space-between;
+	color: #FFFFFF;
+	font-family: "Gothic A1";
+}
+
+.list{
+	margin-top: 5px;
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 285px;
+	width: 90%;
+}
+
+label, option {
+	font-family: "Gothic A1";
+}
+
+a{
+	font-family: "Gothic A1";
+	font-weight: bold;
+}
+
+footer{
+	background-color: #BDC3C7;
+	margin-top: 22px;
+	height: 42px;
+}
+
+footer img{
+	height: 20px;
+	width: 52px;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+footer div{
+	height: inherit;
+	padding: 0;
+}
+
+#divUser{
+	background-color: #858585;
+}
+
+hr{
+	height: 5px;
+	background-color: #26ae60;
+}
+
+#divSearchFilters{
+	width: 100%;
+}
+
+input, select{
+	border-color: #4C4C4C;
+	border-radius: 0.4em;
+	margin: 1em;
+	min-width: -moz-available;
+}
+
+select{
+	height: 31px;
+	-moz-appearance: none;
+	font-family: "Gothic A1";
+}
+
+input{
+	max-width: inherit;
+}
+
+.txt-label{
+	font-family: "Gothic A1";
+	font-weight: bold;
+}
+
+#divUser{
+	padding: 10px;
+	padding-top: 20px;
+}
+
+#btnEditPerfil{
+	min-width: -moz-available;
+	height: 30px;
+	border-radius: 14px;
+	color: #fff;
+	background-color: #26ae60;
+	border: none;
+}
+
+button{
+	font-family: 'Franklin Gothic Bold';
+}
+
+#btnUserMenu{
+	 height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+}
+
+input:focus, select:focus, button:focus{
+    outline: none;
+}
+
+#btnSearch{
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    color: #FFF;
+    background-color: #27ae60;
+    margin-top: 10px;
+    border-radius: 10px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 35px;
+}
+
+.divContent{
+	background-color: #ECF0F1; 
+	padding: 4%
+}
+
+#divResults{
+	padding-top: 20px;
+}
+
+.divInfo{
+	margin-left: 20px;
+	max-width: 80%;
+}
+
+.search-poster{
+	padding: 10px;
+	height: 260px;
+	width: 145px;
+	border-bottom-left-radius: 10px;
+	border-top-left-radius: 10px;
+	background-color: rgba(0, 0, 0, 0.7);
+}
+
+.search-poster div{
+	display: flex;
+	justify-content: center;
+
+	color: #FFFFFF;
+	font-family: "Gothic A1";
+}
+
+#divResults .row{
+	background-color: #FFFFFF;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	margin-bottom: 30px;
+}
+
+#divFaixa{
+    background-color:#000;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 40px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+#divFaixa #divAccessibility{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#divFaixa #divAccessibility .div-font-size{
+    height: 20px;
+    width: 20px;
+    border-radius: 10px;
+    background-color: #27ae60;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    align-self: center;
+}
+
+#divFaixa #divAccessibility label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+    color: #FFF;
+}
+
+.navbar{
+	background-color: #26AE60;
+	font-size: 1.15rem;
+    height: 73px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 40px;
+}
+
+.navbar .div-menu{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.navbar .div-menu a{
+	text-decoration: none;
+}
+
+.navbar .div-menu .txt-menu-item{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #FFF;
+    margin-right: 30px;
+}
+
+.mode-icon{
+    color:  #FFF;
+    font-size: 18px !important;
+}
+
+
