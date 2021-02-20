@@ -20,11 +20,11 @@ class SeriesController{
         var seasons = [];
 
         if(seasonsData){
-          seasonsData.forEach(async (season) => {
+          const promise = seasonsData.map(async season => {
+
+            const getEpisodesUrl = `${tmdb.baseUrl}/tv/${seriesId}/season/${season.season_number}?api_key=${tmdb.apiKey}&language=pt-BR`;
             
-            const episodesResponse = await axios.get(
-              `${tmdb.baseUrl}/tv/${seriesId}/season/${season.season_number}?api_key=${tmdb.apiKey}&language=pt-BR`,
-            );  
+            return axios.get(getEpisodesUrl);
 
             // console.log('EPISÓDIOS: ', episodesResponse.data.episodes);
 
@@ -35,9 +35,13 @@ class SeriesController{
               season_number: season.season_number,
               episodes: episodesResponse.data.episodes,
             });
+          })
 
-          });
-        }
+          Promise.all(promise).then(
+            results => console.log(results.data)
+          );
+
+        } 
 
       }
 
