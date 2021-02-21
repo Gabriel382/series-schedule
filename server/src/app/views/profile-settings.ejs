@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Home - Maratomator</title>
+        <link rel="icon" href="/img/logo-icon.png">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="../css/main.css" />
+        <link rel="stylesheet" href="../css/profile-settings.css"/>
+
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"> </script>
+    </head>
+    <body id="profile-settings">
+        <div id="divContainer">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+                <div class="navbar">                        
+                    <a href="index.html"><img src="/img/name_with_logo.png" class="logo-image" alt="Logo Maratomator"></a>
+                    <div class="div-menu">
+                        <a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+                        <a href=""><h2 class="txt-menu-item">Buscar</h2></a>
+                    </div>                      
+                    <div class="div-menu">
+                        <input class="search-input">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>
+                    <div class="div-menu">
+                    </div>          
+                </div>
+            </nav>
+
+            <div class="div-section-title">
+                <div class="div-bar-icon"></div>
+                <div><h1 class="txt-section-title">Informações de Apresentação</h1></div>
+            </div>
+            <div class="div-centered-info-grid">
+                <div class="centered">
+                    <img alt="" class="user-image row" src="/img/user.jpg">
+                </div>
+                <br>
+                <div class="grid-container">
+                        <div class="txt-menu-item">Email:</div>
+                        <div class="txt-menu-item"><%= email %></div>
+                        <div class="txt-menu-item">Login:</div>
+                        <div><input id="txtLogin" class="data-input" value="<%= login %>"></div>
+                </div>
+            </div>
+
+            <div class="div-section-title">
+                <div class="div-bar-icon"></div>
+                <div><h1 class="txt-section-title">Informações de Contato</h1></div>
+            </div>
+            <div class="div-info-grid">
+                <div class="grid-container">
+                    <div class="txt-menu-item">Nome:</div>
+                    <div><input id="txtName" class="data-input" value="<%= name %>"></div>
+                    <div class="txt-menu-item">Sobrenome:</div>
+                    <div><input id="txtLastName" class="data-input" value="<%= last_name %>"></div>
+                    <div class="txt-menu-item">Cidade:</div>
+                    <div><input id="txtCity" class="data-input" value="<%= city %>"></div>
+                    <div class="txt-menu-item">Estado:</div>
+                    <div><input id="txtState" class="data-input" value="<%= state %>"></div>
+                    <div class="txt-menu-item">Data de Nascimento:</div>
+                    <div><input id="txtBirthDate" class="data-input" value="<%= birth_date %>"></div>                    
+                </div>
+            </div>
+            <div class="div-centered-info-grid">
+                <button type="button"  class="centered buttonText" onclick="save('<%= userId %>')">Salvar</button>
+            </div>
+        </div>
+        <!--Custom js-->
+        <script src="node_modules/layout-management/index.js"></script>
+        <script>
+            function save(userId){
+                 $.ajax({
+                    type: "POST",
+                    url: `http://localhost:4444/saveprofile`,
+                    data: JSON.stringify({
+                        userId: userId, 
+                        login: $('#txtLogin').val(),
+                        name: $('#txtName').val(),
+                        last_name: $('#txtLastName').val(),
+                        city: $('#txtCity').val(),
+                        state: $('#txtState').val(),
+                        birth_date: $('#txtBirthDate').val()
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                })
+                alert("Dados salvos com sucesso!");
+            }
+        </script>
+    </body>
+</html>

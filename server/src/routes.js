@@ -2,6 +2,7 @@ import { Router } from 'express';
 import SeriesController from './app/controllers/SeriesController';
 import UserController from './app/controllers/UserController';
 import EpisodeController from './app/controllers/EpisodeController';
+import ProfileController from './app/controllers/ProfileController';
 import User from './app/models/User';
 
 const routes = new Router();
@@ -16,5 +17,11 @@ routes.get('/:userId/series/:seriesId/season/:seasonNumber/episode/:episodeNumbe
 // Marcar episódio como visto
 // routes.post('/userId:/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.view);
 routes.post('/watch', EpisodeController.view);
+
+//Acessar página de perfil do usuário
+routes.get('/profile/:userId', ProfileController.index);
+
+//Salvar perfil
+routes.post('/saveprofile', ProfileController.save);
 
 export default routes;
