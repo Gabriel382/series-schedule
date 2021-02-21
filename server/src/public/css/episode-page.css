@@ -505,6 +505,16 @@ footer div{
     justify-content: center;
 }
 
+.action-button{
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    outline: 0;
+}
+
 html, body{
     height: 100%;
 }

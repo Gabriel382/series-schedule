@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title><%= seriesTitle %> <%= season_number %>x<%= episode_number %> - Maratomator</title>
+        <title><%= seriesTitle %> <%= seasonNumber %>x<%= episodeNumber %> - Maratomator</title>
         <link rel="icon" href="/img/logo-icon.png">
         
         <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -13,7 +13,15 @@
         <link rel="stylesheet" href="/css/main.css" />
         <link rel="stylesheet" href="/css/episode-page.css" />
 
+        <!-- Ícones -->
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+        <!-- jQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+        
     </head>
     <body id="episode-page">
         <div id="divContainer">
@@ -46,30 +54,46 @@
 
             <div id="divBanner" style="background-image: url(<%= banner %>);">
                 <div id="divNextEpisode">
-                    <% var previous_episode = episode_number - 1 %>
-                    <% var next_episode = episode_number + 1 %>
-                    <a href="/series/<%= seriesId %>/season/<%= season_number %>/episode/<%= previous_episode %>">
+                    <% var previousEpisode = episodeNumber - 1 %>
+                    <% var nextEpisode = episodeNumber + 1 %>
+                    <a href="/<%= userId %>/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= previousEpisode %>">
                         <i class="material-icons icon">keyboard_arrow_left</i>
                     </a>
-                    <a href="/series/<%= seriesId %>/season/<%= season_number %>/episode/<%= next_episode %>">
+                    <a href="/<%= userId %>/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= nextEpisode %>">
                         <i class="material-icons icon">keyboard_arrow_right</i>
                     </a>
                 </div>
                 <div id="txtTitle">
-                    <a href="/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= season_number %></h2></a>
+                    <a href="/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= seasonNumber %></h2></a>
                     <h1 id="txtEpisodeTitle">
-                        <b><%= season_number %>x<%= episode_number %></b>
+                        <b><%= seasonNumber %>x<%= episodeNumber %></b>
                         <%= name %>
                     </h1>
                 </div>
                 <div id="divSeriesHeader">
                     <div id="divNumbers">
                         <div class="div-number">
-                            <i class="material-icons icon">check_circle_outline</i>
-                            <div class="div-number-info">
-                                <h4 class="txt-number-info-text">Marcar</h4>
-                                <h5 class="txt-number-info-label">como visto</h5>
-                            </div>
+                            <% if(watched) { %>
+                                <button disabled type="button" class="action-button">
+                                    <i id="check-icon" class="material-icons icon">check_circle</i>
+                                </button>
+                                <div class="div-number-info">
+                                    <h4 id="check-episode-text" class="txt-number-info-text">Episódio</h4>
+                                    <h5 id="check-episode-subtext" class="txt-number-info-label">já visto</h5>
+                                </div>
+                            <% } else { %>
+                                <button 
+                                    onclick="watchEpisode('<%= episodeId %>', '<%= seriesId %>', '<%= userId %>')" 
+                                    type="button" 
+                                    class="action-button">
+                                        <i id="check-icon" class="material-icons icon">check_circle_outline</i>
+                                </button>
+                                <div class="div-number-info">
+                                    <h4 id="check-episode-text" class="txt-number-info-text">Marcar</h4>
+                                    <h5 id="check-episode-subtext" class="txt-number-info-label">como visto</h5>
+                                </div>
+                            <% } %>
+                            
                         </div>
                         <div class="div-number">
                             <i class="material-icons icon">star_rate</i>
@@ -104,12 +128,14 @@
                     <div id="divSpecificInformations">
                         <div class="div-row">
                             <h5 class="txt-label">Exibido em: </h5>
-                            <h5 class="txt-info"><%= air_date %></h5>
+                            <h5 class="txt-info"><%= airDate %></h5>
                         </div>
-                        <div class="div-row">
-                            <h5 class="txt-label">Marcado em:</h5>
-                            <h5 class="txt-info">10 Jan 2021</h5>
-                        </div>
+                        <% if(watched) { %> 
+                            <div class="div-row">
+                                <h5 class="txt-label">Marcado em:</h5>
+                                <h5 class="txt-info"><%= watchDate %></h5>
+                            </div>
+                        <% } %>
                     </div>
                     <p id="txtBannerSubtitle"><%= sinopsis %></p>
                 </div>
@@ -123,19 +149,28 @@
             </footer>                          
         </div>
         <script>
-            var acc = document.getElementsByClassName("div-season");
-            var i;
-            
-            for (i = 0; i < acc.length; i++) {
-              acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                  panel.style.display = "none";
-                } else {
-                  panel.style.display = "block";
-                }
-              });
+            function watchEpisode(episodeId, seriesId, userId) {
+                $.ajax({
+                    type: "POST",
+                    url: `http://localhost:4444/watch`,
+                    data: JSON.stringify({
+                        userId: userId, 
+                        episodeId: episodeId,
+                        seriesId: seriesId,
+                        rating: 10,
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                })
+                .done(function(msg){
+                    $("#check-icon").text("check_circle");
+                    $("#check-episode-text").text("Episódio");
+                    $("#check-episode-subtext").text("já visto");
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    console.log(msg);
+                });
+
+                // console.log(episode_id);
             }
         </script>
         <!--Custom js-->

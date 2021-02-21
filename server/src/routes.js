@@ -15,9 +15,10 @@ const routes = new Router();
 routes.get('/series/:id', SeriesController.index);
 
 // Acessar página de episódio
-routes.get('/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.index);
+routes.get('/:userId/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.index);
 
 // Marcar episódio como visto
 // routes.post('/userId:/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.view);
+routes.post('/watch', EpisodeController.view);
 
 export default routes;

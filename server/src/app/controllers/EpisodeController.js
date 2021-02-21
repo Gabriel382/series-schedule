@@ -1,38 +1,70 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
 import View from '../models/View';
+import formatSQLdate from '../../utils/formatSQLdate';
+import formatTMDBdate from '../../utils/formatTMDBdate';
 class EpisodeController{
 
+  // ROTA: /series/:seriesId/season/:seasonNumber/episode/:episodeNumber
+  // Função para retornas as informações de um episódio
   async index(req, res) {
-    const seriesId = req.params.seriesId;
-    const seasonNumber = req.params.seasonNumber;
-    const episodeNumber = req.params.episodeNumber;
+    
+    // Recebendo parâmetros
+    const {userId, seriesId, seasonNumber, episodeNumber} = req.params;
 
     try {
+
+      // Trazendo informações da série do TMDB
       const seriesResponse = await axios.get(
         `${tmdb.baseUrl}/tv/${seriesId}?api_key=${tmdb.apiKey}&language=pt-BR`
       );
-
+      
+      // Trazendo informações do episódio do TMDB
       const episodeResponse = await axios.get(
         `${tmdb.baseUrl}/tv/${seriesId}/season/${seasonNumber}/episode/${episodeNumber}?api_key=${tmdb.apiKey}&language=pt-BR`
       );
 
       if(seriesResponse && episodeResponse) {
 
+        var watched = false; // se já viu ou não o episódio
+        var watchDate = ''; // data de visualização do episódio
+
+        var episodeId = episodeResponse.data.id; // id do episódio no TMDB
+
+        // Consulta interna pra trazer informações
+        // do registro de visualização do episódio
+        const episode = await View.findOne({
+          where: {
+            episode_id: episodeId,
+            user_id: userId,
+          }
+        });
+
+        // Mudando a variável viewed caso a consulta retorne algo
+        // ou seja, caso o usuário tenha visto o episódio
+        if(episode){
+          watched = true;
+          watchDate = episode.createdAt;
+        }
+
+        // Dados enviados para o front
         const data = {
+          userId: userId,
           name: episodeResponse.data.name,
-          episode_number: episodeResponse.data.episode_number,
-          season_number: episodeResponse.data.season_number,
+          watched: watched,
+          watchDate: formatSQLdate(watchDate),
+          episodeId: episodeResponse.data.id,
+          episodeNumber: episodeResponse.data.episode_number,
+          seasonNumber: episodeResponse.data.season_number,
           sinopsis: episodeResponse.data.overview,
-          air_date: episodeResponse.data.air_date,
+          airDate: formatTMDBdate(episodeResponse.data.air_date),
           banner: `${tmdb.imagesPath}` + episodeResponse.data.still_path,
           seriesId: seriesResponse.data.id,
           seriesTitle: seriesResponse.data.name,
           seriesPoster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
         }
-
-        console.log('DATA EP: ', data);
-  
+        
+        // Retornando os dados a serem carregados na página EJS
         res.render('episode-page', data);
 
       }
@@ -44,17 +76,29 @@ class EpisodeController{
   }
 
   // Marcar episódio como visto:
-  // async view(req, res) {
+  async view(req, res) {
+    
+    // Recebendo parâmetros trazidos da rota
+    const {episodeId, seriesId, rating, userId} = req.body;
 
-  //   const view = await View.create({
-  //     user_id: 1, 
-  //     episode_id: 1234,
-  //     series_id: 12,
-  //     rating: 8,
-  //   });
+    try {
+      // Criando o registro no banco de que o usuário o episódio
+      const watch = await View.create({
+        user_id: userId, 
+        episode_id: episodeId,
+        series_id: seriesId,
+        rating: rating,
+      });
 
-  //   return res.json(view);
-  // }
+      // console.log('VIEW: ', view);
+
+      // Retornando o registro cadastrado
+      return res.json(watch);
+
+    }catch(error){
+      console.log('watchEpisode error: ', error);
+    }
+  }
 
 }
 
