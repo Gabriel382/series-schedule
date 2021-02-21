@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="/css/main.css" />
-        <link rel="stylesheet" href="../css/tv-series-page.css" />
+        <link rel="stylesheet" href="/css/tv-series-page.css" />
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
     </head>
@@ -146,9 +146,9 @@
 
                                 <!--LISTA DE EPISÓDIOS-->
 
-                                <% season.episodes.forEach((episode) => { %>
-                                
-                                    <a href="/series/<%= id %>/season/<%= season.season_number %>/episode/<%= episode.episode_number %>">
+                                <% season.episodes.forEach((episode) => { %>                           
+                                    <a href=
+                                        "/<%= userId %>/series/<%= id %>/season/<%= season.season_number %>/episode/<%= episode.episode_number %>">
                                         <div class="div-episode">
                                             <img class="img-episode-banner" src="<%= 
                                                 episode.still_path 
@@ -156,13 +156,10 @@
                                                 : '/img/background-placeholder.jpg'
                                             %>" alt="" />
                                             <div class="div-episode-info">
-                                                <h4><%# episode_route = '/series/' + id '/season/' + season.season_number + '/episode/' + episode.episode_number %></h4>
-                                                
-                                                    <h6 class="txt-episode-title">
-                                                        <b><%= season.season_number %>x<%= episode.episode_number%></b>
-                                                        <%= episode.name %>
-                                                    </h6>
-                                                
+                                                <h6 class="txt-episode-title">
+                                                    <b><%= season.season_number %>x<%= episode.episode_number%></b>
+                                                    <%= episode.name %>
+                                                </h6>
                                                 <div class="div-episode-footer">
                                                     <div class="div-episode-rating">
                                                         <i class="material-icons episode-item-icon">star_rate</i>
@@ -174,7 +171,6 @@
                                             </div>
                                         </div>
                                     </a>
-
                                 <% }) %>
 
                                 <i class="fas fa-caret-square-right fa-3x icon"></i>

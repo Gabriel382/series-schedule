@@ -5,7 +5,7 @@ class SeriesController{
 
   async index(req, res){
 
-    const id = req.params.id;
+    const {userId, id} = req.params;
     let seasons = [];
 
     try {
@@ -35,7 +35,6 @@ class SeriesController{
                 responses.forEach((response) => {
                   // console.log(response.data);
                   seasons.push({
-                    // episode_count: response.data.episode_count,
                     id: response.data.id,
                     poster: response.data.poster_path,
                     season_number: response.data.season_number,
@@ -62,6 +61,7 @@ class SeriesController{
         first_air_date: seriesResponse.data.first_air_date,
         in_production: seriesResponse.data.in_production,
         last_air_date: seriesResponse.data.last_air_date,
+        userId: userId,
       }
   
       // console.log('DATA FINAL:', data);
