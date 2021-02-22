@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="/css/main.css" />
+
         <link rel="stylesheet" href="/css/episode-page.css" />
 
         <!-- Ícones -->
@@ -64,7 +65,7 @@
                     </a>
                 </div>
                 <div id="txtTitle">
-                    <a href="/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= seasonNumber %></h2></a>
+                    <a href="/<%= userId %>/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= seasonNumber %></h2></a>
                     <h1 id="txtEpisodeTitle">
                         <b><%= seasonNumber %>x<%= episodeNumber %></b>
                         <%= name %>
@@ -149,6 +150,11 @@
             </footer>                          
         </div>
         <script>
+            function checkDarkTheme(){
+                var dark = localStorage.getItem('dark');
+                console.log('dark:', dark);
+            }
+
             function watchEpisode(episodeId, seriesId, userId) {
                 $.ajax({
                     type: "POST",
@@ -170,7 +176,6 @@
                     console.log(msg);
                 });
 
-                // console.log(episode_id);
             }
         </script>
         <!--Custom js-->

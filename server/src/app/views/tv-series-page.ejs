@@ -48,14 +48,14 @@
                 <%= banner ? banner : '/img/background-placeholder.jpg' %>)">
                 <div id="txtTitle">
                     <h1 id="txtSeriesTitle"><%= title %></h1>
-                    <h2 id="txtSeriesYear"><%= first_air_date.slice(0,4) %></h2>
+                    <h2 id="txtSeriesYear"><%= first_air_date.split('/')[2] %></h2>
                 </div>
                 <div id="divSeriesHeader">
                     <div id="divNumbers">
                         <div class="div-number">
                             <i class="material-icons icon">access_time_filled</i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">4d 2h 20m</h4>
+                                <h4 class="txt-number-info-text"><%= bingeSize %></h4>
                                 <h5 class="txt-number-info-label">Maratona</h5>
                             </div>
                         </div>

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
+import formatTMDBdate from '../../utils/formatTMDBdate';
 
 class SeriesController{
 
@@ -48,6 +49,19 @@ class SeriesController{
 
       }
 
+      var numberOfEpisodes = seriesResponse.data.number_of_episodes;
+      var episodeRunTime = seriesResponse.data.episode_run_time[0];
+      var time = numberOfEpisodes * episodeRunTime;
+      
+      var days = Math.floor(time/24/60);
+      var hours = Math.floor(time/60%24);
+      var minutes = Math.floor(time%60);
+
+      var bingeSize = 
+        (days ? days + "d " : '') 
+        + (hours ? hours + "h " : '') 
+        + (minutes ? minutes + "min" : '') 
+
       const data = {
         id: seriesResponse.data.id,
         title: seriesResponse.data.name,
@@ -58,10 +72,11 @@ class SeriesController{
         genres: seriesResponse.data.genres,
         networks: seriesResponse.data.networks,
         episode_run_time: seriesResponse.data.episode_run_time,
-        first_air_date: seriesResponse.data.first_air_date,
+        first_air_date: formatTMDBdate(seriesResponse.data.first_air_date),
         in_production: seriesResponse.data.in_production,
-        last_air_date: seriesResponse.data.last_air_date,
+        last_air_date: formatTMDBdate(seriesResponse.data.last_air_date),
         userId: userId,
+        bingeSize: bingeSize,
       }
   
       // console.log('DATA FINAL:', data);
