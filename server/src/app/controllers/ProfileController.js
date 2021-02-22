@@ -34,9 +34,9 @@ class ProfileController{
 
   async save(req, res){
     
-    const {userId, login, name, last_name, city, state, birth_date} = req.body;
+    const {userId, login, name, last_name, city, state} = req.body;
 
-    await user.update({login: login, name: name, last_name: last_name, city: city, state: state, birth_date: birth_date}, {where: {id: userId}});
+    await user.update({login: login, name: name, last_name: last_name, city: city, state: state}, {where: {id: userId}});
   } 
 
 }
