@@ -3,6 +3,7 @@ import tmdb from '../../config/tmdb';
 import View from '../models/View';
 import formatSQLdate from '../../utils/formatSQLdate';
 import formatTMDBdate from '../../utils/formatTMDBdate';
+import formatBrazilianFormatDate from '../../utils/formatTMDBdate';
 class EpisodeController{
 
   // ROTA: /series/:seriesId/season/:seasonNumber/episode/:episodeNumber
@@ -10,7 +11,10 @@ class EpisodeController{
   async index(req, res) {
     
     // Recebendo parâmetros
-    const {userId, seriesId, seasonNumber, episodeNumber} = req.params;
+    const {exuserId, seriesId, seasonNumber, episodeNumber} = req.params;
+    var userId = -1
+    if(req.cookies['userId'] != undefined)
+      var userId = req.cookies['userId']
 
     try {
 
