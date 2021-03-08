@@ -212,6 +212,7 @@
                         <% }); %>
                     </div>
                 </div>
+                <div id="paddingspace"></div>
             </div>
             <footer>
                 <div class="centered">
@@ -221,6 +222,10 @@
                 </div>
             </footer>       
         </div>
+        <script>
+            if(performance.navigation.type == 2)
+              location.reload(true)
+        </script>
         <script>
             var acc = document.getElementsByClassName("div-season");
             var i;
@@ -317,10 +322,12 @@
         </script>
         <!--Custom js-->
         <script src="/js/layout-management/index.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
         <script>
-            if(performance.navigation.type == 2)
-              location.reload(true)
-        </script> 
+            var t1 = new TimelineMax()
+            t1.fromTo('#divBanner', 1, {}, {height : '70vh', ease: 'Power2.easeInOut'}).fromTo(
+                '#imgPoster', 3, {opacity: 0}, {opacity: 100, ease: 'Power1.easeInOut'})
+        </script>
     </body>
 
 </html>

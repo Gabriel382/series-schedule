@@ -148,7 +148,9 @@
                     </div>
                     <p id="txtBannerSubtitle"><%= sinopsis %></p>
                 </div>
-            </div>   
+                <div id="paddingspace"></div>
+            </div>
+            
             <footer>
                 <div class="centered">
                     <img alt="" src="/img/insta_logo.png">
@@ -199,6 +201,12 @@
         </script>
         <!--Custom js-->
         <script src="/js/layout-management/index.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+        <script>
+            var t1 = new TimelineMax()
+            t1.fromTo('#divBanner', 1, {}, {height : '70vh', ease: 'Power2.easeInOut'}).fromTo(
+                '#imgPoster', 3, {opacity: 0}, {opacity: 100, ease: 'Power1.easeInOut'})
+        </script>
     </body>
 
 </html>
