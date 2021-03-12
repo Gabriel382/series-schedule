@@ -4,6 +4,7 @@ import UserController from './app/controllers/UserController';
 import EpisodeController from './app/controllers/EpisodeController';
 import ProfileController from './app/controllers/ProfileController';
 import User from './app/models/User';
+import AuthenticationController from './app/controllers/AuthenticationController';
 
 const routes = new Router();
 
@@ -23,5 +24,11 @@ routes.get('/profile/:userId', ProfileController.index);
 
 //Salvar perfil
 routes.post('/saveprofile', ProfileController.save);
+
+//Acessar página de Login e Cadastro
+routes.get('/login', AuthenticationController.auth_page);
+
+//Fazer o cadastro de um novo usuário
+routes.post('/sign_up', AuthenticationController.sign_up);
 
 export default routes;

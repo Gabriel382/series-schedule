@@ -161,7 +161,7 @@
 	height: 25px;
 	width: 200px;
 	border-radius: 0.4em;
-	margin: 1em;
+	margin: 0.5em 0 0.5em 0;
 	background-repeat: no-repeat;
 	background-size: 12%;
 	background-position-y: center;
@@ -376,4 +376,17 @@ footer div{
 hr{
 	height: 5px;
 	background-color: #26ae60;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.row-element{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 1.2em;
 }
