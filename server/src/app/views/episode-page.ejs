@@ -52,8 +52,9 @@
                     </div>			
 				</div>
             </nav>
-
-            <div id="divBanner" style="background-image: url(<%= banner %>);">
+            
+            <div id="divBanner" style="background-image: url(
+                <%= (banner != 'https://image.tmdb.org/t/p/originalnull') ? banner : '/img/background-placeholder.jpg' %>)">
                 <div id="divNextEpisode">
                     <% var previousEpisode = episodeNumber - 1 %>
                     <% var nextEpisode = episodeNumber + 1 %>
@@ -73,36 +74,39 @@
                 </div>
                 <div id="divSeriesHeader">
                     <div id="divNumbers">
-                        <div class="div-number">
-                            <% if(watched) { %>
-                                <button disabled type="button" class="action-button">
-                                    <i id="check-icon" class="material-icons icon">check_circle</i>
-                                </button>
-                                <div class="div-number-info">
-                                    <h4 id="check-episode-text" class="txt-number-info-text">Episódio</h4>
-                                    <h5 id="check-episode-subtext" class="txt-number-info-label">já visto</h5>
-                                </div>
-                            <% } else { %>
-                                <button 
-                                    onclick="watchEpisode('<%= episodeId %>', '<%= seriesId %>', '<%= userId %>')" 
-                                    type="button" 
-                                    class="action-button">
-                                        <i id="check-icon" class="material-icons icon">check_circle_outline</i>
-                                </button>
-                                <div class="div-number-info">
-                                    <h4 id="check-episode-text" class="txt-number-info-text">Marcar</h4>
-                                    <h5 id="check-episode-subtext" class="txt-number-info-label">como visto</h5>
-                                </div>
-                            <% } %>
-                            
-                        </div>
-                        <div class="div-number">
-                            <i class="material-icons icon">star_rate</i>
-                            <div class="div-number-info">
-                                <h4 class="txt-number-info-text">9.25</h4>
-                                <h5 class="txt-number-info-label">Minha Nota</h5>
+                            <% if(userId != undefined && userId >= 0){ %>
+                            <div class="div-number">
+                                <% if(watched) { %>
+                                    <button disabled type="button" class="action-button">
+                                        <i id="check-icon" class="material-icons icon">check_circle</i>
+                                    </button>
+                                    <div class="div-number-info">
+                                        <h4 id="check-episode-text" class="txt-number-info-text">Episódio</h4>
+                                        <h5 id="check-episode-subtext" class="txt-number-info-label">já visto</h5>
+                                    </div>
+                                <% } else { %>
+                                    <button 
+                                        onclick="watchEpisode('<%= episodeId %>', '<%= seriesId %>', '<%= userId %>')" 
+                                        type="button" 
+                                        class="action-button">
+                                            <i id="check-icon" class="material-icons icon">check_circle_outline</i>
+                                    </button>
+                                    <div class="div-number-info">
+                                        <h4 id="check-episode-text" class="txt-number-info-text">Marcar</h4>
+                                        <h5 id="check-episode-subtext" class="txt-number-info-label">como visto</h5>
+                                    </div>
+                                <% } %>
+                                
                             </div>
-                        </div>
+                            
+                            <div class="div-number">
+                                <i class="material-icons icon">star_rate</i>
+                                <div class="div-number-info">
+                                    <h4 class="txt-number-info-text">9.25</h4>
+                                    <h5 class="txt-number-info-label">Minha Nota</h5>
+                                </div>
+                            </div>
+                        <% } %>
                         <div class="div-number">
                             <i class="material-icons icon">stars</i>
                             <div class="div-number-info">
@@ -123,7 +127,11 @@
 
             <div id="divContent">
                 <section id="divLeftSideBar">
-                    <img id="imgPoster" src="<%= seriesPoster %>" alt=""/>
+                    <img id="imgPoster" src="<%= 
+                    (seriesPoster != 'https://image.tmdb.org/t/p/originalnull')
+                    ? seriesPoster
+                    : '/img/background-placeholder.jpg'
+                    %>" alt="" />
                 </section>
                 <div id="divInformations">
                     <div id="divSpecificInformations">
@@ -131,16 +139,18 @@
                             <h5 class="txt-label">Exibido em: </h5>
                             <h5 class="txt-info"><%= airDate %></h5>
                         </div>
+                        <div class="div-row" id="text-marked">
                         <% if(watched) { %> 
-                            <div class="div-row">
                                 <h5 class="txt-label">Marcado em:</h5>
                                 <h5 class="txt-info"><%= watchDate %></h5>
-                            </div>
                         <% } %>
+                        </div>
                     </div>
                     <p id="txtBannerSubtitle"><%= sinopsis %></p>
                 </div>
-            </div>   
+                <div id="paddingspace"></div>
+            </div>
+            
             <footer>
                 <div class="centered">
                     <img alt="" src="/img/insta_logo.png">
@@ -153,6 +163,16 @@
             function checkDarkTheme(){
                 var dark = localStorage.getItem('dark');
                 console.log('dark:', dark);
+            }
+
+            var todaysdate = function dataAtualFormatada(){
+                let data = new Date(),
+                    dia  = data.getDate().toString(),
+                    diaF = (dia.length == 1) ? '0'+dia : dia,
+                    mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+                    mesF = (mes.length == 1) ? '0'+mes : mes,
+                    anoF = data.getFullYear();
+                return diaF+"/"+mesF+"/"+anoF;
             }
 
             function watchEpisode(episodeId, seriesId, userId) {
@@ -171,6 +191,7 @@
                     $("#check-icon").text("check_circle");
                     $("#check-episode-text").text("Episódio");
                     $("#check-episode-subtext").text("já visto");
+                    document.querySelector('#text-marked').innerHTML = '<h5 class="txt-label">Marcado em:</h5><h5 class="txt-info">' + todaysdate() + '</h5>'
                 })
                 .fail(function(jqXHR, textStatus, msg){
                     console.log(msg);
@@ -180,6 +201,12 @@
         </script>
         <!--Custom js-->
         <script src="/js/layout-management/index.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+        <script>
+            var t1 = new TimelineMax()
+            t1.fromTo('#divBanner', 1, {}, {height : '70vh', ease: 'Power2.easeInOut'}).fromTo(
+                '#imgPoster', 3, {opacity: 0}, {opacity: 100, ease: 'Power1.easeInOut'})
+        </script>
     </body>
 
 </html>

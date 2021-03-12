@@ -5,6 +5,8 @@ import path from 'path';
 
 import './database';
 
+
+
 class App {
   constructor() {
 
@@ -12,7 +14,8 @@ class App {
 
     this.middlewares();
     this.routes();
-
+    
+    
     this.server.use(express.static(__dirname + '/public'));
     this.server.use(bodyParser.urlencoded({ extended: true }));
     this.server.set('view engine', 'ejs') 

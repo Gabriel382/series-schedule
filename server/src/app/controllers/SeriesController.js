@@ -1,13 +1,52 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
 import formatTMDBdate from '../../utils/formatTMDBdate';
+import formatBrazilianDate from '../../utils/formatBrazilianDate';
+import View from '../models/View';
+import Series from '../models/Series';
+import List from '../models/List';
+
+var todaysdate = function dataAtualFormatada(){
+  let data = new Date(),
+      dia  = data.getDate().toString(),
+      diaF = (dia.length == 1) ? '0'+dia : dia,
+      mes  = (data.getMonth()+1).toString(), //+1 pois no getMonth Janeiro começa com zero.
+      mesF = (mes.length == 1) ? '0'+mes : mes,
+      anoF = data.getFullYear();
+  //return anoF+"-"+mesF+"-"+diaF;
+  return "2021-02-27 00:00:00-03"
+}
+
+var checkMarkedEpisode = async function(userId, episode_id, series_id){
+
+  // Consulta interna pra trazer informações
+  // do registro de visualização do episódio
+  const episode = await View.findOne({
+    where: {
+      episode_id: episode_id,
+      user_id: userId,
+      series_id: series_id,
+    }
+  });
+
+  if(episode){
+    return true;
+  } else {
+    return false
+  }
+}
 
 class SeriesController{
 
   async index(req, res){
 
-    const {userId, id} = req.params;
+    const {exuserId, id} = req.params;
+    var userId = -1
+    if(req.cookies['userId'] != undefined)
+      var userId = req.cookies['userId']
     let seasons = [];
+
+    var serieadded = false;
 
     try {
       const seriesResponse = await axios.get(
@@ -49,6 +88,21 @@ class SeriesController{
 
       }
 
+      // Consulta interna pra trazer informações
+      // do registro de visualização do episódio
+      const serieentry = await Series.findOne({
+        where: {
+          series_id: seriesId,
+          user_id: userId,
+          list_id: 1
+        }
+      });
+      // Mudando a variável de serie adicionada para personalizar a pagina
+      if(serieentry){
+        serieadded = true;
+      }
+
+      
       var numberOfEpisodes = seriesResponse.data.number_of_episodes;
       var episodeRunTime = seriesResponse.data.episode_run_time[0];
       var time = numberOfEpisodes * episodeRunTime;
@@ -77,9 +131,33 @@ class SeriesController{
         last_air_date: formatTMDBdate(seriesResponse.data.last_air_date),
         userId: userId,
         bingeSize: bingeSize,
+        seriesId: seriesId,
+        list_id: 1,
+        serieadded: serieadded,
       }
-  
-      // console.log('DATA FINAL:', data);
+
+      // For each season, each episode
+      for(let i = 0; i < data.seasons.length; i++){
+        let season = data.seasons[i]
+        let totaleps = season.episodes.length
+          let watchedeps = 0.0
+          for(let j = 0; j < season.episodes.length; j++){  
+            let episode = season.episodes[j]
+            episode.air_date = formatBrazilianDate(episode.air_date)
+            const episodequery = await View.findOne({
+              where: {
+                episode_id: episode.id,
+                user_id: userId,
+                series_id: seriesId,
+              }
+            });
+          
+            if(episodequery){
+              watchedeps += 1.0
+            } 
+          }
+          season.progress = ((watchedeps/totaleps)*100).toFixed(1) + "%"
+      }
   
       res.render('tv-series-page', data);
 
@@ -88,6 +166,77 @@ class SeriesController{
     }
     
   }
+
+// Add serie
+async view(req, res) {
+    
+  // Recebendo parâmetros trazidos da rota
+  const list_id = req.body.list_id
+  const seriesId = req.body.seriesId
+  const average_rating = req.body.average_rating
+  const userId = req.body.userId
+
+  try {
+
+    // Cria Lista assistindo se nao existir
+    /*List
+      .findOrCreate({where: {name: 'Assistindo'}, defaults: {
+        description: 'Series que usuario esta assistindo'
+      }})
+      .then(([lista, created]) => {
+        ourlist_id = lista.id
+      })
+    */
+
+    // Criando o registro no banco de que o usuário o episódio
+    const serie = await Series.create({
+      user_id: userId, 
+      list_id: list_id,
+      series_id: seriesId,
+      average_rating: average_rating,
+    });
+
+    // console.log('VIEW: ', view);
+
+    // Retornando o registro cadastrado
+    return res.json(serie);
+
+  }catch(error){
+    console.log('watchEpisode error: ', error);
+  }
+  
+}
+
+// Remover serie:
+async removes(req, res) {
+    
+  // Recebendo parâmetros trazidos da rota
+  const list_id = req.body.list_id
+  const seriesId = req.body.seriesId
+  const average_rating = req.body.average_rating
+  const userId = req.body.userId
+
+  try {
+    // Criando o registro no banco de que o usuário o episódio
+    const serie = await Series.destroy({
+      where: {
+        user_id: userId, 
+        list_id: list_id,
+        series_id: seriesId,
+      }
+    });
+
+    // console.log('VIEW: ', view);
+
+    // Retornando o registro cadastrado
+    return res.json(serie);
+
+  }catch(error){
+    console.log('watchEpisode error: ', error);
+  }
+  
+}
+
 
 }
 

@@ -130,7 +130,7 @@
     background-repeat: no-repeat;
     background-position-y: center;
     width: 100%;
-    height: 70vh;
+    height: 35vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -260,6 +260,14 @@
     height: 250px;
     width: 167px;
     border-radius: 10px;
+}
+
+#imgPoster{
+    opacity: 0;
+}
+
+#paddingspace{
+    height:50vh;
 }
 
 #divContent #divLeftSideBar #btnAddSeries {
