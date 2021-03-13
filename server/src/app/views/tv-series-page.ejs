@@ -14,8 +14,16 @@
         <link rel="stylesheet" href="/css/tv-series-page.css" />
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
+
+        <!-- jQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+        </script>
+        
     </head>
-    <body id="episode-page">
+    <body id="tv-series-page">
         <div id="divContainer">
             <div id="divFaixa">
                 <div id="divAccessibility">
@@ -45,7 +53,7 @@
             </nav>
 
             <div id="divBanner" style="background-image: url(
-                <%= banner ? banner : '/img/background-placeholder.jpg' %>)">
+                <%= (banner != 'https://image.tmdb.org/t/p/originalnull') ? banner : '/img/background-placeholder.jpg' %>)">
                 <div id="txtTitle">
                     <h1 id="txtSeriesTitle"><%= title %></h1>
                     <h2 id="txtSeriesYear"><%= first_air_date.split('/')[2] %></h2>
@@ -59,13 +67,15 @@
                                 <h5 class="txt-number-info-label">Maratona</h5>
                             </div>
                         </div>
-                        <div class="div-number">
-                            <i class="material-icons icon">star_rate</i>
-                            <div class="div-number-info">
-                                <h4 class="txt-number-info-text">8.87</h4>
-                                <h5 class="txt-number-info-label">Minha Média</h5>
+                        <% if(userId != undefined && userId >= 0){ %>
+                            <div class="div-number">
+                                <i class="material-icons icon">star_rate</i>
+                                <div class="div-number-info">
+                                    <h4 class="txt-number-info-text">8.87</h4>
+                                    <h5 class="txt-number-info-label">Minha Média</h5>
+                                </div>
                             </div>
-                        </div>
+                        <% } %>
                         <div class="div-number">
                             <i class="material-icons icon">stars</i>
                             <div class="div-number-info">
@@ -86,10 +96,31 @@
 
             <div id="divContent">
                 <section id="divLeftSideBar">
-                    <img id="imgPoster" src=<%= poster %> alt="" />
+                    <img id="imgPoster" src="<%= 
+                    (poster != 'https://image.tmdb.org/t/p/originalnull')
+                    ? poster
+                    : '/img/background-placeholder.jpg'
+                    %>" alt="" />
+                    
+                    <% if(userId != undefined && userId >= 0){ %>
                     <div id="btnAddSeries">
-                        <h3 id="txtAddSeries">Adicionar</h3>
+                        <% if(!serieadded){ %>
+                        <button 
+                                        onclick="AddSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')" 
+                                        type="button" 
+                                        class="action-button" id="addorremove">
+                                        <h3 id="txtAddSeries">Adicionar</h3>
+                        </button>
+                        <% } else {%>
+                            <button 
+                                onclick="RemoveSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')" 
+                                type="button" 
+                                class="action-button" id="addorremove">
+                                <h3 id="txtAddSeries">Remover</h3>
+                            </button>
+                        <% } %>
                     </div>
+                    <% } %>
                 </section>
                 <div id="divInformations">
                     <div id="divGenres">
@@ -130,7 +161,8 @@
                             <h5 class="txt-season-name"><%= season.season_number %></h5>
                             <div class="div-right-side">
                                 <div class="w3-light-grey w3-round">
-                                    <div class="w3-container w3-round progress-bar" style="width: 10%">10%</div>
+                                    <div class="w3-container w3-round progress-bar" style="width: <%= season.progress %>;">
+                                        <%= season.progress %></div>
                                 </div>
                                 <div class="div-rating">
                                     <i class="material-icons s-icon">star_rate</i>
@@ -142,7 +174,7 @@
                         </div>
                         <div class="div-season-content">
                             <div class="div-episodes-grid">
-                                <i class="fas fa-caret-square-left fa-3x icon"></i>
+                                <!--<i class="fas fa-caret-square-left fa-3x icon"></i> arrow-->
 
                                 <!--LISTA DE EPISÓDIOS-->
 
@@ -173,13 +205,14 @@
                                     </a>
                                 <% }) %>
 
-                                <i class="fas fa-caret-square-right fa-3x icon"></i>
+                                <!--<i class="fas fa-caret-square-right fa-3x icon"></i> arrow -->
                             </div>
                         </div>
 
                         <% }); %>
                     </div>
                 </div>
+                <div id="paddingspace"></div>
             </div>
             <footer>
                 <div class="centered">
@@ -189,6 +222,10 @@
                 </div>
             </footer>       
         </div>
+        <script>
+            if(performance.navigation.type == 2)
+              location.reload(true)
+        </script>
         <script>
             var acc = document.getElementsByClassName("div-season");
             var i;
@@ -234,8 +271,63 @@
             console.log(walk);
             });
         </script>
+        <script>
+            function AddSerie(seriesId, list_id, userId) {
+                $.ajax({
+                    type: "POST",
+                    url: `http://localhost:4444/addserie`,
+                    data: JSON.stringify({
+                        userId: userId, 
+                        list_id: list_id,
+                        seriesId: seriesId,
+                        average_rating: 10,
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                })
+                .done(function(msg){
+                    let parentnode = document.querySelector("#addorremove").parentNode
+                    parentnode.removeChild(document.querySelector("#addorremove"))
+                    parentnode.innerHTML = "<button type='button' class='action-button' id='addorremove'> <h3 id='txtAddSeries'>Remover</h3> </button>"
+                    document.querySelector("#addorremove").onclick= function(){RemoveSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')}
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    console.log(msg);
+                });
+
+            }
+
+            function RemoveSerie(seriesId, list_id, userId) {
+                $.ajax({
+                    type: "POST",
+                    url: `http://localhost:4444/removeserie`,
+                    data: JSON.stringify({
+                        userId: userId, 
+                        list_id: list_id,
+                        seriesId: seriesId,
+                        average_rating: 10,
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                })
+                .done(function(msg){
+                    let parentnode = document.querySelector("#addorremove").parentNode
+                    parentnode.removeChild(document.querySelector("#addorremove"))
+                    parentnode.innerHTML = "<button type='button' class='action-button' id='addorremove'> <h3 id='txtAddSeries'>Adicionar</h3> </button>"
+                    document.querySelector("#addorremove").onclick= function(){AddSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')}
+                })
+                .fail(function(jqXHR, textStatus, msg){
+                    console.log(msg);
+                });
+
+            }
+        </script>
         <!--Custom js-->
-        <script src="/node_modules/layout-management/index.js"></script>
+        <script src="/js/layout-management/index.js"></script>
+        <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+        <script>
+            var t1 = new TimelineMax()
+            t1.fromTo('#divBanner', 1, {}, {height : '70vh', ease: 'Power2.easeInOut'}).fromTo(
+                '#imgPoster', 3, {opacity: 0}, {opacity: 100, ease: 'Power1.easeInOut'})
+        </script>
     </body>
 
 </html>
