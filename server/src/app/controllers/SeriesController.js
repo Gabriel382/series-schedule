@@ -74,11 +74,27 @@ class SeriesController{
 
                 responses.forEach((response) => {
                   // console.log(response.data);
+
+                  const episodesTMDB = response.data.episodes;
+                  const episodes = [];
+
+                  episodesTMDB.forEach(async (episodeTMDB) => {
+                    const watched = await View.findOne({
+                      where: {
+                        episode_id: episodeTMDB.id,
+                        user_id: userId,
+                      }
+                    });
+
+                    episodes.push({...episodeTMDB, watched: watched ? true : false});
+                    console.log('EP adicionado: ', episodeTMDB.episode_number);
+                  });
+
                   seasons.push({
                     id: response.data.id,
                     poster: response.data.poster_path,
                     season_number: response.data.season_number,
-                    episodes: response.data.episodes,
+                    episodes: episodes.sort(),
                   });
                 })
             }

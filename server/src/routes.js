@@ -3,16 +3,16 @@ import SeriesController from './app/controllers/SeriesController';
 import UserController from './app/controllers/UserController';
 import EpisodeController from './app/controllers/EpisodeController';
 import ProfileController from './app/controllers/ProfileController';
-import User from './app/models/User';
-import AuthenticationController from './app/controllers/AuthenticationController';
+import SessionController from './app/controllers/SessionController';
 import cookieParser from 'cookie-parser';
+import HomeController from './app/controllers/HomeController';
 
 const routes = new Router();
 routes.use(cookieParser());
 
 // Acessar página da série contendo informações 
 // e lista de temporadadas e episódios
-routes.get('/:userId/series/:id', SeriesController.index);
+routes.get('/series/:id', SeriesController.index);
 
 // Adicionar Serie
 // routes.post('/userId:/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.view);
@@ -22,7 +22,7 @@ routes.post('/addserie', SeriesController.view);
 routes.post('/removeserie', SeriesController.removes);
 
 // Acessar página de episódio
-routes.get('/:userId/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.index);
+routes.get('/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.index);
 
 // Marcar episódio como visto
 // routes.post('/userId:/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.view);
@@ -34,11 +34,6 @@ routes.get('/profile/:userId', ProfileController.index);
 //Salvar perfil
 routes.post('/saveprofile', ProfileController.save);
 
-//Acessar página de Login e Cadastro
-routes.get('/login', AuthenticationController.auth_page);
-
-//Fazer o cadastro de um novo usuário
-routes.post('/sign_up', AuthenticationController.sign_up);
 //Login
 routes.get('/profilepage', (req, res)=>{ 
     res.cookie("userId", 1); 
@@ -55,5 +50,22 @@ routes.get('/getuser', (req, res)=>{
     //shows all the cookies 
     res.send('Oi: ' + req.cookies['userId']); 
 }); 
+
+//AUTENTICAÇÃO
+
+//Acessar página de Login e Cadastro
+routes.get('/authentication', SessionController.index);
+
+//Cadastrar um novo usuário
+routes.post('/sign_up', UserController.store);
+
+//Fazer Login
+routes.post('/sign_in', SessionController.store);
+
+//Fazer Login
+routes.delete('/sign_out', SessionController.delete);
+
+//Acessar home
+routes.get('/', HomeController.index);
 
 export default routes;

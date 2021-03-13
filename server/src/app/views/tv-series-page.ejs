@@ -47,7 +47,7 @@
 						<input class="search-input">
                     </div>
                     <div class="div-menu">
-                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                        <a href=""><h2 id="signOutButton" class="txt-menu-item">Sair</h2></a>
                     </div>			
 				</div>
             </nav>
@@ -180,7 +180,7 @@
 
                                 <% season.episodes.forEach((episode) => { %>                           
                                     <a href=
-                                        "/<%= userId %>/series/<%= id %>/season/<%= season.season_number %>/episode/<%= episode.episode_number %>">
+                                        "/series/<%= id %>/season/<%= season.season_number %>/episode/<%= episode.episode_number %>">
                                         <div class="div-episode">
                                             <img class="img-episode-banner" src="<%= 
                                                 episode.still_path 
@@ -198,7 +198,11 @@
                                                         <h6 class="txt-episode-rating">9.26</h6>
                                                     </div>
                                                     <h6 class="txt-exhibiton-date"><%= episode.air_date %></h6>
-                                                    <i class="material-icons episode-item-icon">check_circle</i>
+                                                    <% if(episode.watched){ %>
+                                                        <i class="material-icons episode-item-icon">check_circle</i>
+                                                    <% } else {%>
+                                                        <i class="material-icons episode-item-icon">check_circle_outline</i>
+                                                    <% } %>
                                                 </div>
                                             </div>
                                         </div>
@@ -272,6 +276,22 @@
             });
         </script>
         <script>
+
+            $("#signOutButton").on('click', function() {
+                $.ajax({
+                    type: "DELETE",
+                    url: `http://localhost:4444/sign_out`,
+                    contentType: "application/json; charset=utf-8",
+                })
+                .done(function(msg){
+                    window.location.replace("http://localhost:4444");
+                })
+            });
+            
+            function signOut() {
+                
+            }
+
             function AddSerie(seriesId, list_id, userId) {
                 $.ajax({
                     type: "POST",

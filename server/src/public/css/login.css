@@ -43,8 +43,9 @@
 }
 
 .sitesection{
-	font-family: "Gothic A1";
-    font-size: 35px
+    font-family: "Gothic A1";
+    font-weight: bold;
+    font-size: 28px
 }
 
 
@@ -60,7 +61,7 @@
 
 
 .inputsquare{
-	height: 400px;
+    height: 360px;
 	background-color: #FFFFFF;
 	border-style: solid;
 	border-color: #26AE60;
@@ -68,8 +69,8 @@
 	flex-direction:column;
 	align-items:center;
     justify-content:center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 25px;
+    padding-bottom: 25px;
     border-radius: 15px;
 }
 
@@ -101,6 +102,12 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+.left{
+	align-items: center;
+	justify-content: flex-start;
+	display: flex;
 }
 
 .right{
@@ -224,7 +231,7 @@
 #divFaixa #divAccessibility label{
     font-family: 'Gothic A1', sans-serif;
     font-weight: bold;
-    font-size: 10px;
+    font-size: 15px;
     color: #FFF;
 }
 
@@ -389,4 +396,10 @@ hr{
     flex-direction: column;
     justify-content: flex-start;
     margin-right: 1.2em;
+}
+
+label{
+    font-family: 'Gothic A1', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
 }

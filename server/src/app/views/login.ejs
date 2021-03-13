@@ -18,17 +18,16 @@
 	
 	<body>		
 		<div id="site">
+				<div id="divFaixa">
+						<div id="divAccessibility">
+								<div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+								<div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+								<div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+								<div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+						</div>
+				</div>
 
-            <div id="divFaixa">
-                <div id="divAccessibility">
-                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
-                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
-                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
-                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
-                </div>
-            </div>
-
-            <nav id="nav-placeholder">
+				<nav id="nav-placeholder">
 				<div class="navbar">						
 					<a href="index.html">
 						<img src="/img/name_with_logo.png" class="logo-image" alt="Logo Maratomator">
@@ -47,22 +46,22 @@
 				
 			
 				<div id="content-left">
-					<div class="centered sitesection themecolor">
+					<div class="left sitesection themecolor">
 						<img src="/img/section_mark.png" alt="section mark">						
 						<h1 class="sitesection">Entrar</h1>
 					</div>
 					<div class="inputsquare themecolor">
 						<div class="div-centralized">
-							<label>Usuário:</label> <input class="data-input">	<br>
-							<label>Senha:</label> <input class="data-input">	<br>
+							<label>E-mail</label> <input id="txtEmailSignIn" class="data-input">	<br>
+							<label>Senha</label> <input id="txtPasswordSignIn" type="password" class="data-input">	<br>
 						</div>
-						<button type="button"  class="centered buttonText">Entrar</button> 
+						<button onclick=signIn() type="button"  class="centered buttonText">Entrar</button> 
 					</div>
 					
 				</div>
 					
 				<div id="content-right">
-					<div class="centered sitesection">
+					<div class="left sitesection">
 						<img src="/img/section_mark.png" alt="section mark">    
 						<h1 class="sitesection">Cadastre-se</h1>
 					</div>
@@ -70,26 +69,26 @@
 						<div class="div-centralized">
 							<div class="row">
 								<div class="row-element">
-									<label>Nome:</label> <input id="txtNameSignUp" class="data-input">	<br>
+									<label>Nome</label> <input id="txtNameSignUp" class="data-input">	<br>
 								</div>
 								<div class="row-element">
-									<label>Sobrenome:</label> <input id="txtLastNameSignUp" class="data-input">	<br>
-								</div>
-							</div>
-							<div class="row">
-								<div class="row-element">
-									<label>E-mail:</label> <input id="txtEmailSignUp" class="data-input">	<br>
-								</div>
-								<div class="row-element">
-									<label>Usuário:</label> <input id="txtUsernameSignUp" class="data-input">	<br>
+									<label>Sobrenome</label> <input id="txtLastNameSignUp" class="data-input">	<br>
 								</div>
 							</div>
 							<div class="row">
 								<div class="row-element">
-									<label>Senha:</label> <input id="txtPasswordSignUp" class="data-input">	<br>
+									<label>E-mail</label> <input id="txtEmailSignUp" class="data-input">	<br>
 								</div>
 								<div class="row-element">
-									<label>Confirmar senha:</label> <input id="txtConfirmPasswordSignUp" class="data-input">	<br>
+									<label>Usuário</label> <input id="txtUsernameSignUp" class="data-input">	<br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="row-element">
+									<label>Senha</label> <input type="password" id="txtPasswordSignUp" class="data-input">	<br>
+								</div>
+								<div class="row-element">
+									<label>Confirmar Senha</label> <input type="password" id="txtConfirmPasswordSignUp" class="data-input">	<br>
 								</div>
 							</div>
 						
@@ -113,26 +112,57 @@
 
 		<script>
 			function signUp() {
+
+				if($('#txtPasswordSignUp').val() === $('#txtConfirmPasswordSignUp').val()){
+					$.ajax({
+							type: "POST",
+							url: `http://localhost:4444/sign_up`,
+							data: JSON.stringify({
+								name: $('#txtNameSignUp').val(),
+								last_name: $('#txtLastNameSignUp').val(),
+								email: $('#txtEmailSignUp').val(),
+								login: $('#txtUsernameSignUp').val(),
+								password: $('#txtPasswordSignUp').val(),
+							}),
+							contentType: "application/json; charset=utf-8",
+					})
+					.done(function(msg){
+							alert('Cadastro realizado com sucesso, você já pode fazer login!');
+							$('#txtNameSignUp').val('');
+							$('#txtLastNameSignUp').val('');
+							$('#txtEmailSignUp').val('');
+							$('#txtUsernameSignUp').val('');
+							$('#txtPasswordSignUp').val('');
+							$('#txtConfirmPasswordSignUp').val('');
+					})
+					.fail(function(jqXHR, textStatus, msg){
+						alert(jqXHR.responseJSON.error);
+					});
+				}else{
+					alert('As senhas precisam ser iguais!');
+				}
+			}
+
+			function signIn() {
 				$.ajax({
 						type: "POST",
-						url: `http://localhost:4444/sign_up`,
+						url: `http://localhost:4444/sign_in`,
 						data: JSON.stringify({
-							name: $('#txtNameSignUp').val(),
-							last_name: $('#txtLastNameSignUp').val(),
-							email: $('#txtEmailSignUp').val(),
-							login: $('#txtUsernameSignUp').val(),
-							password: $('#txtPasswordSignUp').val(),
+							email: $('#txtEmailSignIn').val(),
+							password: $('#txtPasswordSignIn').val(),
 						}),
 						contentType: "application/json; charset=utf-8",
 				})
 				.done(function(msg){
-						alert('Cadastro realizado com sucesso');
+						$('#txtEmailSignIn').val('');
+						$('#txtPasswordSignIn').val('');
+						alert('Login realizado com sucesso!');
+						window.location.replace("http://localhost:4444");
 				})
 				.fail(function(jqXHR, textStatus, msg){
-						console.log('Erro:', msg);
+					alert(jqXHR.responseJSON.error);
 				});
-
-		}
+			}
 		</script>
 		
 		<!--Custom js-->
