@@ -3,6 +3,8 @@ import SeriesController from './app/controllers/SeriesController';
 import UserController from './app/controllers/UserController';
 import EpisodeController from './app/controllers/EpisodeController';
 import ProfileController from './app/controllers/ProfileController';
+import SearchController from './app/controllers/SearchController';
+
 import User from './app/models/User';
 
 const routes = new Router();
@@ -23,5 +25,9 @@ routes.get('/profile/:userId', ProfileController.index);
 
 //Salvar perfil
 routes.post('/saveprofile', ProfileController.save);
+
+routes.get('/search', SearchController.index);
+
+routes.post('/searchName', SearchController.searchName);
 
 export default routes;
