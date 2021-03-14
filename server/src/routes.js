@@ -6,6 +6,7 @@ import ProfileController from './app/controllers/ProfileController';
 import User from './app/models/User'; 
 import cookieParser from 'cookie-parser';
 import SearchController from './app/controllers/SearchController';
+import AdminController from './app/controllers/AdminController';
 
 const routes = new Router();
 routes.use(cookieParser());
@@ -55,5 +56,12 @@ routes.get('/getuser', (req, res)=>{
 routes.get('/search', SearchController.index);
 
 routes.post('/searchName', SearchController.searchName);
+
+//Administrador
+routes.get('/admin', AdminController.index);
+
+//Excluir usuário
+routes.post('/deleteuser', UserController.delete);
+
 
 export default routes;

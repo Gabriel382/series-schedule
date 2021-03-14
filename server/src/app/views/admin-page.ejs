@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Admin - Maratomator</title>
+        <link rel="icon" href="/img/logo-icon.png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="../css/admin-page.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+        <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    </head>
+    <body id="admin-page">      
+        <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>           
+        <div class="container">
+            <div id="divFaixa">
+                <div id="divAccessibility">
+                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+                </div>
+            </div>
+
+            <nav id="nav-placeholder">
+                <div class="navbar">                        
+                    <a href="index.html">
+                        <img src="/img/name_with_logo.png" class="logo-image" alt="" >
+                    </a>
+                    <div class="div-menu">
+                        <a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+                        <a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
+                    </div>                      
+                    <div class="div-menu">
+                        <input class="search-input">
+                    </div>
+                    <div class="div-menu">
+                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                    </div>          
+                </div>
+            </nav>
+            <div class="divContent">
+                <div id="divSearchFilters">
+                    <fieldset>
+                        <legend class="title">Usuários</legend>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <div class="col-4">
+                                <label class="txt-label">Nome: </label>
+                                <br>
+                                <input type="text" id="txtNome" />
+                            </div>
+                            <div id="divBtnSearch">                       
+                                <button id="btnSearch" type="button" onclick="location.href=`http://localhost:4444/admin?name=${$('#txtNome').val()}`">Buscar</button>  
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="row">
+                            <table cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>ID</th>
+                                        <th>Nome</th>
+                                        <th>Login</th>
+                                        <th>Data Cadastro </th>
+                                        <th></th>   
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% try {listUsers.forEach((user) => { %>    
+                                        <tr>
+                                            <td><img alt="" class="user-image" src="/img/uploads/perfil/<%= user.profile_picture %>"></td>
+                                            <td><%= user.id %></td>
+                                            <td><%= user.name %> <%= user.last_name %></td>
+                                            <td><%= user.login %></td>
+                                            <td><%= user.createdAt %></td>
+                                            <td><a class="btExcluir" href="javascript:confirmDelete(<%= user.id %>)">Excluir</a></td>
+                                        </tr>
+                                    <% })} catch(ex){console.log('não é uma busca!');} %>
+                                    
+                                </tbody>
+                            </table>
+                        </div>          
+                    </fieldset>
+                </div>
+            </div>  
+            <footer>
+                <div class="centered">
+                    <img alt="" src="/img/insta_logo.png">
+                    <img alt="" src="/img/twitter_logo.png">
+                    <img alt="" src="/img/logo_facebook.png">
+                </div>
+            </footer>       
+        </div>      
+        <!--Custom js-->
+         <script src="/js/layout-management/index.js"></script>
+        <script>
+            function confirmDelete(userId){
+                if (window.confirm('Deseja excluir esse usuário?')) deleteUser(userId);
+            }
+
+            function deleteUser(userId){
+                 $.ajax({
+                    type: "POST",
+                    url: `/deleteuser`,
+                    data: JSON.stringify({
+                        userId: userId, 
+                        admin: true
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                });
+                alert("Usuário excluido com sucesso!");
+                window.location = '/admin';
+            }
+        </script>
+    </body>
+</html>
