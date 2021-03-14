@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "bcryptjs": "^2.4.3",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
@@ -16,7 +17,8 @@
     "pg-hstore": "^2.3.3",
     "request": "^2.88.2",
     "sequelize": "^6.5.0",
-    "sequelize-cli": "^6.2.0"
+    "sequelize-cli": "^6.2.0",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "eslint": "^7.20.0",

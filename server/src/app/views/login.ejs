@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<title> Maratomator </title>
+		<meta charset="utf-8">
+		<link href="/css/login.css" rel="stylesheet" type="text/css">
+		<!-- descomente a linha abaixo para ativar o modo night-->
+		<!--<link href="/css/login-dark.css" rel="stylesheet" type="text/css">-->
+		<link rel="icon" href="/img/logo-icon.png">
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"> </script>
+	</head>
+	
+	<body>		
+		<div id="site">
+				<div id="divFaixa">
+						<div id="divAccessibility">
+								<div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+								<div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+								<div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+								<div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+						</div>
+				</div>
+
+				<nav id="nav-placeholder">
+				<div class="navbar">						
+					<a href="index.html">
+						<img src="/img/name_with_logo.png" class="logo-image" alt="Logo Maratomator">
+					</a>
+					<div class="div-menu">
+                        <a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+						<a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
+					</div>						
+					<div class="div-menu">
+						<input class="search-input">
+                    </div>		
+				</div>
+            </nav>
+				
+			<div id="content"><!-- abrimos a div conteudo -->
+				
+			
+				<div id="content-left">
+					<div class="left sitesection themecolor">
+						<img src="/img/section_mark.png" alt="section mark">						
+						<h1 class="sitesection">Entrar</h1>
+					</div>
+					<div class="inputsquare themecolor">
+						<div class="div-centralized">
+							<label>E-mail</label> <input id="txtEmailSignIn" class="data-input">	<br>
+							<label>Senha</label> <input id="txtPasswordSignIn" type="password" class="data-input">	<br>
+						</div>
+						<button onclick=signIn() type="button"  class="centered buttonText">Entrar</button> 
+					</div>
+					
+				</div>
+					
+				<div id="content-right">
+					<div class="left sitesection">
+						<img src="/img/section_mark.png" alt="section mark">    
+						<h1 class="sitesection">Cadastre-se</h1>
+					</div>
+					<div class="inputsquare themecolor">
+						<div class="div-centralized">
+							<div class="row">
+								<div class="row-element">
+									<label>Nome</label> <input id="txtNameSignUp" class="data-input">	<br>
+								</div>
+								<div class="row-element">
+									<label>Sobrenome</label> <input id="txtLastNameSignUp" class="data-input">	<br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="row-element">
+									<label>E-mail</label> <input id="txtEmailSignUp" class="data-input">	<br>
+								</div>
+								<div class="row-element">
+									<label>Usuário</label> <input id="txtUsernameSignUp" class="data-input">	<br>
+								</div>
+							</div>
+							<div class="row">
+								<div class="row-element">
+									<label>Senha</label> <input type="password" id="txtPasswordSignUp" class="data-input">	<br>
+								</div>
+								<div class="row-element">
+									<label>Confirmar Senha</label> <input type="password" id="txtConfirmPasswordSignUp" class="data-input">	<br>
+								</div>
+							</div>
+						
+						
+						 </div>
+						<button onclick=signUp() type="button" class="centered buttonText">Cadastrar</button>
+					</div>
+				</div>
+
+			</div><!-- aqui fechamos a div conteudo -->
+			
+			<footer>
+				<div class="centered">
+					<img alt="" src="/img/insta_logo.png">
+					<img alt="" src="/img/twitter_logo.png">
+					<img alt="" src="/img/logo_facebook.png">
+				</div>
+			</footer>
+			
+		</div>
+
+		<script>
+			function signUp() {
+
+				if($('#txtPasswordSignUp').val() === $('#txtConfirmPasswordSignUp').val()){
+					$.ajax({
+							type: "POST",
+							url: `http://localhost:4444/sign_up`,
+							data: JSON.stringify({
+								name: $('#txtNameSignUp').val(),
+								last_name: $('#txtLastNameSignUp').val(),
+								email: $('#txtEmailSignUp').val(),
+								login: $('#txtUsernameSignUp').val(),
+								password: $('#txtPasswordSignUp').val(),
+							}),
+							contentType: "application/json; charset=utf-8",
+					})
+					.done(function(msg){
+							alert('Cadastro realizado com sucesso, você já pode fazer login!');
+							$('#txtNameSignUp').val('');
+							$('#txtLastNameSignUp').val('');
+							$('#txtEmailSignUp').val('');
+							$('#txtUsernameSignUp').val('');
+							$('#txtPasswordSignUp').val('');
+							$('#txtConfirmPasswordSignUp').val('');
+					})
+					.fail(function(jqXHR, textStatus, msg){
+						alert(jqXHR.responseJSON.error);
+					});
+				}else{
+					alert('As senhas precisam ser iguais!');
+				}
+			}
+
+			function signIn() {
+				$.ajax({
+						type: "POST",
+						url: `http://localhost:4444/sign_in`,
+						data: JSON.stringify({
+							email: $('#txtEmailSignIn').val(),
+							password: $('#txtPasswordSignIn').val(),
+						}),
+						contentType: "application/json; charset=utf-8",
+				})
+				.done(function(msg){
+						$('#txtEmailSignIn').val('');
+						$('#txtPasswordSignIn').val('');
+						alert('Login realizado com sucesso!');
+						window.location.replace("http://localhost:4444");
+				})
+				.fail(function(jqXHR, textStatus, msg){
+					alert(jqXHR.responseJSON.error);
+				});
+			}
+		</script>
+		
+		<!--Custom js-->
+		<script src="/js/layout-management/index.js"></script>
+		
+	</body>
+</html>

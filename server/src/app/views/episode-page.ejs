@@ -58,15 +58,15 @@
                 <div id="divNextEpisode">
                     <% var previousEpisode = episodeNumber - 1 %>
                     <% var nextEpisode = episodeNumber + 1 %>
-                    <a href="/<%= userId %>/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= previousEpisode %>">
+                    <a href="/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= previousEpisode %>">
                         <i class="material-icons icon">keyboard_arrow_left</i>
                     </a>
-                    <a href="/<%= userId %>/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= nextEpisode %>">
+                    <a href="/series/<%= seriesId %>/season/<%= seasonNumber %>/episode/<%= nextEpisode %>">
                         <i class="material-icons icon">keyboard_arrow_right</i>
                     </a>
                 </div>
                 <div id="txtTitle">
-                    <a href="/<%= userId %>/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= seasonNumber %></h2></a>
+                    <a href="/series/<%= seriesId %>"><h2 id="txtSeriesTitle"><%= seriesTitle %>: Temporada <%= seasonNumber %></h2></a>
                     <h1 id="txtEpisodeTitle">
                         <b><%= seasonNumber %>x<%= episodeNumber %></b>
                         <%= name %>
