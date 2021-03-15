@@ -273,21 +273,31 @@ a{
 	border-color: #ECF0F1;	
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
-	height: 255px;
-	width: 163px;
-	margin-bottom: 	20px;
+	height: 313px;
+	width: 210px;
+	margin: 31px;
+	transition: width 0.1s ease-in-out;
+	transition: height 0.1s ease-in-out;
+	transition: margin 0.1s ease-in-out;
+}
+
+.poster:hover{
+	background-color: #26AE60;
 }
 
 .poster img, .search-poster img{
 	width: 100%;
-	height: 190px;
+	height: 238px;
 }
 
 .poster div{
 	display: flex;
 	justify-content: space-between;
 	color: #FFFFFF;
-	font-family: "Gothic A1";
+}
+
+.poster a{
+	font-size: 17px !important;
 }
 
 .list{
@@ -353,6 +363,7 @@ select{
 
 input{
 	max-width: inherit;
+	padding-left: 7px;
 }
 
 .txt-label{
@@ -403,9 +414,15 @@ input:focus, select:focus, button:focus{
     height: 35px;
 }
 
+
+#divBtnSearch{
+	padding-top: 9px;
+}
+
 .divContent{
 	background-color: #ECF0F1; 
-	padding: 4%
+	padding: 4%;
+	min-height: 501px;
 }
 
 #divResults{
@@ -510,5 +527,6 @@ input:focus, select:focus, button:focus{
     color:  #FFF;
     font-size: 18px !important;
 }
+
 
 

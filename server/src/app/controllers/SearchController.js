@@ -9,28 +9,26 @@ class SearchController{
 
       try {
 
-        const titulo = req.query.titulo;
-        console.log("Controller " + titulo);
+        const title = req.query.title;
 
-        const responseSearch = await axios.get(
-          `${tmdb.baseUrl}/search/tv?api_key=${tmdb.apiKey}&language=pt-BR&query=${titulo}`
-        );
+        var responseSearch;
+
+        if(title){
+          responseSearch = await axios.get(
+            `${tmdb.baseUrl}/search/tv?api_key=${tmdb.apiKey}&language=pt-BR&query=${title}`
+          );
+        } 
+        else responseSearch = {data: {results: []}};
 
         const responseGenres = await axios.get(
           `${tmdb.baseUrl}/genre/tv/list?api_key=${tmdb.apiKey}&language=pt-BR`
         );
 
-        const responseClassifications = await axios.get(
-          `${tmdb.baseUrl}/certification/tv/list?api_key=${tmdb.apiKey}`
-        );
-
         const data = {
-          seriesList: responseSearch.data.results,
-          genres: responseGenres.data.genres,
-          classifications: responseClassifications.data.certifications.BR
+          title: title,
+          seriesList: responseSearch.data.results
         }
 
-        console.log("teste");
         res.render('search-page', data);
 
       } catch(error) {
@@ -39,7 +37,7 @@ class SearchController{
 
   }
 
-  async searchName(req, res){
+  async advancedSearch(req, res){
     try{
 
 
@@ -69,7 +67,7 @@ class SearchController{
         console.log(genre) })
 
 
-      res.render('search-page', data);    
+      res.render('advanced-search-page', data);    
 
     } catch(error) {
       console.log('searchName error: ', error);

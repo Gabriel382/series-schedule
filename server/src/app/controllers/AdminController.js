@@ -11,7 +11,6 @@ class AdminController{
     try {
 
         const name = req.query.name;
-        console.log(name);
         var response;
 
         if(name) response = await user.findAll({where: {[Op.or]:[{name:{[Op.iLike]: `%${name}%`}}, {last_name:{[Op.iLike]: `%${name}%`}}]},

@@ -353,6 +353,7 @@ select{
 
 input{
 	max-width: inherit;
+	padding-left: 7px;
 }
 
 .txt-label{

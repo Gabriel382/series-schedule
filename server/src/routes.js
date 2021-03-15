@@ -72,9 +72,9 @@ routes.delete('/sign_out', SessionController.delete);
 routes.get('/', HomeController.index);
 
 //Busca
-routes.get('/search', SearchController.index);
+routes.get('/advancedSearch', SearchController.advancedSearch);
 
-routes.post('/searchName', SearchController.searchName);
+routes.get('/search', SearchController.index);
 
 //Administrador
 routes.get('/admin', AdminController.index);
