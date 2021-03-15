@@ -10,8 +10,8 @@ class UserController {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
       last_name: Yup.string().required(),
-      email: Yup.string().email().required(),
-      login: Yup.string().email().required(),
+      email: Yup.string().required(),
+      login: Yup.string().required(),
       password: Yup.string().required().min(6),
     });
 
@@ -55,7 +55,7 @@ class UserController {
 
   	const {userId, admin} = req.body;
 
-  	await user.destroy({where: {id: userId}});
+  	await User.destroy({where: {id: userId}});
 
   }
 }
