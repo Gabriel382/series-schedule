@@ -336,3 +336,7 @@ input:focus, select:focus, button:focus, button{
 *:focus {
     outline: 0 !important;
 }
+
+#uploadForm{
+    margin-top: 30px;
+}

@@ -37,7 +37,7 @@ class ProfileController{
         login: login,
         birth_date: formatDate(birth_date),
         userId: id,
-        avatar: avatar.url,
+        avatar: avatar ? avatar.url : null,
       };
 
       console.log(data.avatar);

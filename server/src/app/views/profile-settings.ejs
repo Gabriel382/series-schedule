@@ -52,7 +52,11 @@
             <div class="div-centered-info-grid">
                 <div class="centered">
                     <h4 id="userId" style="color:#ecf0f1;"><%= userId %></h4>
-                    <img alt="" class="user-image row" src="<%= avatar %>">
+                    <% if(avatar) { %>
+                        <img alt="" class="user-image row" src="<%= avatar %>">
+                    <% } else { %> 
+                        <img alt="" class="user-image row" src="/img/profile-picture-placeholder.png">
+                    <% } %>
                     <form id='uploadForm' method="post" action='files'enctype="multipart/form-data">
                         <input type="file" id="fileUpload" name="file" />
                         <input type='submit' value='Upload!'>
@@ -112,7 +116,7 @@
                 $('#btnEnviar').click(function () {
                     console.log($('#userId').text()),
                     $.ajax({
-                        type: "POST",
+                        type: "PUT",
                         url: `http://localhost:4444/saveprofile`,
                         data: JSON.stringify({
                             user_id: $('#userId').text(),

@@ -107,7 +107,7 @@
 
             function deleteUser(userId){
                  $.ajax({
-                    type: "POST",
+                    type: "DELETE",
                     url: `/deleteuser`,
                     data: JSON.stringify({
                         userId: userId, 

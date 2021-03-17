@@ -40,7 +40,7 @@ routes.post('/watch', EpisodeController.view);
 routes.get('/profile', ProfileController.index);
 
 //Salvar perfil
-routes.post('/saveprofile', ProfileController.save);
+routes.put('/saveprofile', ProfileController.save);
 
 //Login
 routes.get('/profilepage', (req, res)=>{ 
@@ -85,7 +85,7 @@ routes.get('/search', SearchController.index);
 routes.get('/admin', AdminController.index);
 
 //Excluir usuário
-routes.post('/deleteuser', UserController.delete);
+routes.delete('/deleteuser', UserController.delete);
 
 //Upload de imagem
 routes.post('/files', upload.single('file'), FileController.store);
