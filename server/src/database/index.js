@@ -4,10 +4,11 @@ import User from '../app/models/User';
 import List from '../app/models/List';
 import View from '../app/models/View';
 import Series from '../app/models/Series';
+import File from '../app/models/File';
 
 import databaseConfig from '../config/database';
 
-const models = [User, List, View, Series];
+const models = [User, List, View, Series, File];
 
 class Database {
   constructor() {

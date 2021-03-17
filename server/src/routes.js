@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import multer from 'multer';
+import multerConfig from './config/multer';
+
 import SeriesController from './app/controllers/SeriesController';
 import UserController from './app/controllers/UserController';
 import EpisodeController from './app/controllers/EpisodeController';
@@ -8,9 +11,11 @@ import cookieParser from 'cookie-parser';
 import HomeController from './app/controllers/HomeController';
 import SearchController from './app/controllers/SearchController';
 import AdminController from './app/controllers/AdminController';
+import FileController from './app/controllers/FileController';
 
 
 const routes = new Router();
+const upload = multer(multerConfig);
 routes.use(cookieParser());
 
 // Acessar página da série contendo informações 
@@ -32,7 +37,7 @@ routes.get('/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', Epis
 routes.post('/watch', EpisodeController.view);
 
 //Acessar página de perfil do usuário
-routes.get('/profile/:userId', ProfileController.index);
+routes.get('/profile', ProfileController.index);
 
 //Salvar perfil
 routes.post('/saveprofile', ProfileController.save);
@@ -81,5 +86,8 @@ routes.get('/admin', AdminController.index);
 
 //Excluir usuário
 routes.post('/deleteuser', UserController.delete);
+
+//Upload de imagem
+routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;

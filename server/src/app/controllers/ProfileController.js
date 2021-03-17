@@ -1,28 +1,46 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
-import user from '../models/User';
+import User from '../models/User';
+import File from '../models/File';
 
 class ProfileController{
 
   async index(req, res){
 
-    const id = req.params.userId;
+    const id = req.cookies['userId'];
 
     try {
-      const userResponse = await user.findAll({
-        where: {id: id}}
-      );
+      const {  
+        name, 
+        last_name,
+        email,
+        city,
+        state,
+        login,
+        birth_date,
+        avatar } = await User.findByPk(id, {
+        include: [
+          {
+            model: File,
+            as: 'avatar',
+            attributes: ['id', 'path', 'url'],
+          }
+        ]
+      })
      
       const data = {
-        name: userResponse[0].dataValues.name,
-        last_name: userResponse[0].dataValues.last_name,
-        email : userResponse[0].dataValues.email,
-        city : userResponse[0].dataValues.city,
-        state : userResponse[0].dataValues.state,
-        login : userResponse[0].dataValues.login,
-        birth_date : formatDate(userResponse[0].dataValues.birth_date),
-        userId : id
+        name: name,
+        last_name: last_name,
+        email: email,
+        city: city,
+        state: state,
+        login: login,
+        birth_date: formatDate(birth_date),
+        userId: id,
+        avatar: avatar.url,
       };
+
+      console.log(data.avatar);
   
       res.render('profile-settings', data);
 
@@ -33,10 +51,25 @@ class ProfileController{
   }
 
   async save(req, res){
-    
-    const {userId, login, name, last_name, city, state} = req.body;
 
-    await user.update({login: login, name: name, last_name: last_name, city: city, state: state}, {where: {id: userId}});
+    console.log('ID: ', req.body.avatar_id);
+    
+    const {user_id, login, name, last_name, city, state, avatar_id} = req.body;
+
+    const userId = parseInt(user_id, 10);
+
+    await User.update({
+      login: login, 
+      name: name, 
+      last_name: last_name, 
+      city: city, 
+      state: state, 
+      avatar_id: avatar_id
+    }, {
+      where: {
+        id: userId
+      }
+    });
   } 
 
 }

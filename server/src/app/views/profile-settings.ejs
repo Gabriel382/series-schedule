@@ -14,7 +14,9 @@
         <link rel="stylesheet" href="../css/profile-settings.css"/>
 
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"> </script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.form/3.51/jquery.form.min.js"></script>
     </head>
     <body id="profile-settings">
         <div id="divContainer">
@@ -49,7 +51,12 @@
             </div>
             <div class="div-centered-info-grid">
                 <div class="centered">
-                    <img alt="" class="user-image row" src="/img/user.jpg">
+                    <h4 id="userId" style="color:#ecf0f1;"><%= userId %></h4>
+                    <img alt="" class="user-image row" src="<%= avatar %>">
+                    <form id='uploadForm' method="post" action='files'enctype="multipart/form-data">
+                        <input type="file" id="fileUpload" name="file" />
+                        <input type='submit' value='Upload!'>
+                    </form>                    
                 </div>
                 <br>
                 <div class="grid-container">
@@ -79,29 +86,57 @@
                 </div>
             </div>
             <div class="div-centered-info-grid">
-                <button type="button"  class="centered buttonText" onclick="save('<%= userId %>')">Salvar</button>
+                <button id="btnEnviar" type="button"  class="centered buttonText">Salvar</button>
             </div>
         </div>
         <!--Custom js-->
         <script src="/js/layout-management/index.js"></script>
         <script>
-            function save(userId){
-                 $.ajax({
-                    type: "POST",
-                    url: `http://localhost:4444/saveprofile`,
-                    data: JSON.stringify({
-                        userId: userId, 
-                        login: $('#txtLogin').val(),
-                        name: $('#txtName').val(),
-                        last_name: $('#txtLastName').val(),
-                        city: $('#txtCity').val(),
-                        state: $('#txtState').val(),
-                        birth_date: $('#txtBirthDate').val()
-                    }),
-                    contentType: "application/json; charset=utf-8",
-                })
-                alert("Dados salvos com sucesso!");
-            }
+            $(function () {
+
+                var avatarId;
+                $('#uploadForm').submit(function() {
+                    $(this).ajaxSubmit({
+                        error: function(xhr) {
+                            status('Error: ' + xhr.status);
+                        },
+                        success: function(response) {
+                            avatarId = response.id;
+                            console.log(response.id);
+                        }
+                    });
+                
+                    return false;
+                });
+
+                $('#btnEnviar').click(function () {
+                    console.log($('#userId').text()),
+                    $.ajax({
+                        type: "POST",
+                        url: `http://localhost:4444/saveprofile`,
+                        data: JSON.stringify({
+                            user_id: $('#userId').text(),
+                            login: $('#txtLogin').val(),
+                            name: $('#txtName').val(),
+                            last_name: $('#txtLastName').val(),
+                            city: $('#txtCity').val(),
+                            state: $('#txtState').val(),
+                            birth_date: $('#txtBirthDate').val(),
+                            avatar_id: avatarId,
+                        }),
+                        contentType: "application/json; charset=utf-8",
+                        sucess: function(response) {
+                            alert('Dados atualizados com sucesso!');
+                        }
+                    }).done(function(msg){
+                        console.log('Ok');
+                        alert('Dados atualizados com sucesso!');
+                    }).fail(function(jqXHR, textStatus, msg){
+                        console.log(msg);
+                    });
+                });
+            // alert("Dados salvos com sucesso!");
+            });
         </script>
     </body>
 </html>
