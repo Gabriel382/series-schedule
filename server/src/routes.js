@@ -36,6 +36,10 @@ routes.get('/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', Epis
 // routes.post('/userId:/series/:seriesId/season/:seasonNumber/episode/:episodeNumber', EpisodeController.view);
 routes.post('/watch', EpisodeController.view);
 
+// Dar nota a episódio visto
+routes.post('/episodescore', EpisodeController.episodescore);
+
+
 //Acessar página de perfil do usuário
 routes.get('/profile', ProfileController.index);
 

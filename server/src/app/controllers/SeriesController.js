@@ -134,6 +134,8 @@ class SeriesController{
 
       // For each season, each episode
       let isuserfinished = true
+      let scoresum = 0
+      let numberwithscore = 0
       for(let i = 0; i < seasons.length; i++){
         let season = seasons[i]
         let totaleps = season.episodes.length
@@ -151,6 +153,10 @@ class SeriesController{
           
             if(episodequery){
               watchedeps += 1.0
+              if(episodequery.rating >= 0){
+                scoresum += episodequery.rating
+                numberwithscore += 1
+              }
             } 
           }
           const progr = (watchedeps/totaleps)*100
@@ -180,7 +186,8 @@ class SeriesController{
         seriesId: seriesId,
         serieadded: serieadded,
         userfinished: isuserfinished,
-        ongoing: seriesResponse.data.in_production
+        ongoing: seriesResponse.data.in_production,
+        userrating: (scoresum/numberwithscore).toFixed(2)
       }
   
       res.render('tv-series-page', data);

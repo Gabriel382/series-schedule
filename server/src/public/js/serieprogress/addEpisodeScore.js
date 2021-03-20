@@ -1,0 +1,1 @@
+document.querySelector("#divScore").innerHTML = '<div id="btnAddSeries"> <button type="button" class="action-button" id="addorremove"><h3 id="txtAddSeries">Adicionar</h3></button></div>'

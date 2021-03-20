@@ -47,9 +47,11 @@ class EpisodeController{
 
         // Mudando a variável viewed caso a consulta retorne algo
         // ou seja, caso o usuário tenha visto o episódio
+        let rating = -1
         if(episode){
           watched = true;
           watchDate = episode.createdAt;
+          rating = episode.rating
         }
 
         // Dados enviados para o front
@@ -67,6 +69,7 @@ class EpisodeController{
           seriesId: seriesResponse.data.id,
           seriesTitle: seriesResponse.data.name,
           seriesPoster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
+          userscore : rating
         }
         
         // Retornando os dados a serem carregados na página EJS
@@ -98,6 +101,63 @@ class EpisodeController{
       UpdateSeriesList(seriesId,userId)
 
       // console.log('VIEW: ', view);
+
+      // Retornando o registro cadastrado
+      return res.json(watch);
+
+    }catch(error){
+      console.log('watchEpisode error: ', error);
+    }
+  }
+
+  // Dar nota a episódio visto:
+  async episodescore(req, res) {
+    
+    // Recebendo parâmetros trazidos da rota
+    const {episodeId, seriesId, rating, userId} = req.body;
+
+    let userrating = rating
+    if(userrating < 0){
+      userrating = 0.0
+    } else if(userrating > 10){
+      userrating = 10.0
+    }
+
+
+    try {
+      // Criando o registro no banco de que o usuário o episódio
+      
+      const watch = await View.update({rating: userrating}, {
+        where: {user_id: userId, 
+          episode_id: episodeId,
+          series_id: seriesId}
+      })
+      
+      /*const watch = await View.findOne({ where: { user_id: userId, 
+        episode_id: episodeId,
+        series_id: seriesId } })
+      .on('success', function (rate) {
+        // Check if record exists in db
+        if (rate) {
+          rate.update({
+            rating: rating
+          })
+          .then(function () {})
+        }
+      })*/
+
+      /*const watch = await View.destroy({ where: {
+        user_id: userId, 
+        episode_id: episodeId,
+        series_id: seriesId
+      }});
+
+      const watch = await View.create({
+        user_id: userId, 
+        episode_id: episodeId,
+        series_id: seriesId,
+        rating: rating,
+      });*/
 
       // Retornando o registro cadastrado
       return res.json(watch);

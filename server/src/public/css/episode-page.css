@@ -84,11 +84,11 @@
     width: 500px;
 	border-radius: 0.4em;
     margin: 1em;
-    background-image:  url(../img/magglass.png);
 	background-repeat: no-repeat;
 	background-size: 20px;
 	background-position-y: center;
     background-position-x: 95%;
+    background-image:  url(../img/magglass.png);
 }
 
 .search-icon{
@@ -96,6 +96,9 @@
     font-size: 30px;
 }
 
+.boldtext{
+    font-weight: bold;
+}
 
 .accessibility-icon{
     font-family: 'Gothic A1', sans-serif;
@@ -241,6 +244,10 @@
     align-self: flex-start;
 }
 
+#divLeftSideBar {
+    opacity: 0;
+}
+
 #divContent #divLeftSideBar {
     display: flex;
     flex-direction: column;
@@ -262,12 +269,34 @@
     border-radius: 10px;
 }
 
-#imgPoster{
-    opacity: 0;
-}
+
 
 #paddingspace{
     height:50vh;
+}
+
+.score-input{
+	border-color:rgba(255, 0, 0, 0.7);
+    height: 30px;
+    width: 50%;
+	border-radius: 0.4em;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	background-position-y: center;
+    background-position-x: 95%;
+    border-radius: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    text-align: center;
+}
+
+#divScore{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 #divContent #divLeftSideBar #btnAddSeries {
@@ -277,7 +306,6 @@
     padding-left: 37.5px;
     padding-right: 37.5px;
     padding-top: 1px;
-    padding-bottom: 1px;
     display: flex;
     flex-direction: row;
     align-items: center;
