@@ -109,8 +109,7 @@ class SeriesController{
       const serieentry = await Series.findOne({
         where: {
           series_id: seriesId,
-          user_id: userId,
-          list_id: 1
+          user_id: userId
         }
       });
       // Mudando a variável de serie adicionada para personalizar a pagina
@@ -132,29 +131,11 @@ class SeriesController{
         + (hours ? hours + "h " : '') 
         + (minutes ? minutes + "min" : '') 
 
-      const data = {
-        id: seriesResponse.data.id,
-        title: seriesResponse.data.name,
-        seasons: seasons,
-        banner: `${tmdb.imagesPath}` + seriesResponse.data.backdrop_path,
-        poster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
-        sinopsis: seriesResponse.data.overview,
-        genres: seriesResponse.data.genres,
-        networks: seriesResponse.data.networks,
-        episode_run_time: seriesResponse.data.episode_run_time,
-        first_air_date: formatTMDBdate(seriesResponse.data.first_air_date),
-        in_production: seriesResponse.data.in_production,
-        last_air_date: formatTMDBdate(seriesResponse.data.last_air_date),
-        userId: userId,
-        bingeSize: bingeSize,
-        seriesId: seriesId,
-        list_id: 1,
-        serieadded: serieadded,
-      }
 
       // For each season, each episode
-      for(let i = 0; i < data.seasons.length; i++){
-        let season = data.seasons[i]
+      let isuserfinished = true
+      for(let i = 0; i < seasons.length; i++){
+        let season = seasons[i]
         let totaleps = season.episodes.length
           let watchedeps = 0.0
           for(let j = 0; j < season.episodes.length; j++){  
@@ -172,7 +153,34 @@ class SeriesController{
               watchedeps += 1.0
             } 
           }
-          season.progress = ((watchedeps/totaleps)*100).toFixed(1) + "%"
+          const progr = (watchedeps/totaleps)*100
+          if(Math.trunc(progr) < 100){
+            isuserfinished = false
+          }
+          season.progress = (progr).toFixed(1) + "%"
+          
+
+      }
+
+      const data = {
+        id: seriesResponse.data.id,
+        title: seriesResponse.data.name,
+        seasons: seasons,
+        banner: `${tmdb.imagesPath}` + seriesResponse.data.backdrop_path,
+        poster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
+        sinopsis: seriesResponse.data.overview,
+        genres: seriesResponse.data.genres,
+        networks: seriesResponse.data.networks,
+        episode_run_time: seriesResponse.data.episode_run_time,
+        first_air_date: formatTMDBdate(seriesResponse.data.first_air_date),
+        in_production: seriesResponse.data.in_production,
+        last_air_date: formatTMDBdate(seriesResponse.data.last_air_date),
+        userId: userId,
+        bingeSize: bingeSize,
+        seriesId: seriesId,
+        serieadded: serieadded,
+        userfinished: isuserfinished,
+        ongoing: seriesResponse.data.in_production
       }
   
       res.render('tv-series-page', data);
@@ -187,27 +195,23 @@ class SeriesController{
 async view(req, res) {
     
   // Recebendo parâmetros trazidos da rota
-  const list_id = req.body.list_id
   const seriesId = req.body.seriesId
   const average_rating = req.body.average_rating
   const userId = req.body.userId
 
-  try {
+  let list_idtos = 1
+  if(req.body.userfinished == "true" && req.body.ongoing == "true"){
+    list_idtos = 3
+  }else if(req.body.userfinished == "true"){
+    list_idtos = 2
+  }
 
-    // Cria Lista assistindo se nao existir
-    /*List
-      .findOrCreate({where: {name: 'Assistindo'}, defaults: {
-        description: 'Series que usuario esta assistindo'
-      }})
-      .then(([lista, created]) => {
-        ourlist_id = lista.id
-      })
-    */
+  try {
 
     // Criando o registro no banco de que o usuário o episódio
     const serie = await Series.create({
       user_id: userId, 
-      list_id: list_id,
+      list_id: list_idtos,
       series_id: seriesId,
       average_rating: average_rating,
     });
@@ -227,7 +231,6 @@ async view(req, res) {
 async removes(req, res) {
     
   // Recebendo parâmetros trazidos da rota
-  const list_id = req.body.list_id
   const seriesId = req.body.seriesId
   const average_rating = req.body.average_rating
   const userId = req.body.userId
@@ -236,8 +239,7 @@ async removes(req, res) {
     // Criando o registro no banco de que o usuário o episódio
     const serie = await Series.destroy({
       where: {
-        user_id: userId, 
-        list_id: list_id,
+        user_id: userId,
         series_id: seriesId,
       }
     });

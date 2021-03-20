@@ -1,6 +1,7 @@
 import axios from 'axios';
 import tmdb from '../../config/tmdb';
 import View from '../models/View';
+import UpdateSeriesList from '../../public/js/serieprogress/updateserieslist.js'
 import formatSQLdate from '../../utils/formatSQLdate';
 import formatTMDBdate from '../../utils/formatTMDBdate';
 import formatBrazilianFormatDate from '../../utils/formatTMDBdate';
@@ -93,6 +94,8 @@ class EpisodeController{
         series_id: seriesId,
         rating: rating,
       });
+
+      UpdateSeriesList(seriesId,userId)
 
       // console.log('VIEW: ', view);
 

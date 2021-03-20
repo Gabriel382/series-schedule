@@ -36,11 +36,11 @@
 
             <nav id="nav-placeholder">
 				<div class="navbar">	
-                    <a href="index.html">
+                    <a href="http://localhost:4444/">
                         <img src="/img/name_with_logo.png" class="logo-image" alt="logo">
                     </a>
 					<div class="div-menu">
-						<a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
+						<a href="http://localhost:4444/"><h2 class="txt-menu-item">Home</h2></a>
 						<a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
 					</div>						
 					<div class="div-menu">
@@ -106,14 +106,14 @@
                     <div id="btnAddSeries">
                         <% if(!serieadded){ %>
                         <button 
-                                        onclick="AddSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')" 
+                                        onclick="AddSerie('<%= seriesId %>', '<%= userfinished %>', '<%= ongoing %>', '<%= userId %>')" 
                                         type="button" 
                                         class="action-button" id="addorremove">
                                         <h3 id="txtAddSeries">Adicionar</h3>
                         </button>
                         <% } else {%>
                             <button 
-                                onclick="RemoveSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')" 
+                                onclick="RemoveSerie('<%= seriesId %>', '<%= userId %>')" 
                                 type="button" 
                                 class="action-button" id="addorremove">
                                 <h3 id="txtAddSeries">Remover</h3>
@@ -292,13 +292,14 @@
                 
             }
 
-            function AddSerie(seriesId, list_id, userId) {
+            function AddSerie(seriesId, userfinished, ongoing, userId) {
                 $.ajax({
                     type: "POST",
                     url: `http://localhost:4444/addserie`,
                     data: JSON.stringify({
-                        userId: userId, 
-                        list_id: list_id,
+                        userId: userId,
+                        userfinished: userfinished,
+                        ongoing: ongoing,
                         seriesId: seriesId,
                         average_rating: 10,
                     }),
@@ -308,7 +309,7 @@
                     let parentnode = document.querySelector("#addorremove").parentNode
                     parentnode.removeChild(document.querySelector("#addorremove"))
                     parentnode.innerHTML = "<button type='button' class='action-button' id='addorremove'> <h3 id='txtAddSeries'>Remover</h3> </button>"
-                    document.querySelector("#addorremove").onclick= function(){RemoveSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')}
+                    document.querySelector("#addorremove").onclick= function(){RemoveSerie('<%= seriesId %>', '<%= userId %>')}
                 })
                 .fail(function(jqXHR, textStatus, msg){
                     console.log(msg);
@@ -316,13 +317,12 @@
 
             }
 
-            function RemoveSerie(seriesId, list_id, userId) {
+            function RemoveSerie(seriesId, userId) {
                 $.ajax({
                     type: "POST",
                     url: `http://localhost:4444/removeserie`,
                     data: JSON.stringify({
-                        userId: userId, 
-                        list_id: list_id,
+                        userId: userId,
                         seriesId: seriesId,
                         average_rating: 10,
                     }),
@@ -332,7 +332,7 @@
                     let parentnode = document.querySelector("#addorremove").parentNode
                     parentnode.removeChild(document.querySelector("#addorremove"))
                     parentnode.innerHTML = "<button type='button' class='action-button' id='addorremove'> <h3 id='txtAddSeries'>Adicionar</h3> </button>"
-                    document.querySelector("#addorremove").onclick= function(){AddSerie('<%= seriesId %>', '<%= list_id %>', '<%= userId %>')}
+                    document.querySelector("#addorremove").onclick= function(){AddSerie('<%= seriesId %>', '<%= userfinished %>', '<%= ongoing %>', '<%= userId %>')}
                 })
                 .fail(function(jqXHR, textStatus, msg){
                     console.log(msg);
