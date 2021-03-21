@@ -17,6 +17,7 @@ var todaysdate = function dataAtualFormatada(){
   return "2021-02-27 00:00:00-03"
 }
 
+
 var checkMarkedEpisode = async function(userId, episode_id, series_id){
 
   // Consulta interna pra trazer informações
@@ -143,6 +144,7 @@ class SeriesController{
           for(let j = 0; j < season.episodes.length; j++){  
             let episode = season.episodes[j]
             episode.air_date = formatBrazilianDate(episode.air_date)
+
             const episodequery = await View.findOne({
               where: {
                 episode_id: episode.id,
@@ -153,19 +155,52 @@ class SeriesController{
           
             if(episodequery){
               watchedeps += 1.0
-              if(episodequery.rating >= 0){
-                scoresum += episodequery.rating
+              if(episodequery.dataValues.rating >= 0){
+                scoresum += episodequery.dataValues.rating
                 numberwithscore += 1
               }
             } 
           }
-          const progr = (watchedeps/totaleps)*100
+          const progr = (watchedeps/season.episodes.length)*100
           if(Math.trunc(progr) < 100){
             isuserfinished = false
           }
           season.progress = (progr).toFixed(1) + "%"
           
 
+      }
+
+      let myrate = ""
+      let updatevalue = -1
+      if(numberwithscore > 0){
+        myrate = (scoresum/numberwithscore)
+        updatevalue = (scoresum/numberwithscore)
+      } else{
+        myrate = "-.--"
+      }
+      //==================== UpdateAverageRate ========================
+      // Criando o registro no banco de que o usuário o episódio
+      
+      const watch = await Series.update({average_rating: updatevalue}, {
+        where: {user_id: userId,
+          series_id: seriesResponse.data.id}
+      })
+      //==================== GetAllUserOverAllRate ========================
+      // Criando o registro no banco de que o usuário o episódio
+      
+      let allvotes = await Series.findAll()
+      let numberofvotes = 0
+      let sumofvotes = 0
+      
+      for(let i = 0; i < allvotes.length; i++){
+        if(parseFloat(allvotes[i].dataValues.average_rating) >= 0){
+          numberofvotes += 1
+          sumofvotes += parseFloat(allvotes[i].dataValues.average_rating)
+        }
+      }
+      let databasegeralscore = "-.--"
+      if(numberofvotes > 0){
+        databasegeralscore =  (sumofvotes/numberofvotes).toFixed(2);
       }
 
       const data = {
@@ -187,7 +222,9 @@ class SeriesController{
         serieadded: serieadded,
         userfinished: isuserfinished,
         ongoing: seriesResponse.data.in_production,
-        userrating: (scoresum/numberwithscore).toFixed(2)
+        vote_average: seriesResponse.data.vote_average.toFixed(2),
+        databascore: databasegeralscore,
+        userrating: myrate.toFixed(0)
       }
   
       res.render('tv-series-page', data);

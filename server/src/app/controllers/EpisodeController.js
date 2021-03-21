@@ -54,6 +54,22 @@ class EpisodeController{
           rating = episode.rating
         }
 
+        //==================== GetAllEpisodeScores ========================
+        let allvotes = await View.findAll({where: {episode_id: episodeResponse.data.id}})
+        let numberofvotes = 0
+        let sumofvotes = 0
+        
+        for(let i = 0; i < allvotes.length; i++){
+          if(parseFloat(allvotes[i].dataValues.rating) >= 0){
+            numberofvotes += 1
+            sumofvotes += parseFloat(allvotes[i].dataValues.rating)
+          }
+        }
+        let databasegeralscore = "-.--"
+        if(numberofvotes > 0){
+          databasegeralscore =  (sumofvotes/numberofvotes).toFixed(2);
+        }
+
         // Dados enviados para o front
         const data = {
           userId: userId,
@@ -69,7 +85,9 @@ class EpisodeController{
           seriesId: seriesResponse.data.id,
           seriesTitle: seriesResponse.data.name,
           seriesPoster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
-          userscore : rating
+          vote_average: seriesResponse.data.vote_average.toFixed(2),
+          databasegeralscore: databasegeralscore,
+          userscore : rating.toFixed(0)
         }
         
         // Retornando os dados a serem carregados na página EJS
@@ -132,32 +150,6 @@ class EpisodeController{
           episode_id: episodeId,
           series_id: seriesId}
       })
-      
-      /*const watch = await View.findOne({ where: { user_id: userId, 
-        episode_id: episodeId,
-        series_id: seriesId } })
-      .on('success', function (rate) {
-        // Check if record exists in db
-        if (rate) {
-          rate.update({
-            rating: rating
-          })
-          .then(function () {})
-        }
-      })*/
-
-      /*const watch = await View.destroy({ where: {
-        user_id: userId, 
-        episode_id: episodeId,
-        series_id: seriesId
-      }});
-
-      const watch = await View.create({
-        user_id: userId, 
-        episode_id: episodeId,
-        series_id: seriesId,
-        rating: rating,
-      });*/
 
       // Retornando o registro cadastrado
       return res.json(watch);

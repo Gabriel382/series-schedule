@@ -15,7 +15,7 @@
 		<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	</head>
-	<body>
+	<body id="user-home">
 		
 		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>		
 		<div class="container">
@@ -41,7 +41,7 @@
 						<input class="search-input">
                     </div>
                     <div class="div-menu">
-                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
+                        <a href="/sign_out"><h2 class="txt-menu-item">Sair</h2></a>
                     </div>			
 				</div>
             </nav>
@@ -74,42 +74,35 @@
 					<br />
 					<br />
 					<div>
-						<a id="btnEditPerfil" class="centered" href="profile-settings.html">Editar Perfil</a>
+						<a id="btnEditPerfil" class="centered" href="/profile">Editar Perfil</a>
 					</div>
 				</div>
 				<div id="divUserLists">
 					<div>
 						<fieldset>
-							<legend class="title">Últimos Adicionados</legend>
-							<div class="row centered">
-								<div class="col-1 centered">
-									<i class="fas fa-caret-square-left fa-3x"></i>
-								</div>						
-								<div class="col-2">
-									<a href="tv-series-page.html">
-										<img alt="" src="/img/posters/serie1.jpg" />
+							<legend class="title">Últimas Séries Adicionadas</legend>
+							<div class="list">
+								<div class="row">
+								<!--LISTA DE TEMPORADAS-->
+
+									<% ultimosassistidos.slice().reverse().forEach((serie) => { %>
+									<a href=
+									"/series/<%= serie.data.id %>">
+									<div class="poster">
+										<img alt="" src="<%= 
+										(serie.data.poster_path != 'https://image.tmdb.org/t/p/originalnull')
+										? serie.data.poster_path
+										: '/img/background-placeholder.jpg'
+										%>" />
+										<div>										
+											<label><%= serie.data.name %></label>
+											<label><%= serie.data.watcheddate %></label>
+										</div>
+									</div>
 									</a>
-								</div>
-								<div class="col-2">
-									<a href="tv-series-page.html">
-										<img alt="" src="/img/posters/serie2.jpg" />
-									</a>
-								</div>
-								<div class="col-2">
-									<a href="tv-series-page.html">
-										<img alt="" src="/img/posters/serie3.jpg" />
-									</a>
-								</div>
-								<div class="col-2">
-									<a href="tv-series-page.html">
-										<img alt="" src="/img/posters/serie4.jpg" />
-									</a>
-								</div>
-								<div class="col-1 centered">
-									<a href="tv-series-page.html">
-										<i class="fas fa-caret-square-right fa-3x"></i>
-									</a>
-								</div>
+									<% }) %>
+									
+								</div>							
 							</div>
 						</fieldset>
 						<br>						
@@ -120,156 +113,53 @@
 						</div>
 						<div class="list">
 							<div class="row">
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-										<label>Ep.5</label>
+								<!--LISTA DE TEMPORADAS-->
+
+								<% assistindo.slice().reverse().forEach((serie) => { %>
+								<a href=
+									"/series/<%= serie.data.id %>">
+									<div class="poster">
+										<img alt="" src="<%= 
+										(serie.data.poster_path != 'https://image.tmdb.org/t/p/originalnull')
+										? serie.data.poster_path
+										: '/img/background-placeholder.jpg'
+										%>" />
+										<div>										
+											<label><%= serie.data.name %></label>
+											<label><%= serie.data.watcheddate %></label>
+										</div>
 									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-										<label>Ep.3</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark 2ª Temporada</label>
-										<label>Ep.1</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-										<label>Ep.3</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark 2ª Temporada</label>
-										<label>Ep.1</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-										<label>Ep.3</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark 2ª Temporada</label>
-										<label>Ep.1</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>
-										<label>Ep.5</label>
-									</div>
-								</div>
+									</a>
+									<% }) %>
+
 							</div>
 						</div>
 						<br>
 						<br>
 						<div class="title">
 							<i class="fas fa-grip-lines-vertical"></i>
-							<label class="title">Próximos Lançamentos</label>
+							<label class="title">Em Hiato</label>
 						</div>
 						<div class="list">
 							<div class="row">
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>										
-										<label>Ep.6</label>
-										<label>05/02/21</label>
+								<!--LISTA DE TEMPORADAS-->
+
+								<% emhiato.slice().reverse().forEach((serie) => { %>
+									<a href=
+                                        "/series/<%= serie.data.id %>">
+									<div class="poster">
+										<img alt="" src="<%= 
+										(serie.data.poster_path != 'https://image.tmdb.org/t/p/originalnull')
+										? serie.data.poster_path
+										: '/img/background-placeholder.jpg'
+										%>" />
+										<div>										
+											<label><%= serie.data.name %></label>
+											<label><%= serie.data.watcheddate %></label>
+										</div>
 									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Ep.6</label>
-										<label>05/02/21</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Ep.4</label>
-										<label>05/02/21</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Ep.2-2</label>
-										<label>05/02/21</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Ep.6</label>
-										<label>05/02/21</label>
-									</div>
-								</div>
+									</a>
+								<% }) %>
 							</div>							
 						</div>
 						<br>
@@ -280,96 +170,24 @@
 						</div>
 						<div class="list">
 							<div class="row">
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie1.jpg" />
-									<div>
-										<label>Gumball</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie5.jpg" />
-									<div>
-										<label>Stranger Things</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie2.jpg" />
-									<div>
-										<label>Sherlock Holmes</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie3.jpg" />
-									<div>
-										<label>Dark</label>
-									</div>
-								</div>
-								<div class="poster">
-									<img alt="" src="/img/posters/serie4.jpg" />
-									<div>
-										<label>Wanda Vision</label>										
-									</div>
-								</div>
+								<!--LISTA DE TEMPORADAS-->
+
+								<% completos.slice().reverse().forEach((serie) => { %>
+									<a href=
+                                        "/series/<%= serie.data.id %>">
+										<div class="poster">
+											<img alt="" src="<%= 
+											(serie.data.poster_path != 'https://image.tmdb.org/t/p/originalnull')
+											? serie.data.poster_path
+											: '/img/background-placeholder.jpg'
+											%>" />
+											<div>										
+												<label><%= serie.data.name %></label>
+												<label><%= serie.data.watcheddate %></label>
+											</div>
+										</div>
+									</a>
+								<% }) %>
 							</div>
 						</div>
 					</div>
@@ -384,6 +202,10 @@
 			</div>			
 		</div>		
 		<!--Custom js-->
+		<script>
+            if(performance.navigation.type == 2)
+              location.reload(true)
+        </script>
 		<script src="/js/layout-management/index.js"></script>
 	</body>
 </html>

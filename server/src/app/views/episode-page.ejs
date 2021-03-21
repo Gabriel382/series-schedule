@@ -37,7 +37,7 @@
 
             <nav id="nav-placeholder">
 				<div class="navbar">						
-                    <a href="index.html">
+                    <a href="../../../../../../">
                         <img src="/img/name_with_logo.png" class="logo-image" alt="" >
                     </a>
 					<div class="div-menu">
@@ -103,7 +103,7 @@
                                 <i class="material-icons icon">star_rate</i>
                                 <div class="div-number-info">
                                     <% if(userscore >= 0) { %>
-                                        <h4 class="txt-number-info-text"><%= userscore.toFixed(2) %></h4>
+                                        <h4 class="txt-number-info-text"><%= userscore %></h4>
                                         <h5 class="txt-number-info-label">Minha Nota</h5>
                                     <% } else { %>
                                         <h4 class="txt-number-info-text">-.--</h4>
@@ -115,14 +115,14 @@
                         <div class="div-number">
                             <i class="material-icons icon">stars</i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h4 class="txt-number-info-text"><%= databasegeralscore %></h4>
                                 <h5 class="txt-number-info-label">Média Geral</h5>
                             </div>
                         </div>
                         <div class="div-number">
                             <i class="fab fa-imdb icon"></i>
                             <div class="div-number-info">
-                                <h4 class="txt-number-info-text">8.89</h4>
+                                <h4 class="txt-number-info-text"><%= vote_average %></h4>
                                 <h5 class="txt-number-info-label">Nota iMDB</h5>
                             </div>
                         </div>
@@ -194,7 +194,7 @@
 
             function UpdateScore(episodeId, seriesId, userId){
                 let scorevalue = document.querySelector(".score-input").value
-                if(!isNaN(scorevalue)){
+                if(!isNaN(scorevalue) && (scorevalue >>> 0 === parseFloat(scorevalue))){
                     // AJAX
                     $.ajax({
                         type: "POST",

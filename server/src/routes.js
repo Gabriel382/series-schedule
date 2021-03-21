@@ -75,7 +75,7 @@ routes.post('/sign_up', UserController.store);
 routes.post('/sign_in', SessionController.store);
 
 //Fazer Login
-routes.delete('/sign_out', SessionController.delete);
+routes.get('/sign_out', SessionController.delete);
 
 //Acessar home
 routes.get('/', HomeController.index);
