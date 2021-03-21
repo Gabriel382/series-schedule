@@ -85,7 +85,7 @@ class EpisodeController{
           seriesId: seriesResponse.data.id,
           seriesTitle: seriesResponse.data.name,
           seriesPoster: `${tmdb.imagesPath}` + seriesResponse.data.poster_path,
-          vote_average: seriesResponse.data.vote_average.toFixed(2),
+          vote_average: episodeResponse.data.vote_average.toFixed(2),
           databasegeralscore: databasegeralscore,
           userscore : rating.toFixed(0)
         }

@@ -166,9 +166,9 @@
                                 </div>
                                 <div class="div-rating">
                                     <i class="material-icons s-icon">star_rate</i>
-                                    <h6 class="txt-season-rating">9.24</h6>
-                                    <i class="material-icons s-icon">stars</i>
-                                    <h6 class="txt-season-rating">9.26</h6>
+                                    <h6 class="txt-season-rating"><%= season.seasonScore %></h6>
+                                    <i class="fab fa-imdb s-icon"></i>
+                                    <h6 class="txt-season-rating"><%= season.imdbSeasonScore %></h6>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +195,7 @@
                                                 <div class="div-episode-footer">
                                                     <div class="div-episode-rating">
                                                         <i class="material-icons episode-item-icon">star_rate</i>
-                                                        <h6 class="txt-episode-rating">9.26</h6>
+                                                        <h6 class="txt-episode-rating"><%= episode.myrating %></h6>
                                                     </div>
                                                     <h6 class="txt-exhibiton-date"><%= episode.air_date %></h6>
                                                     <% if(episode.watched){ %>
