@@ -46,6 +46,8 @@ class SeriesController{
     if(req.cookies['userId'] != undefined)
       var userId = req.cookies['userId']
     let seasons = [];
+    let seasonsScores = []
+    let seasonsIMDBScores = []
 
     var serieadded = false;
 
@@ -58,7 +60,7 @@ class SeriesController{
 
         var seriesId = seriesResponse.data.id; 
         var seasonsData = seriesResponse.data.seasons;
-
+        
         if(seasonsData){
           const promises = seasonsData.map(season => {
 
@@ -75,10 +77,16 @@ class SeriesController{
 
                 responses.forEach((response) => {
                   // console.log(response.data);
+                  let avgscore = 0.0
+                  let avgscorenumber = 0
+                  let seasonScore = 0
+                  let tmdbscore = 0
+                  let tmdbscorenumber = 0
 
                   const episodesTMDB = response.data.episodes;
                   const episodes = [];
 
+                  let itemsProcessed = 0
                   episodesTMDB.forEach(async (episodeTMDB) => {
                     const watched = await View.findOne({
                       where: {
@@ -87,15 +95,59 @@ class SeriesController{
                       }
                     });
 
+                    if(watched){
+                      if(watched.dataValues.rating >= 0){
+                        episodeTMDB.myrating = watched.dataValues.rating
+                        avgscore += episodeTMDB.myrating
+                        avgscorenumber += 1
+                        episodeTMDB.myrating = episodeTMDB.myrating.toFixed(0)
+                      } else{
+                        episodeTMDB.myrating = "-"
+                      }
+                    } else{
+                      episodeTMDB.myrating = "-"
+                    }
+                    
+                    if(episodeTMDB){
+                      if(!isNaN(episodeTMDB.vote_average) && !Number.isNaN(parseFloat(episodeTMDB.vote_average)) && 
+                      parseFloat(episodeTMDB.vote_average) > 0.0){
+                        tmdbscore += parseFloat(episodeTMDB.vote_average)
+                        tmdbscorenumber += 1
+                        console.log(parseFloat(episodeTMDB.vote_average))
+                      } else {
+                        console.log(-1)
+                      }
+                    }
+                    
+                    
+                    
+                    let tmdbscoremean = 0
                     episodes.push({...episodeTMDB, watched: watched ? true : false});
                     console.log('EP adicionado: ', episodeTMDB.episode_number);
-                  });
+                    itemsProcessed += 1
+                    if(itemsProcessed == episodesTMDB.length){
+                      if(avgscorenumber > 0){
+                        seasonScore = (avgscore/avgscorenumber).toFixed(2)
+                      } else{
+                        seasonScore = "-"
+                      }
+                      if(tmdbscorenumber > 0){
+                        tmdbscoremean = (tmdbscore/tmdbscorenumber).toFixed(2)
+                      } else{
+                        tmdbscoremean = "-"
+                      }
 
+                      seasonsScores.push(seasonScore)
+                      seasonsIMDBScores.push(tmdbscoremean)
+                    }
+                  });
                   seasons.push({
                     id: response.data.id,
                     poster: response.data.poster_path,
                     season_number: response.data.season_number,
                     episodes: episodes.sort(),
+                    vote_average: "-",
+                    seasonScore: "-"
                   });
                 })
             }
@@ -138,6 +190,8 @@ class SeriesController{
       let scoresum = 0
       let numberwithscore = 0
       for(let i = 0; i < seasons.length; i++){
+        seasons[i].seasonScore = seasonsScores[i]
+        seasons[i].imdbSeasonScore = seasonsIMDBScores[i]
         let season = seasons[i]
         let totaleps = season.episodes.length
           let watchedeps = 0.0
@@ -173,7 +227,7 @@ class SeriesController{
       let myrate = ""
       let updatevalue = -1
       if(numberwithscore > 0){
-        myrate = (scoresum/numberwithscore)
+        myrate = (scoresum/numberwithscore).toFixed(0)
         updatevalue = (scoresum/numberwithscore)
       } else{
         myrate = "-.--"
@@ -224,7 +278,7 @@ class SeriesController{
         ongoing: seriesResponse.data.in_production,
         vote_average: seriesResponse.data.vote_average.toFixed(2),
         databascore: databasegeralscore,
-        userrating: myrate.toFixed(0)
+        userrating: myrate
       }
   
       res.render('tv-series-page', data);
