@@ -1,12 +1,12 @@
 import Sequelize from 'sequelize';
 
-import User from './models/User.js';
-import List from './models/List.js';
-import View from './models/View.js';
-import Series from './models/Series.js';
-import File from './models/File.js';
+import User from '../app/models/User';
+import List from '../app/models/List';
+import View from '../app/models/View';
+import Series from '../app/models/Series';
+import File from '../app/models/File';
 
-import databaseConfig from '../config/database.js';
+import databaseConfig from '../config/database';
 
 const models = [User, List, View, Series, File];
 
