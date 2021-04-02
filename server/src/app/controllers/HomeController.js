@@ -51,7 +51,7 @@ class HomeController{
                 //===================== Ultimos Assistidos ===================================
                 var date = new Date();
                 date.setDate(date.getDate() - 7);
-                if(date <= allseries[i].dataValues.updatedAt){
+                if(date <= allseries[i].dataValues.createdAt){
                   data.ultimosassistidos.push(oneserie)
                 }
                 //===================== Listas ===============================================
