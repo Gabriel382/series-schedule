@@ -16,32 +16,7 @@
     <body id="search-page">      
         <script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>           
         <div class="container">
-            <div id="divFaixa">
-                <div id="divAccessibility">
-                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
-                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
-                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
-                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
-                </div>
-            </div>
-
-            <nav id="nav-placeholder">
-                <div class="navbar">                        
-                    <a href="index.html">
-                        <img src="/img/name_with_logo.png" class="logo-image" alt="" >
-                    </a>
-                    <div class="div-menu">
-                        <a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
-                        <a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
-                    </div>                      
-                    <div class="div-menu">
-                        <input class="search-input">
-                    </div>
-                    <div class="div-menu">
-                        <a href=""><h2 class="txt-menu-item">Sair</h2></a>
-                    </div>          
-                </div>
-            </nav>
+            <%- include('header.ejs') %>
             <div class="divContent">
                 <div id="divSearchFilters">
                     <fieldset>

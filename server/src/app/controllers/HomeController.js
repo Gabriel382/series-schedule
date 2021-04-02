@@ -5,6 +5,8 @@ import formatBrazilianDate from '../../utils/formatBrazilianDate';
 import View from '../models/View';
 import Series from '../models/Series';
 import List from '../models/List';
+import User from '../models/User';
+import File from '../models/File';
 
 class HomeController{
   
@@ -18,21 +20,46 @@ class HomeController{
     		res.setHeader("Location", "/admin");
     		res.end();
     	} // NORMAL USER
-      else{
+      else{ 
+
+          var userId = -1
+          if(req.cookies['userId'] != undefined)
+            userId = req.cookies['userId']
+
+          const {  
+            name, 
+            birth_date,
+            avatar } = await User.findByPk(userId, {
+            include: [
+              {
+                model: File,
+                as: 'avatar',
+                attributes: ['id', 'path', 'url'],
+              }
+            ]
+          })
+
           var data = {
             ultimosassistidos: [],
             assistindo: [],
             emhiato: [],
-            completos: []
+            completos: [],
+            name: name,
+            avatar: avatar ? avatar.url : null,
+            age: getAge(birth_date),
+            totalSeries: 0,
+            usuarioUltimoAcesso: ''
           }
+
+          console.log(data.avatar);
           //===================== Todas as series ==================================
-          var userId = -1
-          if(req.cookies['userId'] != undefined)
-            userId = req.cookies['userId']
+          
           try {
             let allseries = await Series.findAll({where: {
               user_id: userId
             }})
+
+            data.totalSeries = allseries.length;
             
             let series = []
             for(let i = 0; i < allseries.length; i++){
@@ -99,3 +126,16 @@ class HomeController{
 }
 
 export default new HomeController();
+
+function getAge(dateString) 
+{
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) 
+    {
+        age--;
+    }
+    return age;
+}

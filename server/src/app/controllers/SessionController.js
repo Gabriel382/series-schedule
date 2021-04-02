@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import User from '../models/User';
+import File from '../models/File';
 
 class SessionController{
   
@@ -25,6 +26,13 @@ class SessionController{
 
     const user = await User.findOne({
       where: { email },
+      include: [
+              {
+                model: File,
+                as: 'avatar',
+                attributes: ['id', 'path', 'url'],
+              }
+            ]
     });
 
     if (!user) {
@@ -39,9 +47,11 @@ class SessionController{
       });
     }
 
-    const { id, name } = user;
+    const { id, name, avatar } = user;
 
     res.cookie("userId", id);
+    res.cookie("userName", name);
+    res.cookie("userPicture", avatar ? avatar.url : null );
 
     return res.json({
       user: {
@@ -53,8 +63,10 @@ class SessionController{
 
   async delete(req, res) {
     res.clearCookie("userId");
+    res.clearCookie("userName");
+    res.clearCookie("userPicture");
 
-    return res.json({msg: 'Usuário deslogado com sucesso'});
+    return res.render('index');
   }
   
 }

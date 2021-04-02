@@ -54,17 +54,18 @@ class ProfileController{
 
     console.log('ID: ', req.body.avatar_id);
     
-    const {user_id, login, name, last_name, city, state, avatar_id} = req.body;
+    const {user_id, login, name, last_name, city, state, avatar_id, birth_date} = req.body;
 
     const userId = parseInt(user_id, 10);
-
+    
     await User.update({
       login: login, 
       name: name, 
       last_name: last_name, 
       city: city, 
-      state: state, 
-      avatar_id: avatar_id
+      state: state,
+      avatar_id: avatar_id,
+      birth_date: birth_date
     }, {
       where: {
         id: userId

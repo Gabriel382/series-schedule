@@ -1,0 +1,101 @@
+<link href="/css/header.css" rel="stylesheet" type="text/css">
+<script>
+    $(document).ready(function(){
+        $('#txtSearch').keypress(function(e){
+          if(e.keyCode==13)
+          $('#btnSearch').click();
+        });
+
+        if(getCookie("userId") != ''){
+
+            $('#divDefault').hide();
+            document.getElementById("lblUserName").textContent = getCookie("userName");
+            const userPicture = getCookie("userPicture") != ""? getCookie("userPicture") : "/img/profile-picture-placeholder.png";
+            document.getElementById("imgUserHeader").src = userPicture;
+        }
+        else $('#divLogged').hide();
+    });
+
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function verifyUser(){
+        if(document.cookies != '') true;
+        else false;
+    }
+
+    function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i <ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+
+    window.onclick = function(event) {
+      if (!event.target.matches('.dropbtn')) {
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    } 
+
+</script>
+
+<div id="divFaixa">
+    <div id="divAccessibility">
+       <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
+            <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
+            <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
+            <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
+        </div>
+    </div>
+
+<nav id="nav-placeholder">
+    <div class="navbar">                        
+        <a href="index.html">
+            <img src="/img/name_with_logo.png" class="logo-image" alt="" >
+        </a>
+    <div class="div-menu">
+        <a href="/"><h2 class="txt-menu-item">Home</h2></a>
+        <a href="advancedSearch" ><h2 class="txt-menu-item">Buscar</h2></a>
+    </div>                      
+    <div class="div-menu">
+        <input id="txtSearch" class="search-input">
+        <button id="btnSearch" type="button" style="display: none;" onclick="location.href=`/search?title=${$('#txtSearch').val()}`"></button>  
+    </div>
+
+        <div class="dropdown" id='divLogged'>
+            <div>
+                <button onclick="myFunction()" class="dropbtn">
+                    <label id="lblUserName"></label>
+                    <img id="imgUserHeader" alt="" class="user-image-header" src="/img/uploads/perfil/perfilvivi.jpg"></td>
+                </button>
+            </div>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="/">Listas</a>
+                <a href="/profile">Perfil</a>
+                <a href="/sign_out">Sair</a>
+              </div>
+        </div>
+
+            <div class="div-menu" id="divDefault">
+                <a href="/authentication"><h2 class="txt-menu-item">Entrar/Cadastrar</h2></a>
+            </div>     
+    
+    </div>
+</nav>
