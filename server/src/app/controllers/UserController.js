@@ -1,7 +1,6 @@
 import axios from 'axios';
 import api from '../../config/api';
 import * as Yup from 'yup';
-import User from '../models/User';
 
 class UserController {
 

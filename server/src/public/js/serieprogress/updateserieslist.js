@@ -1,4 +1,5 @@
 import axios from 'axios';
+import api from '../../../config/api';
 import tmdb from '../../../config/tmdb';
 import View from '../../../app/models/View';
 import Series from '../../../app/models/Series';
@@ -38,12 +39,19 @@ var UpdateSeriesList = async function UpdateSeriesList(seriesId, userId){
                       const episodes = [];
     
                       episodesTMDB.forEach(async (episodeTMDB) => {
-                        const watched = await View.findOne({
-                          where: {
-                            episode_id: episodeTMDB.id,
-                            user_id: userId,
-                          }
-                        });
+
+                        const viewResponse = await axios.get(
+                          `${api.baseUrl}/table=View/operation=findOne/values=episode_id=${episodeTMDB.id}&user_id=${userId}`
+                        );
+    
+                        let watched = viewResponse.data;
+
+                        // const watched = await View.findOne({
+                        //   where: {
+                        //     episode_id: episodeTMDB.id,
+                        //     user_id: userId,
+                        //   }
+                        // });
     
                         episodes.push({...episodeTMDB, watched: watched ? true : false});
                       });
@@ -64,12 +72,18 @@ var UpdateSeriesList = async function UpdateSeriesList(seriesId, userId){
 
       // Consulta interna pra trazer informações
       // do registro de visualização do episódio
-      const serieentry = await Series.findOne({
-        where: {
-          series_id: seriesId,
-          user_id: userId
-        }
-      });
+      const seriesEntryResponse = await axios.get(
+        `${api.baseUrl}/table=Series/operation=findOne/values=series_id=${seriesId}&user_id=${userId}`
+      );
+      let serieentry = seriesEntryResponse.data;
+
+      // const serieentry = await Series.findOne({
+      //   where: {
+      //     series_id: seriesId,
+      //     user_id: userId
+      //   }
+      // });
+
       // Saber se serie ja foi adicionada
       if(serieentry){
         serieadded = true;
@@ -86,16 +100,23 @@ var UpdateSeriesList = async function UpdateSeriesList(seriesId, userId){
                 let watchedeps = 0.0
                 for(let j = 0; j < season.episodes.length; j++){  
                     let episode = season.episodes[j]
-                    const episodequery = await View.findOne({
-                    where: {
-                        episode_id: episode.id,
-                        user_id: userId,
-                        series_id: seriesId,
-                    }
-                    });
+
+                    const episodeQueryResponse = await axios.get(
+                      `${api.baseUrl}/table=View/operation=findOne/values=episode_id=${episode.id}&user_id=${userId}&series_id=${seriesId}`
+                    );
+        
+                    let episodequery = episodeQueryResponse.data;
+
+                    // const episodequery = await View.findOne({
+                    // where: {
+                    //     episode_id: episode.id,
+                    //     user_id: userId,
+                    //     series_id: seriesId,
+                    // }
+                    // });
                 
                     if(episodequery){
-                    watchedeps += 1.0
+                      watchedeps += 1.0
                     } 
                 }
                 const progr = (watchedeps/totaleps)*100
@@ -107,31 +128,62 @@ var UpdateSeriesList = async function UpdateSeriesList(seriesId, userId){
             }
         // ====================Change list if necessary=======================
         if(isuserfinished.toString() == "true" && seriesResponse.data.in_production.toString() == "true"){
-            const seriesd = await Series.destroy({
-                where: {
-                  user_id: userId,
-                  series_id: seriesId,
-                }
-            });
-            const seriec = await Series.create({
+
+            const seriesd = await axios.delete(
+              `${api.baseUrl}/table=Series/values=user_id=${userId}&series_id=${seriesId}`
+            );
+
+            // const seriesd = await Series.destroy({
+            //     where: {
+            //       user_id: userId,
+            //       series_id: seriesId,
+            //     }
+            // });
+
+            const seriesc = await axios.post(
+              `${api.baseUrl}/table=Series`,{
                 user_id: userId, 
                 list_id: 3,
                 series_id: seriesId,
                 average_rating: -1,
-              });
+              }
+            );
+
+            // const seriec = await Series.create({
+            //     user_id: userId, 
+            //     list_id: 3,
+            //     series_id: seriesId,
+            //     average_rating: -1,
+            //   });
+
         }else if(isuserfinished.toString() == "true"){
-            const seriesd = await Series.destroy({
-                where: {
-                  user_id: userId,
-                  series_id: seriesId,
-                }
-            });
-            const seriec = await Series.create({
+
+            const seriesd = await axios.delete(
+              `${api.baseUrl}/table=Series/values=user_id=${userId}&series_id=${seriesId}`
+            );
+
+            // const seriesd = await Series.destroy({
+            //     where: {
+            //       user_id: userId,
+            //       series_id: seriesId,
+            //     }
+            // });
+
+            const seriesc = await axios.post(
+              `${api.baseUrl}/table=Series`,{
                 user_id: userId, 
                 list_id: 2,
                 series_id: seriesId,
                 average_rating: -1,
-              });
+              }
+            );
+
+            // const seriec = await Series.create({
+            //     user_id: userId, 
+            //     list_id: 2,
+            //     series_id: seriesId,
+            //     average_rating: -1,
+            //   });
         }
       }
 

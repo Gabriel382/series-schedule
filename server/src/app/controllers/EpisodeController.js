@@ -1,6 +1,6 @@
 import axios from 'axios';
+import api from '../../config/api';
 import tmdb from '../../config/tmdb';
-import View from '../models/View';
 import UpdateSeriesList from '../../public/js/serieprogress/updateserieslist.js'
 import formatSQLdate from '../../utils/formatSQLdate';
 import formatTMDBdate from '../../utils/formatTMDBdate';
@@ -38,12 +38,11 @@ class EpisodeController{
 
         // Consulta interna pra trazer informações
         // do registro de visualização do episódio
-        const episode = await View.findOne({
-          where: {
-            episode_id: episodeId,
-            user_id: userId,
-          }
-        });
+        const getOneResponse = await axios.get(
+          `${api.baseUrl}/table=View/operation=findOne/values=episode_id=${episodeId}&user_id=${userId}`
+        );
+
+        var episode = getOneResponse.data;
 
         // Mudando a variável viewed caso a consulta retorne algo
         // ou seja, caso o usuário tenha visto o episódio
@@ -55,14 +54,18 @@ class EpisodeController{
         }
 
         //==================== GetAllEpisodeScores ========================
-        let allvotes = await View.findAll({where: {episode_id: episodeResponse.data.id}})
+        const getAllResponse = await axios.get(
+          `${api.baseUrl}/table=View/operation=findAll/values=episode_id=${episodeResponse.data.id}`
+        );
+        
+        let allvotes = getAllResponse.data
         let numberofvotes = 0
         let sumofvotes = 0
         
         for(let i = 0; i < allvotes.length; i++){
-          if(parseFloat(allvotes[i].dataValues.rating) >= 0){
+          if(parseFloat(allvotes[i].rating) >= 0){
             numberofvotes += 1
-            sumofvotes += parseFloat(allvotes[i].dataValues.rating)
+            sumofvotes += parseFloat(allvotes[i].rating)
           }
         }
         let databasegeralscore = "-.--"
@@ -96,7 +99,7 @@ class EpisodeController{
       }
 
     }catch(error){
-      console.log('getEpisode error: ', error);
+      console.log('EpisodeController.index error: ', error);
     }
 
   }
@@ -109,22 +112,24 @@ class EpisodeController{
 
     try {
       // Criando o registro no banco de que o usuário o episódio
-      const watch = await View.create({
-        user_id: userId, 
-        episode_id: episodeId,
-        series_id: seriesId,
-        rating: rating,
-      });
+      const watchResponse = await axios.post(
+        `${api.baseUrl}/table=View`, {
+          user_id: userId, 
+          episode_id: episodeId,
+          series_id: seriesId,
+          rating: rating,
+        }
+      );
+      
+      let watch = watchResponse.data;
 
       UpdateSeriesList(seriesId,userId)
-
-      // console.log('VIEW: ', view);
 
       // Retornando o registro cadastrado
       return res.json(watch);
 
     }catch(error){
-      console.log('watchEpisode error: ', error);
+      console.log('EpisodeController.view error: ', error);
     }
   }
 
@@ -141,21 +146,21 @@ class EpisodeController{
       userrating = 10.0
     }
 
-
     try {
       // Criando o registro no banco de que o usuário o episódio
-      
-      const watch = await View.update({rating: userrating}, {
-        where: {user_id: userId, 
-          episode_id: episodeId,
-          series_id: seriesId}
-      })
+      const episodeScoreResponse = await axios.put(
+        `${api.baseUrl}/table=View/values=user_id=${userId}&episode_id=${episodeId}&series_id=${seriesId}`, {
+          rating: userrating,
+        }
+      );
+
+      let watch = episodeScoreResponse.data;
 
       // Retornando o registro cadastrado
       return res.json(watch);
 
     }catch(error){
-      console.log('watchEpisode error: ', error);
+      console.log('EpisodeController.episodescore error: ', error);
     }
   }
 

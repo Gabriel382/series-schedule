@@ -1,3 +1,5 @@
+import axios from 'axios';
+import api from '../../config/api';
 import * as Yup from 'yup';
 import User from '../models/User';
 
@@ -23,19 +25,15 @@ class SessionController{
 
     const { email, password } = req.body;
 
-    const user = await User.findOne({
-      where: { email },
-    });
+    const emailExistsResponse = await axios.get(
+      `${api.baseUrl}/table=User/operation=findOne/values=email=${req.body.email}`
+    );
+
+    const user = emailExistsResponse.data;
 
     if (!user) {
       return res.status(401).json({
         error: 'Usuário não encontrado!',
-      });
-    }
-
-    if (!(await user.checkPassword(password))) {
-      return res.status(401).json({
-        error: 'A senha está errada, por favor, tente novamente.',
       });
     }
 

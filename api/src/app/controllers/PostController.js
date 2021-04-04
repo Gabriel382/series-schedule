@@ -14,12 +14,13 @@ class PostController{
     try{
       switch (table) {
         case 'File':
+          const file = await File.create(req.body);
+
+          return res.json(file);
           
           break;
         case 'User':
           const { id, name, last_name, email, login } = await User.create(req.body);
-
-          console.log('USER cadastrado: ', name, ' ', last_name);
 
           return res.json({
             id,
@@ -40,8 +41,10 @@ class PostController{
           // As listas são fixas
           break;
         case 'View':
-            
-            break;
+          const watch = await View.create(req.body);
+
+          return res.json(watch);
+          break;
         default:
           res.sendStatus(404);
           break;

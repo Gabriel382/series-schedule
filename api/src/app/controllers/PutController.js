@@ -5,35 +5,51 @@ import List from '../models/List';
 import User from '../models/User';
 import File from '../models/File';
 
+var KeyvaluesToValues = function(keyvaluesstring){
+  let keyvaluesarray = keyvaluesstring.split('&')
+  let objkv = {}
+  for(let j = 0; j < keyvaluesarray.length; j++){
+    let onekeyvalue = keyvaluesarray[j].split("=")
+    objkv[onekeyvalue[0]] = onekeyvalue[1]
+  }
+  return objkv
+}
 class PutController{
 
   async index(req, res){
 
-    const {table, } = req.params;
+    const {table, keyvaluesstring} = req.params;
     
     try{
+      let keyvalues = KeyvaluesToValues(keyvaluesstring)
       switch (table) {
         case 'File':
           
           break;
         case 'User':
+          const user = await User.update(req.body, {where: keyvalues});
           
+          return res.json(user);
           break;
         case 'Series':
+          const series = await Series.update(req.body, {where: keyvalues})
 
+          return res.json(series);
           break;
         case 'List':
 
           break;
         case 'View':
-            
-            break;
+          const watch = await View.update(req.body, {where: keyvalues});
+    
+          return res.json(watch);
+          break;
         default:
           res.sendStatus(404);
           break;
       }
     } catch(error) {
-      console.log('POST method error: ', error);
+      console.log('PUT method error: ', error);
     }
     
   }

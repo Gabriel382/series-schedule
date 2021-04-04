@@ -1,7 +1,7 @@
 function formatSQLdate(prevDate){
 
   // Quebrando a data em várias partes
-  var p = prevDate.toString().slice(4,15).split(' ');
+  var p = prevDate.toString().slice(0,10).split('-');
 
   // var monthNumber = p[1] - 1;
   // var month = '';
@@ -20,7 +20,7 @@ function formatSQLdate(prevDate){
   // }
 
   // Criando nova data com as partes coletas
-  var date = p[1]+'/'+p[0]+'/'+p[2];
+  var date = p[2]+'/'+p[1]+'/'+p[0];
 
   return date;
 }

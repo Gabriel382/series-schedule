@@ -1,7 +1,6 @@
 import axios from 'axios';
+import api from '../../config/api';
 import tmdb from '../../config/tmdb';
-import user from '../models/User';
-const { Op } = require("sequelize");
 
 class AdminController{
 
@@ -13,22 +12,41 @@ class AdminController{
         const name = req.query.name;
         var response;
 
-        if(name) response = await user.findAll({where: {[Op.or]:[{name:{[Op.iLike]: `%${name}%`}}, {last_name:{[Op.iLike]: `%${name}%`}}]},
-                                  order:['name']});
-        else response = await user.findAll({order:['name']});
+        if(name){
+
+          response = await axios.get(
+            `${api.baseUrl}/table=Admin/operation=search/values=name=${name}`
+          )
+
+          // response = await user.findAll(
+          // {where: 
+          //   {[Op.or]:[
+          //     {name:{[Op.iLike]: `%${name}%`}}, 
+          //     {last_name:{[Op.iLike]: `%${name}%`}}
+          //   ]},
+          //   order:['name']});
+
+
+        } else {
+          response = await axios.get(
+            `${api.baseUrl}/table=Admin/operation=listAll/values=name=${name}`
+          )
+
+          // response = await user.findAll({order:['name']});
+        }
 
         const listUsers = [];
 
-        response.forEach((user) => {
+        response.data.forEach((user) => {
           listUsers.push({
-            id: user.dataValues.id,
-            name: user.dataValues.name,
-            last_name: user.dataValues.last_name,
-            login: user.dataValues.login,
-            email: user.dataValues.email,
-            last_acess: formatDate(user.dataValues.last_acess),
-            profile_picture: (user.dataValues.profile_picture == null? 'user.jpg': user.dataValues.profile_picture),
-            createdAt: formatDate(user.dataValues.createdAt)
+            id: user.id,
+            name: user.name,
+            last_name: user.last_name,
+            login: user.login,
+            email: user.email,
+            last_acess: formatDate(user.last_acess),
+            profile_picture: (user.profile_picture == null? 'user.jpg': user.profile_picture),
+            createdAt: formatDate(user.createdAt)
           })
         });
 

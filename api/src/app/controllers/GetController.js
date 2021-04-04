@@ -4,6 +4,7 @@ import Series from '../models/Series';
 import List from '../models/List';
 import User from '../models/User';
 import File from '../models/File';
+const { Op } = require("sequelize");
 
 var FindOneOperation = function(model, opt, whereparams, res){
   if(opt == 'findOne'){
@@ -14,35 +15,76 @@ var FindOneOperation = function(model, opt, whereparams, res){
       console.log(err)
     });
   } else if(opt == 'findAll'){
-    model.findAll({where: whereparams}).then(function(value){
-      return res.json(value)
-    }).catch(function (err) {
-      // handle error;
-      console.log(err)
-    });
+    if(whereparams !== {}){
+      console.log('PASSOU AQUI 1');
+      model.findAll({
+        where: whereparams
+      }).then(function(value){
+        return res.json(value)
+      }).catch(function (err) {
+        // handle error;
+        console.log(err)
+      });
+    } else {
+      console.log('PASSOU AQUI 2');
+      model.findAll().then(function(value){
+        return res.json(value)
+      }).catch(function (err) {
+        // handle error;
+        console.log(err)
+      });
+    }
   }
 
 }
 
 var KeyvaluesToValues = function(keyvaluesstring){
-  let keyvaluesarray = keyvaluesstring.split('&')
-  let objkv = {}
-  for(let j = 0; j < keyvaluesarray.length; j++){
-    let onekeyvalue = keyvaluesarray[j].split("=")
-    objkv[onekeyvalue[0]] = onekeyvalue[1]
+  if(keyvaluesstring !== 'null'){
+    let keyvaluesarray = keyvaluesstring.split('&')
+    let objkv = {}
+    for(let j = 0; j < keyvaluesarray.length; j++){
+      let onekeyvalue = keyvaluesarray[j].split("=")
+      objkv[onekeyvalue[0]] = onekeyvalue[1]
+    }
+    return objkv
+  }else{
+    let objkv = {}
+    return objkv
   }
-  return objkv
 }
 
 class GetController{
 
-  index(req, res){
+  async index(req, res){
 
     const {table, operation, keyvaluesstring} = req.params;
     
     try{
       let keyvalues = KeyvaluesToValues(keyvaluesstring)
+  
       switch (table) {
+        case 'Admin':
+
+          var response;
+
+          if(operation == 'search'){
+            response = await User.findAll(
+              {where: 
+                {[Op.or]:
+                  [
+                    {name:{[Op.iLike]: `%${keyvalues.name}%`}}, 
+                    {last_name:{[Op.iLike]: `%${keyvalues.name}%`}}
+                  ]
+                },
+                order:['name']
+              }
+            );
+          } else if(operation == 'listAll') {
+            response = await User.findAll({order:['name']});
+          }
+
+          res.json(response);
+          break;
         case 'File':
           FindOneOperation(File, operation, keyvalues, res);
           break;
@@ -53,11 +95,11 @@ class GetController{
           FindOneOperation(Series, operation, keyvalues,res);
           break;
         case 'List':
-            FindOneOperation(List, operation, keyvalues, res);
-            break;
+          FindOneOperation(List, operation, keyvalues, res);
+          break;
         case 'View':
-            FindOneOperation(View, operation, keyvalues, res);
-            break;
+          FindOneOperation(View, operation, keyvalues, res);
+          break;
         default:
           res.sendStatus(404);
           break;

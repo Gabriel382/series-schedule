@@ -1,6 +1,6 @@
 import axios from 'axios';
+import api from '../../config/api';
 import tmdb from '../../config/tmdb';
-import user from '../models/User';
 
 class SearchController{
 

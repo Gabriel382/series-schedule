@@ -1,10 +1,8 @@
 import axios from 'axios';
+import api from '../../config/api';
 import tmdb from '../../config/tmdb';
-import formatTMDBdate from '../../utils/formatTMDBdate';
+import formatSQLdate from '../../utils/formatSQLdate';
 import formatBrazilianDate from '../../utils/formatBrazilianDate';
-import View from '../models/View';
-import Series from '../models/Series';
-import List from '../models/List';
 
 class HomeController{
   
@@ -30,38 +28,61 @@ class HomeController{
           if(req.cookies['userId'] != undefined)
             userId = req.cookies['userId']
           try {
-            let allseries = await Series.findAll({where: {
-              user_id: userId
-            }})
+            const allSeriesResponse = await axios.get(
+              `${api.baseUrl}/table=Series/operation=findAll/values=user_id=${userId}`
+            );
+
+            // let allseries = await Series.findAll({where: {
+            //   user_id: userId
+            // }})
+
+            let allseries = allSeriesResponse.data;
             
             let series = []
             for(let i = 0; i < allseries.length; i++){
               let oneserie = await axios.get(
-                `${tmdb.baseUrl}/tv/${allseries[i].dataValues.series_id}?api_key=${tmdb.apiKey}&language=pt-BR`
+                `${tmdb.baseUrl}/tv/${allseries[i].series_id}?api_key=${tmdb.apiKey}&language=pt-BR`
               );
+
               if(oneserie){
                 oneserie.data.poster_path = `${tmdb.imagesPath}` + oneserie.data.poster_path
-                let dateformated =  allseries[i].dataValues.updatedAt.toISOString().replace(/T/, ' ').replace(/\..+/, '').split(" ")
-                if(dateformated.length >= 2){
-                  oneserie.data.watcheddate  = formatBrazilianDate(dateformated[0])
-                } else{
-                  oneserie.data.watcheddate = ""
-                }
+                
+                // .toISOString().replace(/T/, ' ').replace(/\..+/, '').split(" ")
+                let dateformated =  formatSQLdate(allseries[i].updatedAt);
+                oneserie.data.watcheddate = dateformated;
+
+                // if(dateformated.length >= 2){
+                //   oneserie.data.watcheddate  = formatBrazilianDate(dateformated[0])
+                // } else{
+                //   oneserie.data.watcheddate = ""
+                // }
+
                 series.push(oneserie)
+
                 //===================== Ultimos Assistidos ===================================
                 var date = new Date();
-                date.setDate(date.getDate() - 7);
-                if(date <= allseries[i].dataValues.createdAt){
+                date.setDate(date.getDate() - 7)
+
+                var createdAt = Date.parse(allseries[i].createdAt);
+
+                if(date <= createdAt){
                   data.ultimosassistidos.push(oneserie)
                 }
                 //===================== Listas ===============================================
                 // Assistindo
-                const listserie = await Series.findOne({
-                  where: {
-                    series_id: oneserie.data.id,
-                    user_id: userId,
-                  }
-                });
+                const listseriesResponse = await axios.get(
+                  `${api.baseUrl}/table=Series/operation=findOne/values=user_id=${userId}&series_id=${oneserie.data.id}`
+                );
+
+                let listserie = listseriesResponse.data;
+                
+                // const listserie = await Series.findOne({
+                //   where: {
+                //     series_id: oneserie.data.id,
+                //     user_id: userId,
+                //   }
+                // });
+
                 if(listserie){
                   switch(listserie.list_id){
                     case 1:
@@ -76,19 +97,13 @@ class HomeController{
                   }
                 }
                 
-
               }
             }
           
-
           //===================== Ultimos Assistidos ===================================
           
-
-
-          
-
         } catch(error) {
-          console.log('getSeries error: ', error);
+          console.log('HomeController.index error: ', error);
         }
           res.render('user-home',data);
         } 

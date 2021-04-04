@@ -1,6 +1,6 @@
 import axios from 'axios';
 import api from '../../config/api';
-import User from '../models/User';
+
 class ProfileController{
 
   async index(req, res){
@@ -33,10 +33,10 @@ class ProfileController{
         login: userResponse.data.login,
         birth_date: formatDate(userResponse.data.birth_date),
         userId: userResponse.data.id,
-        avatar: avatar,
+        avatar: avatar ? avatar.url : null,
       };
 
-      console.log(data.avatar);
+      // console.log(data.avatar);
   
       res.render('profile-settings', data);
 
@@ -48,24 +48,32 @@ class ProfileController{
 
   async save(req, res){
 
-    console.log('ID: ', req.body.avatar_id);
+    // console.log('ID USER: ', req.body.user_id);
     
     const {user_id, login, name, last_name, city, state, avatar_id} = req.body;
 
-    const userId = parseInt(user_id, 10);
+    // const userId = parseInt(user_id, 10);
 
-    await User.update({
-      login: login, 
-      name: name, 
-      last_name: last_name, 
-      city: city, 
-      state: state, 
-      avatar_id: avatar_id
-    }, {
-      where: {
-        id: userId
-      }
-    });
+      try {
+
+        const updateUserResponse = await axios.put(
+          `${api.baseUrl}/table=User/values=id=${user_id}`, {
+            login: login, 
+            name: name, 
+            last_name: last_name, 
+            city: city, 
+            state: state, 
+            avatar_id: avatar_id
+          }
+        );
+
+        let user = updateUserResponse.data;
+
+        res.json(user);
+
+    } catch(error) {
+      console.log('ProfileController.save error:', error);
+    }
   } 
 
 }
