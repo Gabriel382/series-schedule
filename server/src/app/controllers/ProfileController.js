@@ -1,8 +1,6 @@
 import axios from 'axios';
-import tmdb from '../../config/tmdb';
+import api from '../../config/api';
 import User from '../models/User';
-import File from '../models/File';
-
 class ProfileController{
 
   async index(req, res){
@@ -10,34 +8,32 @@ class ProfileController{
     const id = req.cookies['userId'];
 
     try {
-      const {  
-        name, 
-        last_name,
-        email,
-        city,
-        state,
-        login,
-        birth_date,
-        avatar } = await User.findByPk(id, {
-        include: [
-          {
-            model: File,
-            as: 'avatar',
-            attributes: ['id', 'path', 'url'],
-          }
-        ]
-      })
+      const userResponse = await axios.get(
+        `${api.baseUrl}/table=User/operation=findOne/values=id=${id}`
+      );
+
+      var avatar_id = userResponse.data.avatar_id;
+
+      if(avatar_id){
+        const fileResponse = await axios.get(
+          `${api.baseUrl}/table=File/operation=findOne/values=id=${avatar_id}`
+        );
+
+        var avatar = fileResponse.data;
+      }else{
+        var avatar = null;
+      }
      
       const data = {
-        name: name,
-        last_name: last_name,
-        email: email,
-        city: city,
-        state: state,
-        login: login,
-        birth_date: formatDate(birth_date),
-        userId: id,
-        avatar: avatar ? avatar.url : null,
+        name: userResponse.data.name,
+        last_name: userResponse.data.last_name,
+        email: userResponse.data.email,
+        city: userResponse.data.city,
+        state: userResponse.data.state,
+        login: userResponse.data.login,
+        birth_date: formatDate(userResponse.data.birth_date),
+        userId: userResponse.data.id,
+        avatar: avatar,
       };
 
       console.log(data.avatar);
@@ -45,7 +41,7 @@ class ProfileController{
       res.render('profile-settings', data);
 
     } catch(error) {
-      console.log('error: ', error);
+      console.log('ProfileController.index error: ', error);
     }
     
   }

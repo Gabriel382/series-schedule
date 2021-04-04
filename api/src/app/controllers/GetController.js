@@ -5,7 +5,7 @@ import List from '../models/List';
 import User from '../models/User';
 import File from '../models/File';
 
-var FindOneOperation = function(model, opt ,whereparams, res){
+var FindOneOperation = function(model, opt, whereparams, res){
   if(opt == 'findOne'){
     model.findOne({where: whereparams}).then(function(value){
       return res.json(value)
@@ -63,7 +63,7 @@ class GetController{
           break;
       }
     } catch(error) {
-      console.log('getSeries error: ', error);
+      console.log('GET method error: ', error);
     }
   }
 

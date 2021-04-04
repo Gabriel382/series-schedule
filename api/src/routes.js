@@ -20,13 +20,13 @@ routes.get('/', GetController.options);
 routes.get('/table=:table/operation=:operation/values=:keyvaluesstring', GetController.index); // CHAVE=VALOR&CHAVE2=VALOR
 
 // POST
-routes.post('/', PostController.index); // '/table=:table/operation=:op/values=:keyvalues'
+routes.post('/table=:table', PostController.index);
 
 // PUT
-routes.put('/', PutController.index); // /table=:table/values=:keyvalues
+routes.put('/table=:table/values=:keyvaluesstring', PutController.index);
 
 // DELETE
-routes.delete('/', DeleteController.index); // /table=:table/values=:keyvalues
+routes.delete('/table=:table/values=:keyvaluesstring', DeleteController.index);
 
 
 export default routes;

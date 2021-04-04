@@ -9,12 +9,32 @@ class PutController{
 
   async index(req, res){
 
-    const {table, operation, keyvalues} = req.params;
+    const {table, } = req.params;
     
+    try{
+      switch (table) {
+        case 'File':
+          
+          break;
+        case 'User':
+          
+          break;
+        case 'Series':
 
+          break;
+        case 'List':
 
-    // Retornando o resultado
-    return res.json({});
+          break;
+        case 'View':
+            
+            break;
+        default:
+          res.sendStatus(404);
+          break;
+      }
+    } catch(error) {
+      console.log('POST method error: ', error);
+    }
     
   }
 

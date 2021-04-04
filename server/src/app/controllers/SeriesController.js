@@ -1,4 +1,5 @@
 import axios from 'axios';
+import api from '../../config/api';
 import tmdb from '../../config/tmdb';
 import formatTMDBdate from '../../utils/formatTMDBdate';
 import formatBrazilianDate from '../../utils/formatBrazilianDate';
@@ -307,20 +308,20 @@ async view(req, res) {
   try {
 
     // Criando o registro no banco de que o usuário o episódio
-    const serie = await Series.create({
-      user_id: userId, 
-      list_id: list_idtos,
-      series_id: seriesId,
-      average_rating: average_rating,
-    });
-
-    // console.log('VIEW: ', view);
+    const addSeriesResponse = await axios.post(
+      `${api.baseUrl}/table=Series`, {
+        user_id: userId, 
+        list_id: list_idtos,
+        series_id: seriesId,
+        average_rating: average_rating,
+      }
+    );
 
     // Retornando o registro cadastrado
-    return res.json(serie);
+    return res.json(addSeriesResponse.data);
 
   }catch(error){
-    console.log('watchEpisode error: ', error);
+    console.log('SeriesController.view error: ', error);
   }
   
 }
@@ -334,21 +335,17 @@ async removes(req, res) {
   const userId = req.body.userId
 
   try {
-    // Criando o registro no banco de que o usuário o episódio
-    const serie = await Series.destroy({
-      where: {
-        user_id: userId,
-        series_id: seriesId,
-      }
-    });
+      
+    const removeSeriesResponse = await axios.delete(
+      `${api.baseUrl}/table=Series/values=user_id=${userId}&series_id=${seriesId}`
+    );
 
-    // console.log('VIEW: ', view);
+    if(removeSeriesResponse) {
+      res.json({message: 'Série removida com sucesso'});
+    }
 
-    // Retornando o registro cadastrado
-    return res.json(serie);
-
-  }catch(error){
-    console.log('watchEpisode error: ', error);
+  } catch(error) {
+    console.log('SeriesController.removes error: ', error);
   }
   
 }

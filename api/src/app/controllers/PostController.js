@@ -9,15 +9,47 @@ class PostController{
 
   async index(req, res){
 
-    const {table, operation, keyvalues} = req.params;
+    const {table} = req.params;
     
+    try{
+      switch (table) {
+        case 'File':
+          
+          break;
+        case 'User':
+          const { id, name, last_name, email, login } = await User.create(req.body);
 
+          console.log('USER cadastrado: ', name, ' ', last_name);
 
-    // Retornando o resultado
-    return res.json({});
-    
+          return res.json({
+            id,
+            name,
+            last_name,
+            email,
+            login,
+          });  
+          break;
+        case 'Series':
+          const series = await Series.create(req.body);
+
+          return res.json(series);
+
+          break;
+        case 'List':
+          // Não temos função de cadastrar listas no nosso banco de dados
+          // As listas são fixas
+          break;
+        case 'View':
+            
+            break;
+        default:
+          res.sendStatus(404);
+          break;
+      }
+    } catch(error) {
+      console.log('POST method error: ', error);
+    }
   }
-
 
 }
 

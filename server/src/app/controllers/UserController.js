@@ -1,3 +1,5 @@
+import axios from 'axios';
+import api from '../../config/api';
 import * as Yup from 'yup';
 import User from '../models/User';
 
@@ -21,42 +23,64 @@ class UserController {
       });
     }
 
-    const emailExists = await User.findOne({
-      where: { 
-        email: req.body.email,
-      },
-    });
+    try {
 
-    const loginExists = await User.findOne({
-      where: { 
-        login: req.body.login,
-      },
-    });
+      const emailExistsResponse = await axios.get(
+        `${api.baseUrl}/table=User/operation=findOne/values=email=${req.body.email}`
+      );
 
-    if (emailExists || loginExists) {
-      return res.status(400).json({
-        error: 'Usuário já cadastrado, faça login!',
-      });
+      const loginExistsResponse = await axios.get(
+        `${api.baseUrl}/table=User/operation=findOne/values=login=${req.body.login}`
+      );
+
+      if (emailExistsResponse.data || loginExistsResponse.data) {
+        return res.status(400).json({
+          error: 'Usuário já cadastrado, faça login!',
+        });
+      }
+
+      const createUserResponse = await axios.post(
+        `${api.baseUrl}/table=User`, {
+          name: req.body.name,
+          last_name: req.body.last_name,
+          email: req.body.email,
+          login: req.body.login,
+          password: req.body.password,
+        }
+      );
+
+      const { id, name, last_name, email, login } = createUserResponse.data;
+
+      res.json({
+        id,
+        name,
+        last_name,
+        email,
+        login,
+      })
+
+    } catch(error) {
+      console.log('UserController.store error: ', error);
     }
-
-    const { id, name, last_name, email, login } = await User.create(req.body);
-
-    return res.json({
-      id,
-      name,
-      last_name,
-      email,
-      login,
-    });
+  
   }
 
   async delete(req, res){
 
-  	const {userId, admin} = req.body;
+    const {userId, admin} = req.body;
+    
+    try {
+      
+      await axios.delete(
+        `${api.baseUrl}/table=User/values=id=${userId}`
+      );
 
-  	await User.destroy({where: {id: userId}});
+    } catch(error) {
+      console.log('UserController.delete error: ', error);
+    }
 
   }
+  
 }
 
 export default new UserController();
