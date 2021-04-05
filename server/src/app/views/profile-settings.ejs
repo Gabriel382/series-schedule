@@ -28,7 +28,9 @@
             </div>
             <div class="div-centered-info-grid">
                 <div class="centered">
-                    <h4 id="userId" style="color:#ecf0f1;"><%= userId %></h4>
+                    <input id="avatarIdHidden" type="hidden" value="<%= avatarId %>">
+                    <input id="userIdHidden" type="hidden" value="<%= userId %>">
+                    
                     <% if(avatar) { %>
                         <img alt="" class="user-image row" src="<%= avatar %>">
                     <% } else { %> 
@@ -75,7 +77,8 @@
         <script>
             $(function () {
 
-                var avatarId;
+                var avatarId = $('#avatarIdHidden').val();
+
                 $('#uploadForm').submit(function() {
                     $(this).ajaxSubmit({
                         error: function(xhr) {
@@ -96,7 +99,7 @@
                         type: "PUT",
                         url: `http://localhost:4444/saveprofile`,
                         data: JSON.stringify({
-                            user_id: $('#userId').text(),
+                            user_id: $('#userIdHidden').val(),
                             login: $('#txtLogin').val(),
                             name: $('#txtName').val(),
                             last_name: $('#txtLastName').val(),

@@ -32,6 +32,7 @@ class ProfileController{
         state: userResponse.data.state,
         login: userResponse.data.login,
         birth_date: formatDate(userResponse.data.birth_date),
+        avatarId: userResponse.data.avatar_id,
         userId: userResponse.data.id,
         avatar: avatar ? avatar.url : null,
       };
@@ -50,6 +51,11 @@ class ProfileController{
 
       try {
 
+        console.log('req.body: ', req.body);
+
+        var sp = birth_date.split('/');
+        var formattedDate = `${sp[2]}-${sp[1]}-${sp[0]} 00:00:00-03`
+
         const updateUserResponse = await axios.put(
           `${api.baseUrl}/table=User/values=id=${user_id}`, {
             login: login, 
@@ -58,7 +64,7 @@ class ProfileController{
             city: city, 
             state: state, 
             avatar_id: avatar_id,
-            birth_date: birth_date
+            birth_date: formattedDate,
           }
         );
 
