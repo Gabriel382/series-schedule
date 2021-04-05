@@ -112,6 +112,7 @@
                     }).done(function(msg){
                         console.log('Ok');
                         alert('Dados atualizados com sucesso!');
+                        location.reload();
                     }).fail(function(jqXHR, textStatus, msg){
                         console.log(msg);
                     });

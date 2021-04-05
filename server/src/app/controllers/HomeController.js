@@ -3,6 +3,7 @@ import api from '../../config/api';
 import tmdb from '../../config/tmdb';
 import formatSQLdate from '../../utils/formatSQLdate';
 import formatBrazilianDate from '../../utils/formatBrazilianDate';
+import formatTMDBdate from '../../utils/formatTMDBdate';
 
 class HomeController{
   
@@ -32,6 +33,7 @@ class HomeController{
             name, 
             birth_date,
             avatar_id,
+            last_access,
           } = user;
 
           const fileResponse = await axios.get(
@@ -49,7 +51,7 @@ class HomeController{
             avatar: avatar ? avatar.url : null,
             age: getAge(birth_date),
             totalSeries: 0,
-            usuarioUltimoAcesso: ''
+            usuarioUltimoAcesso: last_access ? formatDate(last_access) : '',
           }
 
           console.log(data.avatar);
@@ -65,7 +67,8 @@ class HomeController{
             // }})
 
             let allseries = allSeriesResponse.data;
-            
+            data.totalSeries = allseries.length;
+
             let series = []
             for(let i = 0; i < allseries.length; i++){
               let oneserie = await axios.get(
@@ -154,4 +157,17 @@ function getAge(dateString)
         age--;
     }
     return age;
+}
+
+function formatDate(value){
+
+  var date = new Date(value);
+  var day = date.getDate().toString();
+  day = (day.length == 1) ? '0' + day : day;
+  var month = (date.getMonth()+1).toString();
+  month = (month.length == 1)? '0' + month : month;
+  var year = date.getFullYear();
+  var hour = date.getHours().toString();
+  var minute = date.getMinutes().toString();
+  return day + '/' + month + '/' + year + ' ' + hour + ':' + minute;
 }

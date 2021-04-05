@@ -47,6 +47,12 @@ class SessionController{
     res.cookie("userName", name);
     res.cookie("userPicture", avatar ? avatar.url : null );
 
+    const updateUserResponse = await axios.put(
+          `${api.baseUrl}/table=User/values=id=${id}`, {
+            last_access: Date.now()            
+          }
+        );
+
     return res.json({
       user: {
         id,

@@ -63,9 +63,20 @@ class ProfileController{
             last_name: last_name, 
             city: city, 
             state: state, 
-            avatar_id: avatar_id
+            avatar_id: avatar_id,
+            birth_date: birth_date
           }
         );
+
+        res.clearCookie("userName");
+        res.clearCookie("userPicture");
+
+        const fileResponse = await axios.get(`${api.baseUrl}/table=File/operation=findOne/values=id=${avatar_id}`);
+
+        var avatar = fileResponse.data;
+
+        res.cookie("userName", name);
+        res.cookie("userPicture", avatar ? avatar.url : null );
 
         let user = updateUserResponse.data;
 
