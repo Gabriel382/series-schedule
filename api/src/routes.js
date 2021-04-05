@@ -20,7 +20,7 @@ routes.get('/', GetController.options);
 routes.get('/table=:table/operation=:operation/values=:keyvaluesstring', GetController.index); // CHAVE=VALOR&CHAVE2=VALOR
 
 // POST
-routes.post('/table=:table', PostController.index);
+routes.post('/table=:table', upload.single('file'), PostController.index);
 
 // PUT
 routes.put('/table=:table/values=:keyvaluesstring', PutController.index);

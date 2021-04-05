@@ -1,9 +1,9 @@
 import axios from 'axios';
 import api from '../../../config/api';
 import tmdb from '../../../config/tmdb';
-import View from '../../../app/models/View';
-import Series from '../../../app/models/Series';
-import List from '../../../app/models/List';
+// import View from '../../../app/models/View';
+// import Series from '../../../app/models/Series';
+// import List from '../../../app/models/List';
 
 var UpdateSeriesList = async function UpdateSeriesList(seriesId, userId){
     

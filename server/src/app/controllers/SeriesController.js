@@ -119,7 +119,7 @@ class SeriesController{
                         tmdbscorenumber += 1
                         // console.log(parseFloat(episodeTMDB.vote_average))
                       } else {
-                        console.log(-1)
+                        // console.log(-1)
                       }
                     }
                     

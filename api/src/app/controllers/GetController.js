@@ -16,7 +16,6 @@ var FindOneOperation = function(model, opt, whereparams, res){
     });
   } else if(opt == 'findAll'){
     if(whereparams !== {}){
-      console.log('PASSOU AQUI 1');
       model.findAll({
         where: whereparams
       }).then(function(value){
@@ -26,7 +25,6 @@ var FindOneOperation = function(model, opt, whereparams, res){
         console.log(err)
       });
     } else {
-      console.log('PASSOU AQUI 2');
       model.findAll().then(function(value){
         return res.json(value)
       }).catch(function (err) {

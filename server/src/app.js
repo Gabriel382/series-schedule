@@ -3,7 +3,7 @@ import bodyParser from 'body-parser';
 import routes from './routes';
 import path from 'path';
 
-import './database';
+// import './database';
 
 
 
