@@ -22,18 +22,23 @@ class HomeController{
           if(req.cookies['userId'] != undefined)
             userId = req.cookies['userId']
 
+          
+          const userResponse = await axios.get(
+            `${api.baseUrl}/table=User/operation=findOne/values=id=${userId}`
+          );
+      
+          var user = userResponse.data;
           const {  
             name, 
             birth_date,
-            avatar } = await User.findByPk(userId, {
-            include: [
-              {
-                model: File,
-                as: 'avatar',
-                attributes: ['id', 'path', 'url'],
-              }
-            ]
-          })
+            avatar_id,
+          } = user;
+
+          const fileResponse = await axios.get(
+            `${api.baseUrl}/table=File/operation=findOne/values=id=${avatar_id}`
+          );
+      
+          var avatar = fileResponse.data;
 
           var data = {
             ultimosassistidos: [],

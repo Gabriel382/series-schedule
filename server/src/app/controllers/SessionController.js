@@ -23,8 +23,6 @@ class SessionController{
       });
     }
 
-    const { email, password } = req.body;
-
     const emailExistsResponse = await axios.get(
       `${api.baseUrl}/table=User/operation=findOne/values=email=${req.body.email}`
     );
@@ -37,7 +35,13 @@ class SessionController{
       });
     }
 
-    const { id, name } = user;
+    const { id, name, avatar_id } = user;
+
+    const fileResponse = await axios.get(
+      `${api.baseUrl}/table=File/operation=findOne/values=id=${avatar_id}`
+    );
+
+    var avatar = fileResponse.data;
 
     res.cookie("userId", id);
     res.cookie("userName", name);
