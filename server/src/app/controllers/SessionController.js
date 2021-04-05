@@ -40,6 +40,8 @@ class SessionController{
     const { id, name } = user;
 
     res.cookie("userId", id);
+    res.cookie("userName", name);
+    res.cookie("userPicture", avatar ? avatar.url : null );
 
     return res.json({
       user: {
@@ -51,8 +53,10 @@ class SessionController{
 
   async delete(req, res) {
     res.clearCookie("userId");
+    res.clearCookie("userName");
+    res.clearCookie("userPicture");
 
-    return res.json({msg: 'Usuário deslogado com sucesso'});
+    return res.render('index');
   }
   
 }

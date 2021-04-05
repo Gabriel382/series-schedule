@@ -19,52 +19,31 @@
 		
 		<script src="https://kit.fontawesome.com/afd9d2c121.js" crossorigin="anonymous"></script>		
 		<div class="container">
-			<div id="divFaixa">
-                <div id="divAccessibility">
-                    <div class="div-font-size"><button class="A+ accessibility-icon">A+</button></div>
-                    <div class="div-font-size"><button class="A accessibility-icon">A</button></div>
-                    <div class="div-font-size"><button class="A- accessibility-icon">A-</button></div>
-                    <div class="div-font-size"><button class="material-icons mode-icon">nightlight_round</button></div>
-                </div>
-            </div>
-
-            <nav id="nav-placeholder">
-				<div class="navbar">	
-					<a href="index.html">
-						<img src="/img/name_with_logo.png" class="logo-image" alt="" >
-					</a>					
-					<div class="div-menu">
-						<a href="user-home.html"><h2 class="txt-menu-item">Home</h2></a>
-						<a href="search-page.html"><h2 class="txt-menu-item">Buscar</h2></a>
-					</div>						
-					<div class="div-menu">
-						<input class="search-input">
-                    </div>
-                    <div class="div-menu">
-                        <a href="/sign_out"><h2 class="txt-menu-item">Sair</h2></a>
-                    </div>			
-				</div>
-            </nav>
+			<%- include('header.ejs') %>
 			<div class="body">
 				<div class="col-2" id="divUser">
 					<div class="centered">
-						<img alt="" class="user-image" src="/img/user.jpg">
+						<% if(avatar) { %>
+							<img alt="" class="user-image" src="<%= avatar %>">
+						<% } else { %> 
+							<img alt="" class="user-image" src="/img/profile-picture-placeholder.png">
+						<% } %>
 					</div>
 					<br>
 					<div class="row">
 						<label class="txt-label">Nome:</label>
 						&nbsp;
-						<label id="lblName">Violeta</label>
+						<label id="lblName"><%= name %></label>
 					</div>
 					<div class="row">
 						<label class="txt-label">Idade:</label>
 						&nbsp;
-						<label id="lblAge">24</label>
+						<label id="lblAge"><%= age %></label>
 					</div>
 					<div class="row">
 						<label class="txt-label">Total de Séries:</label>
 						&nbsp;
-						<label id="lblTotalSeries">77</label>
+						<label id="lblTotalSeries"><%= totalSeries %></label>
 					</div>
 					<div class="row">
 						<label class="txt-label">Último Acesso:</label>

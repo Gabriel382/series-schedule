@@ -50,7 +50,7 @@ class ProfileController{
 
     // console.log('ID USER: ', req.body.user_id);
     
-    const {user_id, login, name, last_name, city, state, avatar_id} = req.body;
+    const {user_id, login, name, last_name, city, state, avatar_id, birth_date} = req.body;
 
     // const userId = parseInt(user_id, 10);
 
