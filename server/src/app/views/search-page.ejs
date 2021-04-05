@@ -42,7 +42,7 @@
                                         <img alt="" src="<%=(serie.poster_path == null? '/img/background-placeholder.jpg': `https://image.tmdb.org/t/p/original${serie.poster_path}`)%>" /> 
                                     </a>
                                     <div>
-                                        <a href="/series/<%=serie.id%>"><%= serie.name %></a>
+                                        <a href="/series/<%=serie.id%>" title="<%= serie.name %>"><%= serie.name %></a>
                                     </div>
                                 </div>
                             <% })%>                           

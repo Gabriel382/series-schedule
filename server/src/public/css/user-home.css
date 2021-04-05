@@ -273,7 +273,7 @@ a{
 	border-color: #ECF0F1;	
 	background-color: rgba(0, 0, 0, 0.7);
 	border-radius: 10px;
-	height: 265px;
+	height: 275px;
 	width: 163px;
 	margin-bottom: 	20px;
 	margin-right: 15px;
@@ -291,12 +291,19 @@ a{
 	font-family: "Gothic A1";
 }
 
+.poster label{
+	font-size: 16px;
+	overflow: clip;	
+	max-height: 72px;
+}
+
 .list{
-	margin-top: 5px;
+	margin-bottom: 5px;
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 300px;
 	width: 90%;
+	padding: 0 !important;
 }
 
 label, option {

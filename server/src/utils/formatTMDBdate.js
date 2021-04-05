@@ -1,7 +1,9 @@
 function formatTMDBdate(prevDate){
 
   // Quebrando a data em várias partes
-  var p = prevDate.toString().split('-');
+  if(prevDate)
+  {
+    var p = prevDate.toString().split('-');
 
   // var monthNumber = p[1];
   // var month = '';
@@ -37,7 +39,9 @@ function formatTMDBdate(prevDate){
   // Criando nova data com as partes coletas
   var date = p[2]+'/'+p[1]+'/'+p[0];
 
-  return date;
+    return date;
+  }
+  else return '';
 }
 
 

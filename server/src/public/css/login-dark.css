@@ -22,3 +22,7 @@ label {
 .modebutton button{
 	background-image:  url(../img/light_mode.png) !important;
 }
+
+#divFaixa{
+	background-color: #313131 !important;
+}
