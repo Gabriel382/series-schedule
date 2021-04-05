@@ -12,6 +12,7 @@ import HomeController from './app/controllers/HomeController';
 import SearchController from './app/controllers/SearchController';
 import AdminController from './app/controllers/AdminController';
 import FileController from './app/controllers/FileController';
+import AdvancedSearchController from './app/controllers/AdvancedSearchController';
 
 
 const routes = new Router();
@@ -81,7 +82,9 @@ routes.get('/sign_out', SessionController.delete);
 routes.get('/', HomeController.index);
 
 //Busca
-routes.get('/advancedSearch', SearchController.advancedSearch);
+routes.get('/advancedSearch', AdvancedSearchController.index);
+
+routes.post('/advancedSearch', AdvancedSearchController.search);
 
 routes.get('/search', SearchController.index);
 

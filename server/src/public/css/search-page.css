@@ -436,7 +436,7 @@ input:focus, select:focus, button:focus{
 
 .search-poster{
 	padding: 10px;
-	height: 260px;
+	height: 300px;
 	width: 145px;
 	border-bottom-left-radius: 10px;
 	border-top-left-radius: 10px;
@@ -449,6 +449,12 @@ input:focus, select:focus, button:focus{
 
 	color: #FFFFFF;
 	font-family: "Gothic A1";
+}
+
+.search-poster label, a{
+	max-height: 48px;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 #divResults .row{
@@ -526,6 +532,12 @@ input:focus, select:focus, button:focus{
 .mode-icon{
     color:  #FFF;
     font-size: 18px !important;
+}
+
+footer{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
 }
 
 
