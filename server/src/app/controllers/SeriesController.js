@@ -15,25 +15,6 @@ var todaysdate = function dataAtualFormatada(){
   return "2021-02-27 00:00:00-03"
 }
 
-// var checkMarkedEpisode = async function(userId, episode_id, series_id){
-
-//   // Consulta interna pra trazer informações
-//   // do registro de visualização do episódio
-//   const episode = await View.findOne({
-//     where: {
-//       episode_id: episode_id,
-//       user_id: userId,
-//       series_id: series_id,
-//     }
-//   });
-
-//   if(episode){
-//     return true;
-//   } else {
-//     return false
-//   }
-// }
-
 class SeriesController{
 
   async index(req, res){
@@ -65,12 +46,10 @@ class SeriesController{
             
             return axios.get(getEpisodesUrl);
 
-            // console.log('EPISÓDIOS: ', episodesResponse.data.episodes);
           })
 
           await Promise.all(promises).then(
             responses => {
-              // console.log('Response: ', response);
 
                 responses.forEach((response) => {
                   // console.log(response.data);
@@ -91,13 +70,6 @@ class SeriesController{
                     );
 
                     let watched = viewResponse.data;
-
-                    // const watched = await View.findOne({
-                    //   where: {
-                    //     episode_id: episodeTMDB.id,
-                    //     user_id: userId,
-                    //   }
-                    // });
 
                     if(watched){
                       if(watched.rating >= 0){
@@ -125,7 +97,7 @@ class SeriesController{
                     
                     let tmdbscoremean = 0
                     episodes.push({...episodeTMDB, watched: watched ? true : false});
-                    // console.log('EP adicionado: ', episodeTMDB.episode_number);
+
                     itemsProcessed += 1
                     if(itemsProcessed == episodesTMDB.length){
                       if(avgscorenumber > 0){
@@ -167,13 +139,6 @@ class SeriesController{
 
       let serieentry = seriesAddedResponse.data;
 
-      // const serieentry = await Series.findOne({
-      //   where: {
-      //     series_id: seriesId,
-      //     user_id: userId
-      //   }
-      // });
-
       // Mudando a variável de serie adicionada para personalizar a pagina
       if(serieentry){
         serieadded = true;
@@ -213,14 +178,6 @@ class SeriesController{
             );
 
             let episodequery = episodeQueryResponse.data;
-
-            // const episodequery = await View.findOne({
-            //   where: {
-            //     episode_id: episode.id,
-            //     user_id: userId,
-            //     series_id: seriesId,
-            //   }
-            // });
           
             if(episodequery){
               watchedeps += 1.0
@@ -255,12 +212,6 @@ class SeriesController{
           average_rating: updatevalue
         }
       )
-      
-      // const watch = await Series.update({average_rating: updatevalue}, {
-      //   where: {user_id: userId,
-      //     series_id: seriesResponse.data.id}
-      // })
-
 
       //==================== GetAllUserOverAllRate ========================
       // Criando o registro no banco de que o usuário o episódio

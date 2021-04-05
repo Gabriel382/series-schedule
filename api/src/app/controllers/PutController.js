@@ -29,12 +29,12 @@ class PutController{
         case 'User':
           const user = await User.update(req.body, {where: keyvalues});
           
-          return res.json(user);
+          return res.status(200).json(user);
           break;
         case 'Series':
           const series = await Series.update(req.body, {where: keyvalues})
 
-          return res.json(series);
+          return res.status(200).json(series);
           break;
         case 'List':
 
@@ -42,7 +42,7 @@ class PutController{
         case 'View':
           const watch = await View.update(req.body, {where: keyvalues});
     
-          return res.json(watch);
+          return res.status(200).json(watch);
           break;
         default:
           res.sendStatus(404);

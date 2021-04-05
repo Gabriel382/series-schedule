@@ -16,7 +16,7 @@ class PostController{
         case 'File':
           const file = await File.create(req.body);
 
-          return res.json(file);
+          return res.status(201).json(file);
           
           break;
         case 'User':
@@ -33,7 +33,7 @@ class PostController{
         case 'Series':
           const series = await Series.create(req.body);
 
-          return res.json(series);
+          return res.status(201).json(series);
 
           break;
         case 'List':
@@ -43,7 +43,7 @@ class PostController{
         case 'View':
           const watch = await View.create(req.body);
 
-          return res.json(watch);
+          return res.status(201).json(watch);
           break;
         default:
           res.sendStatus(404);

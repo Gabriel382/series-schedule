@@ -62,10 +62,6 @@ class HomeController{
               `${api.baseUrl}/table=Series/operation=findAll/values=user_id=${userId}`
             );
 
-            // let allseries = await Series.findAll({where: {
-            //   user_id: userId
-            // }})
-
             let allseries = allSeriesResponse.data;
             data.totalSeries = allseries.length;
 
@@ -78,15 +74,9 @@ class HomeController{
               if(oneserie){
                 oneserie.data.poster_path = `${tmdb.imagesPath}` + oneserie.data.poster_path
                 
-                // .toISOString().replace(/T/, ' ').replace(/\..+/, '').split(" ")
                 let dateformated =  formatSQLdate(allseries[i].updatedAt);
                 oneserie.data.watcheddate = dateformated;
 
-                // if(dateformated.length >= 2){
-                //   oneserie.data.watcheddate  = formatBrazilianDate(dateformated[0])
-                // } else{
-                //   oneserie.data.watcheddate = ""
-                // }
 
                 series.push(oneserie)
 
@@ -106,13 +96,6 @@ class HomeController{
                 );
 
                 let listserie = listseriesResponse.data;
-                
-                // const listserie = await Series.findOne({
-                //   where: {
-                //     series_id: oneserie.data.id,
-                //     user_id: userId,
-                //   }
-                // });
 
                 if(listserie){
                   switch(listserie.list_id){

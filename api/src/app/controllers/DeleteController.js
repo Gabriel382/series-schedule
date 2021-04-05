@@ -29,13 +29,13 @@ class DeleteController{
         case 'User':
           await User.destroy({where: keyvalues});
 
-          res.json({message: 'User deleted!'});
+          res.status(200).json({message: 'User deleted!'});
 
           break;
         case 'Series':
           await Series.destroy({where: keyvalues});
 
-          res.json({message: 'Series removed!'});
+          res.status(200).json({message: 'Series removed!'});
 
           break;
         case 'List':

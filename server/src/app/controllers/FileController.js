@@ -21,15 +21,6 @@ class FileController {
       }
     );
 
-    // const fileResponse = await axios.post(
-    //   `${api.baseUrl}/table=File`,{
-    //     name,
-    //     path,
-    //   }, {
-    //     headers: 'Content-Type: multipart/form-data;'
-    //   }
-    // );
-
     let file = fileResponse.data;
 
     return res.json(file);

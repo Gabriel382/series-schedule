@@ -18,21 +18,12 @@ class AdminController{
             `${api.baseUrl}/table=Admin/operation=search/values=name=${name}`
           )
 
-          // response = await user.findAll(
-          // {where: 
-          //   {[Op.or]:[
-          //     {name:{[Op.iLike]: `%${name}%`}}, 
-          //     {last_name:{[Op.iLike]: `%${name}%`}}
-          //   ]},
-          //   order:['name']});
-
 
         } else {
           response = await axios.get(
             `${api.baseUrl}/table=Admin/operation=listAll/values=name=${name}`
           )
 
-          // response = await user.findAll({order:['name']});
         }
 
         const listUsers = [];
